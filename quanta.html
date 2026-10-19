@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quanta — xyc design</title>
+<meta name="description" content="Quanta case study — a seven-page AI workspace for macOS and Windows: chat, analysis, crawling, sentiment, generation, voice and web, with a file-based memory and a team of subagents. Download for macOS and Windows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-title-en="Quanta — xyc design" data-title-zh="Quanta — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark">x</span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger is-current" href="index.html#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
+            <a class="pm-item" href="quanta.html" role="menuitem" aria-current="page">
+              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-thumb">03</span>
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <a class="btn btn-dark btn-sm" href="#download" data-en="Download" data-zh="下载">Download</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="case-hero" id="top">
+    <div class="container">
+      <a class="case-back" href="index.html#work">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        <span data-en="All work" data-zh="全部作品">All work</span>
+      </a>
+      <img class="case-line" src="img/quanta-mark.png" alt="" aria-hidden="true">
+      <h1 class="case-title" style="margin-top:18px;">Quanta</h1>
+      <p class="case-tagline" data-en="Seven workspaces for one assistant — a window where the tools live next to the conversation." data-zh="给同一个助手七间房间——工具就摆在对话旁边的那个窗口。">
+        Seven workspaces for one assistant — a window where the tools live next to the conversation.
+      </p>
+      <div class="dl-row" id="download">
+        <a class="dl" href="https://github.com/xxx490202/quanta/releases/download/v2.0.0/Quanta-2.0.0.dmg" target="_blank" rel="noreferrer noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+          <span class="dl-t"><b data-en="macOS · Apple silicon" data-zh="macOS · Apple 芯片">macOS · Apple silicon</b><em>M1–M4 · dmg</em></span>
+        </a>
+        <a class="dl" href="https://github.com/xxx490202/quanta/releases/download/v2.0.0/Quanta-2.0.0-x64.dmg" target="_blank" rel="noreferrer noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+          <span class="dl-t"><b data-en="macOS · Intel" data-zh="macOS · Intel">macOS · Intel</b><em>x64 · dmg</em></span>
+        </a>
+        <a class="dl" href="https://github.com/xxx490202/quanta/releases/download/v2.0.0/Quanta-Setup-2.0.0.exe" target="_blank" rel="noreferrer noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+          <span class="dl-t"><b data-en="Windows · x64" data-zh="Windows · x64">Windows · x64</b><em>setup · exe</em></span>
+        </a>
+        <a class="dl dl-gh" href="https://github.com/xxx490202/quanta" target="_blank" rel="noreferrer noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3-.3 6.2-1.5 6.2-6.8A5.3 5.3 0 0 0 19.7 5a4.9 4.9 0 0 0-.1-3.7s-1.2-.4-4 1.5a13.4 13.4 0 0 0-7 0C5.8.9 4.6 1.3 4.6 1.3A4.9 4.9 0 0 0 4.5 5 5.3 5.3 0 0 0 3 8.7c0 5.3 3.2 6.5 6.2 6.8a3.4 3.4 0 0 0-1 2.6V22"></path></svg>
+          <span class="dl-t"><b>GitHub</b><em data-en="project home" data-zh="项目主页">project home</em></span>
+        </a>
+      </div>
+      <p style="margin-top:14px;">
+        <a class="dl-help" href="#install" data-en="macOS says “damaged”? Install notes" data-zh="macOS 提示「已损坏」？查看安装说明">macOS says “damaged”? Install notes</a>
+      </p>
+      <p class="case-meta-line">
+        <span><b data-en="Design &amp; build" data-zh="设计与开发">Design &amp; build</b> · xyc design</span>
+        <span>2026</span>
+        <span>macOS · Windows</span>
+        <span>Electron · Python · DeepSeek</span>
+        <span>v2.0.0</span>
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="hero-shot qhero" data-reveal>
+        <img src="img/quanta/hero.jpg" alt="Quanta, Maestro page: a finished turn with its work steps, a diff and the composer">
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Overview" data-zh="概览">Overview</span>
+        <h2 class="display" data-en="Seven workspaces, one window." data-zh="七间房间，<br>一个窗口。">Seven workspaces, one window.</h2>
+      </div>
+      <div class="case-two" data-reveal>
+        <div>
+          <p data-en="Quanta started with a simple complaint: the assistant lived in one window and the work lived in six others. A chat here, a crawler there, a chart in another app, a browser tab for the one site it could not open." data-zh="Quanta 的起点是一句抱怨：助手在一个窗口里，活却散在另外六个窗口里。聊天在这儿，爬虫在那儿，图表在另一个应用，而它打不开的那个网站挂在浏览器标签上。">
+            Quanta started with a simple complaint: the assistant lived in one window and the work lived in six others. A chat here, a crawler there, a chart in another app, a browser tab for the one site it could not open.
+          </p>
+          <p data-en="So the app is split into seven pages instead of one long thread. Each page has its own assistant, its own model group and its own project ledger — and they all sit on the same window, the same terminal, the same working folder and the same memory." data-zh="于是应用没有做成一条无限长的对话，而是分成七页。每页有自己的助手名、自己的模型组、自己的项目账本——但它们共用同一个窗口、同一个终端、同一个工作目录和同一份记忆。">
+            So the app is split into seven pages instead of one long thread. Each page has its own assistant, its own model group and its own project ledger — and they all sit on the same window, the same terminal, the same working folder and the same memory.
+          </p>
+        </div>
+        <div>
+          <p data-en="Two more pages sit beside them: Scheduled, where recurring work is queued, and Settings, where eleven panes of machinery can be inspected." data-zh="旁边还有两页：Scheduled 排队跑那些重复的活，Settings 里能翻看十一栏机器。">
+            Two more pages sit beside them: Scheduled, where recurring work is queued, and Settings, where eleven panes of machinery can be inspected.
+          </p>
+          <blockquote class="case-quote">
+            <span class="q" data-en="“Every page is a room. The building is one.”" data-zh="「每一页是一间房，楼只有一栋。」">“Every page is a room. The building is one.”</span>
+            <cite data-en="Working note, 2026" data-zh="工作笔记，2026">Working note, 2026</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGES -->
+  <section class="case-section" id="pages">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Pages" data-zh="页面">Pages</span>
+        <h2 class="display" data-en="Every page, and what it is for." data-zh="每一页，各自管什么。">Every page, and what it is for.</h2>
+        <p data-en="Nine views, one per job. Every screen below is a capture of the running app — the same renderer that ships in the build." data-zh="九个界面，各管一件事。下面每一张都是运行中的应用截图——和发出去的版本是同一套界面。">
+          Nine views, one per job. Every screen below is a capture of the running app — the same renderer that ships in the build.
+        </p>
+      </div>
+
+      <nav class="qindex" aria-label="Pages of Quanta" data-reveal>
+        <a href="#p-maestro"><em>01</em>Maestro<span data-en="chat" data-zh="对话">chat</span></a>
+        <a href="#p-analyse"><em>02</em>Analyse<span data-en="measure" data-zh="分析">measure</span></a>
+        <a href="#p-crawler"><em>03</em>Crawler<span data-en="collect" data-zh="采集">collect</span></a>
+        <a href="#p-sentiment"><em>04</em>Sentiment<span data-en="monitor" data-zh="监测">monitor</span></a>
+        <a href="#p-genesis"><em>05</em>Genesis<span data-en="generate" data-zh="生成">generate</span></a>
+        <a href="#p-rhema"><em>06</em>Rhema<span data-en="speak" data-zh="语音">speak</span></a>
+        <a href="#p-colloquy"><em>07</em>Colloquy<span data-en="browse" data-zh="网页">browse</span></a>
+        <a href="#p-scheduled"><em>08</em>Scheduled<span data-en="repeat" data-zh="定时">repeat</span></a>
+        <a href="#p-settings"><em>09</em>Settings<span data-en="tune" data-zh="设置">tune</span></a>
+      </nav>
+
+      <div class="qpages">
+
+        <!-- 01 MAESTRO -->
+        <article class="qpage" id="p-maestro">
+          <div class="qshot" data-reveal>
+            <img src="img/quanta/maestro.jpg" alt="Quanta Maestro page, empty project: the knot watermark, “Quantify everything.” and the composer">
+          </div>
+          <div class="qcap" data-reveal>
+            <div class="qkicker"><span>01</span><em>Quanta Nova</em></div>
+            <h3>Maestro</h3>
+            <p data-en="The default page, and the one that does the actual work: a full-width assistant that reads and writes files, runs shell commands and writes code — with every move shown in the turn." data-zh="默认页，也是真干活的那页：铺满宽度的助手，读写文件、跑终端命令、写代码，每一步都在这一轮里列给你看。">
+              The default page, and the one that does the actual work: a full-width assistant that reads and writes files, runs shell commands and writes code — with every move shown in the turn.
+            </p>
+            <ul class="qfacts">
+              <li><b data-en="Files, shells, code" data-zh="文件、终端、代码">Files, shells, code</b><span data-en="Reads the working folder, runs a real shell, edits code. The turn records what it read, ran and changed, down to +N −M." data-zh="读工作目录、开真终端、改代码；这一轮读了什么、跑了什么、改了几行，都留在过程里。">Reads the working folder, runs a real shell, edits code. The turn records what it read, ran and changed, down to +N −M.</span></li>
+              <li><b data-en="Projects that remember" data-zh="会记事儿的项目">Projects that remember</b><span data-en="Every project owns its sessions, materials and context, and names itself after the first exchange." data-zh="每个项目有自己的会话、材料和上下文，聊过第一轮就自己起名。">Every project owns its sessions, materials and context, and names itself after the first exchange.</span></li>
+              <li><b data-en="Notifications that say something" data-zh="会说话的完成通知">Notifications that say something</b><span data-en="The title is the session, the body is the reply. Click it and the window returns to that conversation." data-zh="标题是会话名，正文是这一轮的回复。点一下，窗口就回到那条对话。">The title is the session, the body is the reply. Click it and the window returns to that conversation.</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 02 ANALYSE -->
+        <article class="qpage flip" id="p-analyse">
+          <div class="qshot" data-reveal>
+            <img src="img/quanta/analyse.jpg" alt="Quanta Analyse page: a chart read as a table on the left, a narrow chat answering on the right">
+          </div>
+          <div class="qcap" data-reveal>
+            <div class="qkicker"><span>02</span><em>Quanta Metric</em></div>
+            <h3>Analyse</h3>
+            <p data-en="A measuring bench with a narrow assistant beside it. Capture a chart, drop a spreadsheet or a photo of a problem set; Quanta reads it, then answers on the right." data-zh="左边一张测量台，右边一栏窄对话。截一张图表、拖进表格，或者一张题目照片，它先读，再在右边回答。">
+              A measuring bench with a narrow assistant beside it. Capture a chart, drop a spreadsheet or a photo of a problem set; Quanta reads it, then answers on the right.
+            </p>
+            <ul class="qfacts">
+              <li><b data-en="Figures read as data" data-zh="把图当数据读">Figures read as data</b><span data-en="Charts and tables are parsed as numbers; when the image is a test paper, it answers question by question." data-zh="图表、表格按数字解析；图里是试卷或作业时，逐题作答。">Charts and tables are parsed as numbers; when the image is a test paper, it answers question by question.</span></li>
+              <li><b data-en="Any file, one context" data-zh="什么文件都进同一份上下文">Any file, one context</b><span data-en="PDF, Word, Excel, CSV, code and images are extracted into the shared context of the page." data-zh="PDF、Word、Excel、CSV、代码和图片，抽成文字后进入这一页共享的上下文。">PDF, Word, Excel, CSV, code and images are extracted into the shared context of the page.</span></li>
+              <li><b data-en="Materials, not prompt stuffing" data-zh="材料靠工具去取">Materials, not prompt stuffing</b><span data-en="The assistant sees an index first and fetches a full document only through list_artifacts and read_artifact." data-zh="助手先看索引，需要细节时才通过 list_artifacts / read_artifact 去取，不把整份材料塞进提示词。">The assistant sees an index first and fetches a full document only through list_artifacts and read_artifact.</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 03 CRAWLER -->
+        <article class="qpage" id="p-crawler">
+          <div class="qshot" data-reveal>
+            <img src="img/quanta/crawler.jpg" alt="Quanta Crawler page: crawler settings, a run in progress and the output list beside a chat">
+          </div>
+          <div class="qcap" data-reveal>
+            <div class="qkicker"><span>03</span><em>Quanta Scout</em></div>
+            <h3>Crawler</h3>
+            <p data-en="Scout sets a crawl up like a lab protocol — platform, term, how many posts, whether to reuse the login — then reports progress and drops the results into the project folder." data-zh="Scout 把一次抓取写成实验流程：平台、关键词、抓多少条、要不要复用登录状态，然后报进度，把结果落进项目目录。">
+              Scout sets a crawl up like a lab protocol — platform, term, how many posts, whether to reuse the login — then reports progress and drops the results into the project folder.
+            </p>
+            <ul class="qfacts">
+              <li><b data-en="MediaCrawler, left untouched" data-zh="源码原样不动">MediaCrawler, left untouched</b><span data-en="Each run copies the crawler source into the project, applies only this run's changes, and never edits the original." data-zh="每次抓取都把源码复制一份进项目，只改副本里这一次需要的设置，原件一个字节不碰。">Each run copies the crawler source into the project, applies only this run's changes, and never edits the original.</span></li>
+              <li><b data-en="The login survives" data-zh="登录状态留得住">The login survives</b><span data-en="A symlinked browser profile outside the copy keeps the account signed in between runs." data-zh="副本外面软链一份浏览器用户目录，换一次抓取也不用重新扫码。">A symlinked browser profile outside the copy keeps the account signed in between runs.</span></li>
+              <li><b data-en="Ask the results directly" data-zh="抓完直接问">Ask the results directly</b><span data-en="The output folder is read back as material, so “which posts drew the most comments” works in the same window." data-zh="抓下来的文件会作为材料读回来，所以「哪几条帖子评论最多」在同一个窗口就能问。">The output folder is read back as material, so “which posts drew the most comments” works in the same window.</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 04 SENTIMENT -->
+        <article class="qpage flip" id="p-sentiment">
+          <div class="qshot" data-reveal>
+            <img src="img/quanta/sentiment.jpg" alt="Quanta Sentiment page: a world map painted by country, a round of events and a chat explaining what moved">
+          </div>
+          <div class="qcap" data-reveal>
+            <div class="qkicker"><span>04</span><em>Quanta Echo</em></div>
+            <h3>Sentiment</h3>
+            <p data-en="A world board of narratives. Start Monitoring pulls one round from sixty platforms (eleven by default), merges it into today's file and pins the snapshot to the conversation." data-zh="一张全球叙事看板。点 Start Monitoring 抓一轮——六十个平台可选，默认十一个——并进当天那份数据，再把快照垫进对话。">
+              A world board of narratives. Start Monitoring pulls one round from sixty platforms (eleven by default), merges it into today's file and pins the snapshot to the conversation.
+            </p>
+            <ul class="qfacts">
+              <li><b data-en="One story, many platforms" data-zh="一个话题，多个平台">One story, many platforms</b><span data-en="The same topic is merged across platforms; rank, heat and links come from the last round that saw it." data-zh="同一个话题跨平台合成一条；名次、热度和链接取最后一次见到它的那一轮。">The same topic is merged across platforms; rank, heat and links come from the last round that saw it.</span></li>
+              <li><b data-en="A file per day" data-zh="一天一份文件">A file per day</b><span data-en="Each day accumulates rounds and drops topics that stopped appearing; the map fills by how many stories each country carries." data-zh="每天累积多轮，掉榜的话题标为不在榜；地图按每个国家承载的条数上色。">Each day accumulates rounds and drops topics that stopped appearing; the map fills by how many stories each country carries.</span></li>
+              <li><b data-en="The board rides along" data-zh="看板跟着对话走">The board rides along</b><span data-en="Every new message carries the current snapshot, so “what changed since this morning” is answerable." data-zh="每条新消息都带着当前快照，所以「今天早上到现在变了什么」问得出来。">Every new message carries the current snapshot, so “what changed since this morning” is answerable.</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 05 GENESIS -->
+        <article class="qpage" id="p-genesis">
+          <div class="qshot" data-reveal>
+            <img src="img/quanta/genesis.jpg" alt="Quanta Genesis page: a generated image on the stage, the Image shelf with four results and a chat">
+          </div>
+          <div class="qcap" data-reveal>
+            <div class="qkicker"><span>05</span><em>Quanta Pneuma</em></div>
+            <h3>Genesis</h3>
+            <p data-en="A stage and a shelf. Pneuma makes stills and clips, keeps every result in the project folder, and plays them full-area without leaving the window." data-zh="一块台，一个架子。Pneuma 生成图片和短片，每一件都留在项目目录里，也能在窗口里整块放映。">
+              A stage and a shelf. Pneuma makes stills and clips, keeps every result in the project folder, and plays them full-area without leaving the window.
+            </p>
+            <ul class="qfacts">
+              <li><b data-en="Image and Video, two shelves" data-zh="图片、视频两个架子">Image and Video, two shelves</b><span data-en="One tab per kind; the stage shows the original, the grid keeps the rest one click away." data-zh="一类一个页签；展示区放原件，网格里其余的一键换上来。">One tab per kind; the stage shows the original, the grid keeps the rest one click away.</span></li>
+              <li><b data-en="Progress, not a spinner" data-zh="给阶段，不给空转">Progress, not a spinner</b><span data-en="Each generation reports its stage and a bar, so a long clip never looks like a frozen window." data-zh="每次生成都报阶段和进度条，长一点的片子也不会看起来像卡死。">Each generation reports its stage and a bar, so a long clip never looks like a frozen window.</span></li>
+              <li><b data-en="Products stay files" data-zh="产物就是文件">Products stay files</b><span data-en="Output is an ordinary file in the working folder — preview it, reveal it, drag it anywhere else." data-zh="产物就是工作目录里的普通文件，能预览、能在访达里显示、也能拖去别处。">Output is an ordinary file in the working folder — preview it, reveal it, drag it anywhere else.</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 06 RHEMA -->
+        <article class="qpage flip" id="p-rhema">
+          <div class="qshot" data-reveal>
+            <img src="img/quanta/rhema.jpg" alt="Quanta Rhema page: a particle orb, the “I’m listening” state, captions and the mic button">
+          </div>
+          <div class="qcap" data-reveal>
+            <div class="qkicker"><span>06</span><em>Quanta Lalia</em></div>
+            <h3>Rhema</h3>
+            <p data-en="Voice, not dictation. Press the mic, talk, stop; Lalia transcribes, answers and reads back sentence by sentence — and you can cut in before it finishes." data-zh="是对话，不是听写。按下话筒说，停了就转写、回答，再一句一句念出来；它还没念完，你开口就能打断。">
+              Voice, not dictation. Press the mic, talk, stop; Lalia transcribes, answers and reads back sentence by sentence — and you can cut in before it finishes.
+            </p>
+            <ul class="qfacts">
+              <li><b data-en="Captions while it speaks" data-zh="念的时候有字幕">Captions while it speaks</b><span data-en="Two lines under the orb: what it said, then what you said, so a spoken turn is still readable." data-zh="球下面两行：它说的、你说的，语音的一轮照样读得见。">Two lines under the orb: what it said, then what you said, so a spoken turn is still readable.</span></li>
+              <li><b data-en="One session, two inputs" data-zh="一场对话，两种输入">One session, two inputs</b><span data-en="The same conversation can be read and typed as text — type whenever speaking is not convenient." data-zh="同一场对话也可以当文字读、当文字回；不方便开口的时候直接打字。">The same conversation can be read and typed as text — type whenever speaking is not convenient.</span></li>
+              <li><b data-en="Speech from Edge voices" data-zh="用 Edge 的嗓音">Speech from Edge voices</b><span data-en="Replies are synthesised with Microsoft's Edge voice service and played in the window, not exported." data-zh="回复交给微软 Edge 的语音服务合成，在窗口里直接播，不落成音频文件。">Replies are synthesised with Microsoft's Edge voice service and played in the window, not exported.</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 07 COLLOQUY -->
+        <article class="qpage" id="p-colloquy">
+          <div class="qshot" data-reveal>
+            <img src="img/quanta/colloquy.jpg" alt="Quanta Colloquy page: the welcome state with the knot, the composer and DeepThink and Search switches">
+          </div>
+          <div class="qcap" data-reveal>
+            <div class="qkicker"><span>07</span><em>Quanta Agora</em></div>
+            <h3>Colloquy</h3>
+            <p data-en="DeepSeek's web chat, embedded as a real page inside the app. The wrapper adds what the web page lacks: a Quanta composer, attachments, and DeepThink and Search as switches." data-zh="把 DeepSeek 的网页版真嵌进应用里。外面这层补上网页缺的东西：Quanta 的输入框、附件，以及 DeepThink 和 Search 两个开关。">
+              DeepSeek's web chat, embedded as a real page inside the app. The wrapper adds what the web page lacks: a Quanta composer, attachments, and DeepThink and Search as switches.
+            </p>
+            <ul class="qfacts">
+              <li><b data-en="The real site, not a clone" data-zh="真网页，不是仿的">The real site, not a clone</b><span data-en="It runs in a native web view, so account, history and every server-side feature are exactly DeepSeek's." data-zh="跑在原生网页视图里，账号、历史记录和服务端的全部能力都是 DeepSeek 本人的。">It runs in a native web view, so account, history and every server-side feature are exactly DeepSeek's.</span></li>
+              <li><b data-en="One composer" data-zh="只有一个输入框">One composer</b><span data-en="Type in the app, not in the page; DeepThink and Search become chips on the same card." data-zh="在应用里打字，不用点进网页；DeepThink 和 Search 就是同一张卡上的两个小开关。">Type in the app, not in the page; DeepThink and Search become chips on the same card.</span></li>
+              <li><b data-en="Attachments mirrored" data-zh="附件镜像过去">Attachments mirrored</b><span data-en="Files dropped into Quanta are pushed into the web input, and the chips stay behind as the receipt." data-zh="拖进 Quanta 的文件会被推进网页的输入框，附件卡留在外面当收据。">Files dropped into Quanta are pushed into the web input, and the chips stay behind as the receipt.</span></li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO MORE PAGES -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Also in the app" data-zh="还有两页">Also in the app</span>
+        <h2 class="display" data-en="Somewhere to queue work, and somewhere to look inside." data-zh="一处排活，一处看机器。">Somewhere to queue work, and somewhere to look inside.</h2>
+      </div>
+      <div class="qminor">
+        <div data-reveal id="p-scheduled">
+          <div class="qshot">
+            <img src="img/quanta/scheduled.jpg" alt="Quanta Scheduled page: keep-awake switch, create buttons and three queued tasks">
+          </div>
+          <div class="qcap">
+            <div class="qkicker"><span>08</span><em data-en="Every hour, every Sunday" data-zh="每小时，每周日">Every hour, every Sunday</em></div>
+            <h3>Scheduled</h3>
+            <p data-en="Interval, daily, weekdays or weekly — created from a menu or simply by asking in any page's chat. Each task keeps the page and the permission level it was born with." data-zh="按间隔、每天、工作日或每周跑；可以用菜单建，也可以在任何一页的对话里说一句。每个任务记住自己属于哪一页、拿什么权限。">
+              Interval, daily, weekdays or weekly — created from a menu or simply by asking in any page's chat. Each task keeps the page and the permission level it was born with.
+            </p>
+          </div>
+        </div>
+
+        <div data-reveal id="p-settings">
+          <div class="qshot">
+            <img src="img/quanta/settings.jpg" alt="Quanta Settings: eleven panes, permissions, data folder and backup">
+          </div>
+          <div class="qcap">
+            <div class="qkicker"><span>09</span><em data-en="Eleven panes" data-zh="十一栏">Eleven panes</em></div>
+            <h3>Settings</h3>
+            <p data-en="Appearance, language and permissions; voice; model groups per page; plugins and skills; the Linux VM, subagents, MCP servers, connectors, memory and usage." data-zh="外观、语言与系统权限；语音；每页的模型组；插件与技能；Linux 虚拟机、子智能体、MCP 服务、连接器、记忆与用量。">
+              Appearance, language and permissions; voice; model groups per page; plugins and skills; the Linux VM, subagents, MCP servers, connectors, memory and usage.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIDE / ARCHITECTURE -->
+  <section class="case-section" id="architecture">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Architecture" data-zh="架构">Architecture</span>
+        <h2 class="display" data-en="A window in front, a workshop behind." data-zh="前面一个窗口，<br>后面一间车间。">A window in front, a workshop behind.</h2>
+        <p data-en="Electron draws the window. Python owns the work: files, a real terminal, the models, the tools and a Linux machine for the things macOS will not do." data-zh="Electron 画窗口，Python 管干活：文件、真终端、模型、工具，还有一台替 macOS 干脏活的 Linux 虚拟机。">
+          Electron draws the window. Python owns the work: files, a real terminal, the models, the tools and a Linux machine for the things macOS will not do.
+        </p>
+      </div>
+      <div class="arch" data-reveal>
+        <div class="arch-grid">
+          <div class="arch-col">
+            <div class="col-head"><b data-en="Renderer" data-zh="渲染层">Renderer</b><span>Electron</span></div>
+            <div class="arch-node hot"><b data-en="Nine pages" data-zh="九个页面">Nine pages</b><span data-en="rail · topbar · status" data-zh="左栏 · 顶栏 · 状态栏">rail · topbar · status</span></div>
+            <div class="arch-node"><b data-en="Turns" data-zh="轮次">Turns</b><span data-en="say · work · summaries" data-zh="说 · 干活 · 摘要">say · work · summaries</span></div>
+            <div class="arch-node"><b data-en="Chrome" data-zh="外框">Chrome</b><span data-en="terminal · sidebar · search" data-zh="终端 · 右栏 · 搜索">terminal · sidebar · search</span></div>
+          </div>
+          <div class="arch-arrow"><span>JSON</span></div>
+          <div class="arch-col">
+            <div class="col-head"><b data-en="Bridge" data-zh="桥">Bridge</b><span>Python</span></div>
+            <div class="arch-node hot"><b data-en="Harness" data-zh="执行框架">Harness</b><span data-en="tools · memory · subagents" data-zh="工具 · 记忆 · 子智能体">tools · memory · subagents</span></div>
+            <div class="arch-node"><b data-en="Workspace" data-zh="工作区">Workspace</b><span data-en="files · pty · captures" data-zh="文件 · 终端 · 截图">files · pty · captures</span></div>
+            <div class="arch-node"><b data-en="Providers" data-zh="模型与服务">Providers</b><span data-en="DeepSeek · Edge voices" data-zh="DeepSeek · Edge 语音">DeepSeek · Edge voices</span></div>
+          </div>
+          <div class="arch-arrow"><span data-en="spawn" data-zh="拉起">spawn</span></div>
+          <div class="arch-col">
+            <div class="col-head"><b data-en="Sidecars" data-zh="侧车">Sidecars</b><span data-en="separate" data-zh="独立进程">separate</span></div>
+            <div class="arch-node"><b data-en="Agent homes" data-zh="智能体目录">Agent homes</b><span data-en="one preset per page" data-zh="每页一套预设">one preset per page</span></div>
+            <div class="arch-node"><b>MediaCrawler</b><span data-en="own process, own env" data-zh="独立进程、独立环境">own process, own env</span></div>
+            <div class="arch-node"><b data-en="Linux VM" data-zh="Linux 虚拟机">Linux VM</b><span data-en="schedules · sandbox" data-zh="定时任务 · 沙箱">schedules · sandbox</span></div>
+          </div>
+        </div>
+        <div class="arch-foot">
+          <p><b data-en="No build step" data-zh="没有构建步骤">No build step</b><span data-en="The renderer is plain HTML, CSS and JavaScript, loaded straight from disk. Edit a file, restart, see the change." data-zh="渲染层就是普通的 HTML、CSS 和 JS，从磁盘直接载入。改完文件重启一下就能看见。">The renderer is plain HTML, CSS and JavaScript, loaded straight from disk. Edit a file, restart, see the change.</span></p>
+          <p><b data-en="Data is files" data-zh="数据就是文件">Data is files</b><span data-en="Projects, sessions, materials, memories and generated media all live in one data directory — point it elsewhere and everything moves with you." data-zh="项目、会话、材料、记忆、生成的图片视频全都放在一个数据目录里，换一下路径就整套搬走。">Projects, sessions, materials, memories and generated media all live in one data directory — point it elsewhere and everything moves with you.</span></p>
+          <p><b data-en="Three platforms, one codebase" data-zh="三个平台，一套代码">Three platforms, one codebase</b><span data-en="Apple silicon, Intel Macs and Windows; platform chrome is measured once and injected as CSS variables." data-zh="Apple 芯片、Intel Mac 和 Windows；平台外框只量一次，注入成 CSS 变量。">Apple silicon, Intel Macs and Windows; platform chrome is measured once and injected as CSS variables.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMORY -->
+  <section class="case-section" id="memory">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Memory" data-zh="记忆">Memory</span>
+        <h2 class="display" data-en="Memory that is a folder, not a black box." data-zh="记忆是一个文件夹，<br>不是一个黑盒。">Memory that is a folder, not a black box.</h2>
+        <p data-en="Quanta remembers in plain Markdown — one file per memory, filed under the page it came from. You can open the folder, read every note, and put it in git." data-zh="Quanta 的记忆是纯 Markdown——一条记忆一个文件，按它来自哪一页归档。文件夹随时能打开，每条都能读，也能直接进 git。">
+          Quanta remembers in plain Markdown — one file per memory, filed under the page it came from. You can open the folder, read every note, and put it in git.
+        </p>
+      </div>
+      <div class="sys">
+        <div class="sys-card memviz" data-reveal>
+          <div class="memviz-head">
+            <span data-en="Memory library" data-zh="记忆库">Memory library</span>
+            <span>84 notes · 5 areas · 137 links</span>
+          </div>
+          <div class="memviz-body">
+            <div class="mem-stack">
+              <div class="mem-layer"><b>Inbox</b><span>just captured, not filed yet</span><em>12</em></div>
+              <div class="mem-layer"><b>Raw</b><span>sources kept verbatim</span><em>31</em></div>
+              <div class="mem-layer hot"><b>Wiki</b><span>summaries · concepts · indexes</span><em>22</em></div>
+              <div class="mem-layer"><b>Outputs</b><span>answers · decisions · health</span><em>14</em></div>
+              <div class="mem-layer"><b>Archive</b><span>faded, never deleted</span><em>5</em></div>
+            </div>
+            <svg class="memgraph" viewBox="0 0 520 218" aria-hidden="true">
+              <g class="mg-links">
+                <line x1="95" y1="150" x2="260" y2="182"></line>
+                <line x1="95" y1="55" x2="260" y2="182"></line>
+                <line x1="260" y1="105" x2="260" y2="182"></line>
+                <line x1="425" y1="55" x2="260" y2="182"></line>
+                <line x1="425" y1="150" x2="260" y2="182"></line>
+                <line x1="95" y1="55" x2="95" y2="150"></line>
+                <line x1="425" y1="55" x2="425" y2="150"></line>
+                <line x1="95" y1="55" x2="260" y2="105"></line>
+                <line x1="260" y1="105" x2="425" y2="55"></line>
+                <line x1="260" y1="105" x2="425" y2="150"></line>
+                <line x1="95" y1="150" x2="260" y2="105"></line>
+                <line x1="95" y1="150" x2="60" y2="115"></line>
+                <line x1="95" y1="150" x2="62" y2="188"></line>
+                <line x1="95" y1="150" x2="136" y2="188"></line>
+                <line x1="95" y1="55" x2="60" y2="26"></line>
+                <line x1="95" y1="55" x2="136" y2="30"></line>
+                <line x1="95" y1="55" x2="56" y2="84"></line>
+                <line x1="260" y1="105" x2="226" y2="74"></line>
+                <line x1="260" y1="105" x2="298" y2="74"></line>
+                <line x1="260" y1="105" x2="296" y2="140"></line>
+                <line x1="425" y1="55" x2="388" y2="26"></line>
+                <line x1="425" y1="55" x2="464" y2="30"></line>
+                <line x1="425" y1="55" x2="470" y2="90"></line>
+                <line x1="425" y1="150" x2="388" y2="190"></line>
+                <line x1="425" y1="150" x2="464" y2="188"></line>
+                <line x1="425" y1="150" x2="470" y2="124"></line>
+              </g>
+              <g class="mg-nodes">
+                <circle cx="260" cy="182" r="9" class="hot"></circle>
+                <circle cx="95" cy="55" r="7" class="hot"></circle>
+                <circle cx="95" cy="150" r="7" class="hot"></circle>
+                <circle cx="260" cy="105" r="7" class="hot"></circle>
+                <circle cx="425" cy="55" r="6"></circle>
+                <circle cx="425" cy="150" r="6"></circle>
+                <circle cx="60" cy="26" r="4"></circle>
+                <circle cx="136" cy="30" r="4"></circle>
+                <circle cx="56" cy="84" r="4"></circle>
+                <circle cx="60" cy="115" r="4"></circle>
+                <circle cx="62" cy="188" r="4"></circle>
+                <circle cx="136" cy="188" r="4"></circle>
+                <circle cx="226" cy="74" r="4"></circle>
+                <circle cx="298" cy="74" r="4"></circle>
+                <circle cx="296" cy="140" r="4"></circle>
+                <circle cx="388" cy="26" r="4"></circle>
+                <circle cx="464" cy="30" r="4"></circle>
+                <circle cx="470" cy="90" r="4"></circle>
+                <circle cx="388" cy="190" r="4"></circle>
+                <circle cx="464" cy="188" r="4"></circle>
+                <circle cx="470" cy="124" r="4"></circle>
+              </g>
+              <g class="mg-labels">
+                <text x="74" y="45">analyse · 9</text>
+                <text x="74" y="172">maestro · 12</text>
+                <text x="232" y="96">crawler · 8</text>
+                <text x="404" y="45">genesis · 6</text>
+                <text x="400" y="172">sentiment · 7</text>
+                <text x="236" y="205">wiki · 22</text>
+              </g>
+            </svg>
+          </div>
+          <div class="mem-file">
+            <div class="mem-file-h"><span>memory/Wiki/summaries/m-20261002-a1b2c3.md</span><span>updated 2d ago</span></div>
+            <pre><span class="k">title:</span> <span class="v">Prefers tables in Chinese</span>
+<span class="k">area:</span> maestro          <span class="k">tags:</span> [preference, tables]
+<span class="k">links:</span> [m-20261001-x9y8, m-20260928-k2]
+<span class="k">source:</span> chat           <span class="k">importance:</span> 4</pre>
+          </div>
+          <div class="mem-tools">
+            <span>save</span><span>search</span><span>read</span><span>link</span><span>list</span><span>embed</span>
+          </div>
+        </div>
+        <div class="sys-copy" data-reveal>
+          <p data-en="Most “memory” features are a vector store behind an opaque API. Quanta's is a directory of notes with frontmatter: title, area, tags, links, source, dates — and the body is just prose." data-zh="大多数「记忆」功能，是藏在一个不透明接口后面的向量库。Quanta 的是一目录带 frontmatter 的笔记：标题、区块、标签、链接、来源、时间——正文就是人话。">
+            Most “memory” features are a vector store behind an opaque API. Quanta's is a directory of notes with frontmatter: title, area, tags, links, source, dates — and the body is just prose.
+          </p>
+          <ul class="qfacts">
+            <li><b data-en="Five areas, one per page" data-zh="五个区块，对应五页">Five areas, one per page</b><span data-en="Maestro, Analyse, Crawler, Sentiment and Genesis each own an area; Rhema files into Maestro because it does the same kind of work." data-zh="Maestro、Analyse、Crawler、Sentiment、Genesis 各占一块；Rhema 干的活和 Maestro 同类，记忆归到 Maestro。">Maestro, Analyse, Crawler, Sentiment and Genesis each own an area; Rhema files into Maestro because it does the same kind of work.</span></li>
+            <li><b data-en="Layers, not a dump" data-zh="分层，不是一锅倒">Layers, not a dump</b><span data-en="Inbox → Raw → Wiki (summaries, concepts, indexes) → Outputs (answers, decisions, health) → Archive. Nothing is deleted, only faded out of the graph." data-zh="Inbox → Raw → Wiki（摘要、概念、索引）→ Outputs（问答、决策、体检）→ Archive。不删东西，只是让它从图里淡出。">Inbox → Raw → Wiki (summaries, concepts, indexes) → Outputs (answers, decisions, health) → Archive. Nothing is deleted, only faded out of the graph.</span></li>
+            <li><b data-en="Recall by meaning" data-zh="按意思找回来">Recall by meaning</b><span data-en="An on-device embedding pass indexes every note, so “that preference about tables” finds it without the exact words." data-zh="本机跑的嵌入模型给每条笔记建索引，所以「那个关于表格的偏好」不必说原话也能找回来。">An on-device embedding pass indexes every note, so “that preference about tables” finds it without the exact words.</span></li>
+            <li><b data-en="Tools, not prompt stuffing" data-zh="靠工具取，不塞提示词">Tools, not prompt stuffing</b><span data-en="save, search, read, link and list are tools the agent calls. Drag a PDF onto Settings and it is filed; the Context card counts what a turn used." data-zh="save、search、read、link、list 都是助手调用的工具。把 PDF 拖到设置页就存进去了；右栏 Context 卡记着这一轮用了几条。">save, search, read, link and list are tools the agent calls. Drag a PDF onto Settings and it is filed; the Context card counts what a turn used.</span></li>
+          </ul>
+          <div class="mem-uses">
+            <div><b data-en="In a turn" data-zh="在一轮对话里">In a turn</b><span data-en="A memory step appears in the work block when the agent saves, searches or links a note." data-zh="助手存、搜、连一条笔记时，过程块里会出现一行「记忆」步骤。">A memory step appears in the work block when the agent saves, searches or links a note.</span></div>
+            <div><b data-en="In the Context card" data-zh="在 Context 卡里">In the Context card</b><span data-en="The right sidebar counts the memories this conversation actually used — no guessing." data-zh="右栏只数这次对话真用到的记忆条数，不用猜。">The right sidebar counts the memories this conversation actually used — no guessing.</span></div>
+            <div><b data-en="In Settings → Memory" data-zh="在设置的「记忆」里">In Settings → Memory</b><span data-en="The graph above, a health check, and an import target: drop a PDF, Word or Excel file and it is filed." data-zh="就是上面那张图，还有体检和导入——把 PDF、Word、Excel 拖进来就归档。">The graph above, a health check, and an import target: drop a PDF, Word or Excel file and it is filed.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENTS -->
+  <section class="case-section" id="agents">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Agents" data-zh="多智能体">Agents</span>
+        <h2 class="display" data-en="One assistant, a small team behind it." data-zh="一个助手，<br>身后有一小队人。">One assistant, a small team behind it.</h2>
+        <p data-en="When a task is big enough to split, Maestro delegates. Three named roles cover the shapes of work — find, do, check — and each one runs in its own context." data-zh="活大到能切开的时候，Maestro 会派人。三个有名字的角色覆盖三种活——找、做、查——各自在自己的上下文里跑。">
+          When a task is big enough to split, Maestro delegates. Three named roles cover the shapes of work — find, do, check — and each one runs in its own context.
+        </p>
+      </div>
+      <div class="agentmap" data-reveal>
+        <div class="agent-main">
+          <span class="role" data-en="Main agent" data-zh="主智能体">Main agent</span>
+          <b>Quanta Nova</b>
+          <span class="desc" data-en="keeps the plan, owns the thread, writes the answer" data-zh="拿着计划、守着这条对话、写最终回答">keeps the plan, owns the thread, writes the answer</span>
+        </div>
+        <div class="agent-branches">
+          <div class="agent-role">
+            <b data-en="Retriever" data-zh="检索员">Retriever</b>
+            <span data-en="read-only · read / glob / grep / web" data-zh="只读 · read / glob / grep / 网页">read-only · read / glob / grep / web</span>
+            <em data-en="finds files, facts and usages — with paths and line numbers, and says what it did not find" data-zh="找文件、找事实、找用法——带路径和行号；找不到也直说在哪儿找过">finds files, facts and usages — with paths and line numbers, and says what it did not find</em>
+          </div>
+          <div class="agent-role">
+            <b data-en="Executor" data-zh="执行员">Executor</b>
+            <span data-en="writes · edits · runs commands" data-zh="写 · 改 · 跑命令">writes · edits · runs commands</span>
+            <em data-en="carries the whole task out, verifies it, then reports what changed and what still fails" data-zh="把整件活做完、自己验一遍，再回报改了什么、还差什么">carries the whole task out, verifies it, then reports what changed and what still fails</em>
+          </div>
+          <div class="agent-role">
+            <b data-en="Reviewer" data-zh="复核员">Reviewer</b>
+            <span data-en="reads the result against the ask" data-zh="对着要求读结果">reads the result against the ask</span>
+            <em data-en="reports problems, not praise — the cheapest way to catch a wrong turn before it ships" data-zh="只报问题，不夸奖——在交出去之前抓错最便宜的一步">reports problems, not praise — the cheapest way to catch a wrong turn before it ships</em>
+          </div>
+        </div>
+        <div class="agent-foot">
+          <span data-en="Subagents never see this conversation — the brief has to be self-contained. They report back, and the main thread stays one thread." data-zh="子智能体看不到这段对话——派活时必须把要求写全。它们只回报结果，主对话仍然只有一条。">Subagents never see this conversation — the brief has to be self-contained. They report back, and the main thread stays one thread.</span>
+          <span class="agent-chips"><span>task</span><span>subagent_list</span><span>run_workflow</span><span>ask_claude</span><span>ask_codex</span></span>
+        </div>
+      </div>
+      <div class="feature-grid" style="margin-top:22px;">
+        <div class="feature" data-reveal>
+          <span class="fnum">01</span>
+          <h3 data-en="Narrow tools by role" data-zh="按角色收窄工具">Narrow tools by role</h3>
+          <p data-en="The retriever cannot write, the executor is not asked to judge, the reviewer is not asked to fix. A role is a tool allow-list, not a job title." data-zh="检索员不能写，执行员不被要求评判，复核员不被要求动手。一个角色是一张工具白名单，不是一个头衔。">The retriever cannot write, the executor is not asked to judge, the reviewer is not asked to fix. A role is a tool allow-list, not a job title.</p>
+        </div>
+        <div class="feature" data-reveal>
+          <span class="fnum">02</span>
+          <h3 data-en="Isolated contexts" data-zh="各自独立的上下文">Isolated contexts</h3>
+          <p data-en="A delegate starts with a brief, not with your whole history. No context bleed, no half-remembered instructions, no token bill for a conversation it does not need." data-zh="派出去的人只拿到一份任务说明，不附带整段历史。上下文不串味，也不为一个不需要的对话付 token。">A delegate starts with a brief, not with your whole history. No context bleed, no half-remembered instructions, no token bill for a conversation it does not need.</p>
+        </div>
+        <div class="feature" data-reveal>
+          <span class="fnum">03</span>
+          <h3 data-en="Parallel, and visible" data-zh="并发，而且看得见">Parallel, and visible</h3>
+          <p data-en="Several delegates can run at once; each one appears as a card inside the turn, and the Context card lists the subagents this conversation actually used." data-zh="可以同时派几个人；每个都在这一轮里有一张卡，右栏 Context 卡只列这次对话真用到的子智能体。">Several delegates can run at once; each one appears as a card inside the turn, and the Context card lists the subagents this conversation actually used.</p>
+        </div>
+        <div class="feature" data-reveal>
+          <span class="fnum">04</span>
+          <h3 data-en="A second opinion, on demand" data-zh="要的时候请教别人">A second opinion, on demand</h3>
+          <p data-en="ask_claude, ask_codex and ask_deepseek are ordinary tools — a page can consult another model without leaving the app or copying text between windows." data-zh="ask_claude、ask_codex、ask_deepseek 就是普通工具——某一页可以就地请教另一个模型，不用切窗口、不用复制文本。">ask_claude, ask_codex and ask_deepseek are ordinary tools — a page can consult another model without leaving the app or copying text between windows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFT -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Craft" data-zh="工艺">Craft</span>
+        <h2 class="display" data-en="One red, seven voices." data-zh="一种红，七种嗓音。">One red, seven voices.</h2>
+        <p data-en="The window stays quiet so the work can be loud: one accent colour, one serif for the welcome phrase, and a different assistant name on every page." data-zh="窗口安静，工作才显得响：一个强调色、一句衬线欢迎语，每页一个不同的助手名字。">
+          The window stays quiet so the work can be loud: one accent colour, one serif for the welcome phrase, and a different assistant name on every page.
+        </p>
+      </div>
+      <div class="craft-grid">
+        <div class="token-card" data-reveal>
+          <h3><span data-en="Colour · dark chrome" data-zh="颜色 · 深色外框">Colour · dark chrome</span><span>style.css</span></h3>
+          <div class="swatches">
+            <div class="swatch"><i style="background:#111111"></i><span>#111111</span></div>
+            <div class="swatch"><i style="background:#191919"></i><span>#191919</span></div>
+            <div class="swatch"><i style="background:#1f1f1f"></i><span>#1f1f1f</span></div>
+            <div class="swatch"><i style="background:#2f2f2f"></i><span>#2f2f2f</span></div>
+            <div class="swatch"><i style="background:#e05252"></i><span>#e05252</span></div>
+            <div class="swatch"><i style="background:#30d158"></i><span>#30d158</span></div>
+            <div class="swatch"><i style="background:#2fb8a8"></i><span>#2fb8a8</span></div>
+            <div class="swatch"><i style="background:#ecebe6"></i><span>#ecebe6</span></div>
+          </div>
+        </div>
+        <div class="token-card" data-reveal>
+          <h3><span data-en="Seven assistants" data-zh="七个助手">Seven assistants</span><span>config.PAGE_GROUPS</span></h3>
+          <div class="type-scale">
+            <div class="type-row"><span class="s" style="font-size:15px;">Quanta Nova</span><span class="m">Maestro</span></div>
+            <div class="type-row"><span class="s" style="font-size:15px;">Quanta Metric</span><span class="m">Analyse</span></div>
+            <div class="type-row"><span class="s" style="font-size:15px;">Quanta Scout</span><span class="m">Crawler</span></div>
+            <div class="type-row"><span class="s" style="font-size:15px;">Quanta Echo</span><span class="m">Sentiment</span></div>
+            <div class="type-row"><span class="s" style="font-size:15px;">Quanta Pneuma</span><span class="m">Genesis</span></div>
+            <div class="type-row"><span class="s" style="font-size:15px;">Quanta Lalia</span><span class="m">Rhema</span></div>
+            <div class="type-row" style="border-bottom:0;padding-bottom:0;"><span class="s" style="font-size:15px;">Quanta Agora</span><span class="m">Colloquy</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="case-section" id="install">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Install" data-zh="安装">Install</span>
+        <h2 class="display" data-en="Getting it open, first time." data-zh="第一次打开它。">Getting it open, first time.</h2>
+        <p data-en="The builds are not notarised. macOS needs one Terminal command; Windows needs one click through SmartScreen." data-zh="安装包没有做公证签名：macOS 要走一行终端命令，Windows 要在 SmartScreen 上点一下。">
+          The builds are not notarised. macOS needs one Terminal command; Windows needs one click through SmartScreen.
+        </p>
+      </div>
+      <div class="install-card" data-reveal>
+        <div class="install-copy">
+          <h3 data-en="If macOS says it is damaged" data-zh="如果 macOS 提示「已损坏」">If macOS says it is damaged</h3>
+          <p data-en="Gatekeeper blocks unsigned builds from outside the App Store. Drag Quanta into Applications, then run these two lines in Terminal — once is enough." data-zh="Gatekeeper 会拦下 App Store 之外、又没有签名的应用。先把 Quanta 拖进「应用程序」，再在终端执行下面两行，执行一次即可。">
+            Gatekeeper blocks unsigned builds from outside the App Store. Drag Quanta into Applications, then run these two lines in Terminal — once is enough.
+          </p>
+          <span class="note" data-en="Only removes the quarantine flag from this app on this machine. On Windows, choose “More info” → “Run anyway”." data-zh="只是去掉本机对这个应用的隔离标记。Windows 上则在 SmartScreen 里点「更多信息」→「仍要运行」。">Only removes the quarantine flag from this app on this machine. On Windows, choose “More info” → “Run anyway”.</span>
+        </div>
+        <div class="code-card">
+          <button class="copy-btn" type="button" data-copy="xattr -dr com.apple.quarantine /Applications/Quanta.app&#10;open /Applications/Quanta.app" data-en="Copy" data-zh="复制">Copy</button>
+          <pre id="install-cmd"><span class="prompt">$ </span>xattr -dr com.apple.quarantine /Applications/Quanta.app
+<span class="prompt">$ </span>open /Applications/Quanta.app</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <section class="case-next">
+    <div class="container">
+      <span class="eyebrow" data-en="Nº 02 · FocusOS" data-zh="第 02 号 · FocusOS">Nº 02 · FocusOS</span>
+      <h2 data-en="Next: a timer with nothing to prove." data-zh="下一个：一个不需要证明自己的计时器。">Next: a timer with nothing to prove.</h2>
+      <div class="actions">
+        <a class="btn btn-primary" href="focusos.html">
+          <span data-en="See FocusOS" data-zh="看 FocusOS">See FocusOS</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/xxx490202/quanta" target="_blank" rel="noreferrer noopener" data-en="View source" data-zh="查看源码">View source</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent designer and AI engineer. Interface, agents and models, made in one pair of hands.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="index.html#about" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/quanta" target="_blank" rel="noreferrer noopener">Quanta · GitHub</a></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">FocusOS · GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span>The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

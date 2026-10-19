@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>xyc design — designer &amp; AI engineer</title>
+<meta name="description" content="XYC — independent designer and AI engineer working across product design, LLM applications, agents, prompts and fine-tuning. Selected work: Quanta and FocusOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-title-en="xyc design — designer &amp; AI engineer" data-title-zh="xyc design — 设计师与 AI 工程师">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark">x</span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" class="is-current" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger" href="#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-thumb">03</span>
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <button class="btn btn-dark btn-sm" type="button" data-mail data-en="Say hello" data-zh="联系我">Say hello</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container">
+      <span class="eyebrow" data-en="Independent designer · AI engineer" data-zh="独立设计师 · AI 工程师">Independent designer · AI engineer</span>
+      <h1 class="display" data-en="I design products and engineer the <em>models</em> behind them." data-zh="我做产品设计，<br>也做它背后的<em>模型</em>工程。">
+        I design products and engineer the <em>models</em> behind them.
+      </h1>
+      <p class="lead" data-en="I'm XYC. I work across product design, LLM applications, agents, prompts and fine-tuning — usually on the same project, end to end." data-zh="我是 XYC。产品设计、大模型应用、Agent、Prompt 与微调——通常都在同一个项目里，从零做到上线。">
+        I'm XYC. I work across product design, LLM applications, agents, prompts and fine-tuning — usually on the same project, end to end.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">
+          <span data-en="See my work" data-zh="查看作品">See my work</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="#about" data-en="About me" data-zh="关于我">About me</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="hero-visual" data-reveal>
+        <img src="img/hero.jpg" alt="Collage of a classical bust, laurel and architectural fragments">
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section class="section" id="roles">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="What I do" data-zh="我做什么">What I do</span>
+        <h2 class="display" data-en="Design in one hand, engineering in the other." data-zh="一只手做设计，另一只手做工程。">Design in one hand, engineering in the other.</h2>
+        <p data-en="Five kinds of work, usually on the same product — from the first screen to the training run." data-zh="五种工作，通常落在同一个产品上——从第一张界面到一次训练。">Five kinds of work, usually on the same product — from the first screen to the training run.</p>
+      </div>
+      <ul class="roles" data-reveal>
+        <li>
+          <span class="rn">01</span>
+          <div><b data-en="Designer" data-zh="设计师">Designer</b>
+          <p data-en="Product thinking, interface, motion and design systems — carried to the last empty state." data-zh="产品思考、界面、动效与设计系统——一直做到最后一个空状态。">Product thinking, interface, motion and design systems — carried to the last empty state.</p></div>
+        </li>
+        <li>
+          <span class="rn">02</span>
+          <div><b data-en="LLM engineer" data-zh="大模型开发工程师">LLM engineer</b>
+          <p data-en="Applications built around models: retrieval, tool use, context design and evaluation." data-zh="围绕模型构建应用：检索、工具调用、上下文设计与评测。">Applications built around models: retrieval, tool use, context design and evaluation.</p></div>
+        </li>
+        <li>
+          <span class="rn">03</span>
+          <div><b>Agent engineer</b>
+          <p data-en="Multi-step agents with tools, memory and guardrails — and the plumbing that keeps them honest." data-zh="带工具、记忆与护栏的多步 Agent，以及让它们保持可靠的那套管道。">Multi-step agents with tools, memory and guardrails — and the plumbing that keeps them honest.</p></div>
+        </li>
+        <li>
+          <span class="rn">04</span>
+          <div><b>Prompt engineer</b>
+          <p data-en="Instructions and context that make models dependable rather than merely impressive." data-zh="让模型可靠、而不只是「看起来很强」的指令与上下文。">Instructions and context that make models dependable rather than merely impressive.</p></div>
+        </li>
+        <li>
+          <span class="rn">05</span>
+          <div><b data-en="Fine-tuning engineer" data-zh="微调工程师">Fine-tuning engineer</b>
+          <p data-en="Datasets, training runs and evals for specialised models that need to sound like their domain." data-zh="为专用模型准备数据、跑训练、做评测，让它真正说得出那个领域的语言。">Datasets, training runs and evals for specialised models that need to sound like their domain.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Selected work" data-zh="作品">Selected work</span>
+        <h2 class="display" data-en="Two shipped. More on the bench." data-zh="两件已发布，还有几件在做。">Two shipped. More on the bench.</h2>
+        <p data-en="Fewer products, carried further." data-zh="作品做得少，但每一件都走得更远。">Fewer products, carried further.</p>
+      </div>
+
+      <div class="work-grid">
+        <a class="work-card" href="quanta.html" data-reveal>
+          <div class="work-media"><img src="img/quanta/hero.jpg" alt="Quanta — a turn with its work steps and the composer"></div>
+          <div class="work-body">
+            <div class="work-top">
+              <h3>Quanta</h3>
+              <span>2026</span>
+            </div>
+            <p data-en="A seven-page AI workspace for macOS and Windows: chat, analysis, crawling, sentiment, generation, voice and the web — one window, one working folder." data-zh="macOS 与 Windows 上的七页 AI 工作台：对话、分析、爬取、舆情、生成、语音与网页——同一个窗口，同一个工作目录。">
+              A seven-page AI workspace for macOS and Windows: chat, analysis, crawling, sentiment, generation, voice and the web — one window, one working folder.
+            </p>
+            <span class="work-link">
+              <span data-en="View case study" data-zh="查看案例">View case study</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="work-card" href="focusos.html" data-reveal>
+          <div class="work-media"><img src="img/focusos/focus.jpg" alt="FocusOS focus view — the timer over a photo background"></div>
+          <div class="work-body">
+            <div class="work-top">
+              <h3>FocusOS</h3>
+              <span>2026</span>
+            </div>
+            <p data-en="A pomodoro and schedule app for macOS and Windows. Zero-drift timer, drag-to-plan day, charts drawn by hand." data-zh="一款 macOS 与 Windows 的番茄钟与日程应用。零漂移计时、可拖拽排程的一天，以及手写的图表。">
+              A pomodoro and schedule app for macOS and Windows. Zero-drift timer, drag-to-plan day, charts drawn by hand.
+            </p>
+            <span class="work-link">
+              <span data-en="View case study" data-zh="查看案例">View case study</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </div>
+        </a>
+
+        <div class="work-card is-soon" data-reveal>
+          <h3>The best is yet to come.</h3>
+          <p data-en="More products in progress — design and model work alike. They are announced when they ship." data-zh="更多作品正在做——设计与模型的工作都有。发布之后才会介绍。">More products in progress — design and model work alike. They are announced when they ship.</p>
+        </div>
+      </div>
+
+      <div class="work-note">
+        <span data-en="New work lands here as it ships." data-zh="新作品发布后才会出现在这里。">New work lands here as it ships.</span>
+        <span data-en="Updated 2026" data-zh="2026 更新">Updated 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="studio-grid">
+        <div class="studio-art" data-reveal>
+          <img src="img/about.jpg" alt="Collage of torn paper, a landscape and a classical head">
+        </div>
+        <div class="studio-copy" data-reveal>
+          <span class="eyebrow" data-en="About" data-zh="关于">About</span>
+          <h2 class="display" style="margin-top:18px;" data-en="I'm XYC — designer and AI engineer." data-zh="我是 XYC，设计师，也是 AI 工程师。">
+            I'm XYC — designer and AI engineer.
+          </h2>
+          <p data-en="I design the interface, then build the model-side systems that make it work: the retrieval, the agent loop, the prompt, the eval, the fine-tune." data-zh="我先设计界面，然后把它背后让界面真正成立的系统搭出来：检索、Agent 循环、Prompt、评测与微调。">
+            I design the interface, then build the model-side systems that make it work: the retrieval, the agent loop, the prompt, the eval, the fine-tune.
+          </p>
+          <p data-en="Independent, based in Shanghai. Fewer projects, each carried all the way to the last empty state and the last 2 a.m. bug." data-zh="独立工作，常驻上海。项目接得少，每一件都走到最后一个空状态、最后一个凌晨两点的 bug。">
+            Independent, based in Shanghai. Fewer projects, each carried all the way to the last empty state and the last 2 a.m. bug.
+          </p>
+          <ul class="studio-list">
+            <li><b data-en="Design" data-zh="设计">Design</b><span data-en="Product · interface · systems" data-zh="产品 · 界面 · 系统">Product · interface · systems</span></li>
+            <li><b data-en="Engineering" data-zh="工程">Engineering</b><span data-en="LLM apps · agents · tooling" data-zh="大模型应用 · Agent · 工具链">LLM apps · agents · tooling</span></li>
+            <li><b data-en="Models" data-zh="模型">Models</b><span data-en="Prompts · evals · fine-tuning" data-zh="Prompt · 评测 · 微调">Prompts · evals · fine-tuning</span></li>
+            <li><b data-en="Contact" data-zh="联系">Contact</b><span class="studio-mail"><a href="mailto:3386079378@qq.com" data-mail>3386079378@qq.com</a><a href="mailto:xyc060825@outlook.com" data-mail>xyc060825@outlook.com</a></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container" data-reveal>
+      <h2 class="display" data-en="Have something worth <em>making</em>?" data-zh="有件值得<em>做出来</em>的事？">Have something worth <em>making</em>?</h2>
+      <p data-en="I take on a small number of design and AI engineering projects each year." data-zh="每年，我只接少量设计与 AI 工程项目。">I take on a small number of product and interface projects each year.</p>
+      <div class="cta-actions">
+        <button class="btn btn-primary" type="button" data-mail data-en="Write to me" data-zh="写信给我">Write to me</button>
+        <a class="btn btn-ghost" href="quanta.html">Quanta</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent product studio. Interface, motion and code, made in one pair of hands.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="#about" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span>The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

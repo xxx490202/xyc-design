@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FocusOS — xyc design</title>
+<meta name="description" content="FocusOS case study — a pomodoro and schedule app for macOS and Windows, designed and built end to end by xyc design. Download for macOS and Windows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-title-en="FocusOS — xyc design" data-title-zh="FocusOS — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark">x</span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger is-current" href="index.html#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem" aria-current="page">
+              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-thumb">03</span>
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <a class="btn btn-dark btn-sm" href="#download" data-en="Download" data-zh="下载">Download</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="case-hero" id="top">
+    <div class="container">
+      <a class="case-back" href="index.html#work">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        <span data-en="All work" data-zh="全部作品">All work</span>
+      </a>
+      <img class="case-line icon" src="img/focusos-mark.svg" alt="" aria-hidden="true">
+      <h1 class="case-title" style="margin-top:18px;">Focus<em>OS</em></h1>
+      <p class="case-tagline" data-en="A time container for the day you planned and the hour you are in." data-zh="把「今天要做什么」和「现在正在做什么」放进同一个地方。">
+        A time container for the day you planned and the hour you are in.
+      </p>
+      <div class="dl-row" id="download">
+        <a class="dl" href="https://github.com/xxx490202/focusos/releases/download/v1.0.0/focusos-1.0.0-mac-arm64.dmg" target="_blank" rel="noreferrer noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+          <span class="dl-t"><b data-en="macOS · Apple silicon" data-zh="macOS · Apple 芯片">macOS · Apple silicon</b><em>arm64 · dmg</em></span>
+        </a>
+        <a class="dl" href="https://github.com/xxx490202/focusos/releases/download/v1.0.0/focusos-1.0.0-mac-x64.dmg" target="_blank" rel="noreferrer noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+          <span class="dl-t"><b data-en="macOS · Intel" data-zh="macOS · Intel">macOS · Intel</b><em>x64 · dmg</em></span>
+        </a>
+        <a class="dl" href="https://github.com/xxx490202/focusos/releases/download/v1.0.0/focusos-1.0.0-win-x64-setup.exe" target="_blank" rel="noreferrer noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+          <span class="dl-t"><b data-en="Windows · x64" data-zh="Windows · x64">Windows · x64</b><em>setup · exe</em></span>
+        </a>
+        <a class="dl dl-gh" href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3-.3 6.2-1.5 6.2-6.8A5.3 5.3 0 0 0 19.7 5a4.9 4.9 0 0 0-.1-3.7s-1.2-.4-4 1.5a13.4 13.4 0 0 0-7 0C5.8.9 4.6 1.3 4.6 1.3A4.9 4.9 0 0 0 4.5 5 5.3 5.3 0 0 0 3 8.7c0 5.3 3.2 6.5 6.2 6.8a3.4 3.4 0 0 0-1 2.6V22"></path></svg>
+          <span class="dl-t"><b>GitHub</b><em data-en="source" data-zh="源码">source</em></span>
+        </a>
+      </div>
+      <p style="margin-top:14px;">
+        <a class="dl-help" href="#install" data-en="macOS says “damaged”? Install notes" data-zh="macOS 提示「已损坏」？查看安装说明">macOS says “damaged”? Install notes</a>
+      </p>
+      <p class="case-meta-line">
+        <span><b data-en="Design &amp; build" data-zh="设计与开发">Design &amp; build</b> · xyc design</span>
+        <span>2026</span>
+        <span>macOS · Windows</span>
+        <span>Electron · React · TypeScript</span>
+        <span>v1.0.0</span>
+      </p>
+    </div>
+    <div class="container">
+      <div class="hero-shot" data-reveal>
+        <img src="img/focusos/focus.jpg" alt="FocusOS focus view: 24:18 over a photograph, the current task and the cycle dots">
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Overview" data-zh="概览">Overview</span>
+        <h2 class="display" data-en="Planning and doing, in one window." data-zh="计划与执行，<br>在同一个窗口里。">Planning and doing, in one window.</h2>
+      </div>
+      <div class="case-two" data-reveal>
+        <div>
+          <p data-en="Every pomodoro app I tried solved half the problem. Timers knew nothing about my calendar; task managers knew nothing about the hour I was in." data-zh="我用过的番茄钟都只解决了一半问题：计时器不知道我的日程，任务管理器不知道我此刻处在哪个小时。">
+            Every pomodoro app I tried solved half the problem. Timers knew nothing about my calendar; task managers knew nothing about the hour I was in.
+          </p>
+          <p data-en="FocusOS puts both in one window. A 220-pixel sidebar holds the plan; the rest of the screen holds the one thing I am doing." data-zh="FocusOS 把两者放进同一个窗口：220 像素的侧栏装着计划，剩下的屏幕只装我正在做的那一件事。">
+            FocusOS puts both in one window. A 220-pixel sidebar holds the plan; the rest of the screen holds the one thing I am doing.
+          </p>
+        </div>
+        <div>
+          <p data-en="It is also a constraint exercise: one person, two platforms, zero UI, chart or native dependencies." data-zh="它同时也是一次约束练习：一个人、两个平台、零 UI 库、零图表库、零原生模块。">
+            It is also a constraint exercise: one person, two platforms, zero UI, chart or native dependencies.
+          </p>
+          <blockquote class="case-quote">
+            <span class="q" data-en="“Design the timer as a place, not a widget.”" data-zh="「把计时器当成一个地方来设计，而不是一个控件。」">“Design the timer as a place, not a widget.”</span>
+            <cite data-en="Working note, 2025" data-zh="工作笔记，2025">Working note, 2025</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENS -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Screens" data-zh="界面">Screens</span>
+        <h2 class="display" data-en="Six ways of seeing a day." data-zh="六种看一天的方式。">Six ways of seeing a day.</h2>
+        <p data-en="Every screen below is a capture of the running app. Same window, six jobs: run the timer, plan the day, read the week, empty the inbox, look back, tune the machine." data-zh="下面每一张都是运行中的应用截图。同一个窗口，六件事：计时、排一天、看一周、清空收件箱、回看统计、调机器。">Every screen below is a capture of the running app. Same window, six jobs: run the timer, plan the day, read the week, empty the inbox, look back, tune the machine.</p>
+      </div>
+      <div class="screens">
+        <article class="screen" data-reveal>
+          <div class="screen-shot">
+            <img src="img/focusos/focus.jpg" alt="FocusOS focus view with a countdown ring over a photo background">
+          </div>
+          <div class="screen-cap">
+            <h3><span class="n">01</span><span data-en="Focus view" data-zh="专注视图">Focus view</span></h3>
+            <p data-en="One number, one ring, one task. Put a photograph behind it and the controls fade when the mouse rests; the countdown stays the only bright thing." data-zh="一个数字，一个圆环，一件事。背后可以放一张照片，鼠标停下控件就淡出，只剩倒计时亮着。">One number, one ring, one task. Put a photograph behind it and the controls fade when the mouse rests; the countdown stays the only bright thing.</p>
+          </div>
+        </article>
+
+        <article class="screen" data-reveal>
+          <div class="screen-shot">
+            <img src="img/focusos/day.jpg" alt="FocusOS day timeline with plan blocks between 08:00 and 17:00">
+          </div>
+          <div class="screen-cap">
+            <h3><span class="n">02</span><span data-en="Day timeline" data-zh="日时间轴">Day timeline</span></h3>
+            <p data-en="A 24-hour canvas. Tasks expand into 25-minute plan blocks, the current hour is marked, and the whole day can be dragged into a different shape." data-zh="一条 24 小时画布。任务展开成 25 分钟的番茄块，当前小时有标记，一整天都能拖着换个形状。">A 24-hour canvas. Tasks expand into 25-minute plan blocks, the current hour is marked, and the whole day can be dragged into a different shape.</p>
+          </div>
+        </article>
+
+        <article class="screen" data-reveal>
+          <div class="screen-shot">
+            <img src="img/focusos/week.jpg" alt="FocusOS week view: seven columns on the same hour scale">
+          </div>
+          <div class="screen-cap">
+            <h3><span class="n">03</span><span data-en="Week view" data-zh="周视图">Week view</span></h3>
+            <p data-en="Seven columns on one hour scale, today tinted. Tomorrow's work is visible without opening a second app, and the footer counts the pomodoros already banked." data-zh="七列共用一条时间刻度，今天有底色。明天的事不用另开应用就看得见，底下一行数着这周已经攒下的番茄。">Seven columns on one hour scale, today tinted. Tomorrow's work is visible without opening a second app, and the footer counts the pomodoros already banked.</p>
+          </div>
+        </article>
+
+        <article class="screen" data-reveal>
+          <div class="screen-shot">
+            <img src="img/focusos/inbox.jpg" alt="FocusOS inbox with seven unscheduled tasks and the quick-add bar">
+          </div>
+          <div class="screen-cap">
+            <h3><span class="n">04</span><span data-en="Tasks &amp; inbox" data-zh="任务与收件箱">Tasks &amp; inbox</span></h3>
+            <p data-en="Type “3pm tomorrow meeting 1 hour #work” and it becomes a dated, timed, tagged task. Everything unplanned waits in the inbox until it has an hour." data-zh="输入「明天下午3点开会 1 小时 #工作」，它就会变成带日期、时间、标签的任务。没安排的事都留在收件箱，直到它有了一个钟点。">Type “3pm tomorrow meeting 1 hour #work” and it becomes a dated, timed, tagged task. Everything unplanned waits in the inbox until it has an hour.</p>
+          </div>
+        </article>
+
+        <article class="screen" data-reveal>
+          <div class="screen-shot">
+            <img src="img/focusos/insights.jpg" alt="FocusOS insights: habit check-ins, metric cards and a 14-day bar chart">
+          </div>
+          <div class="screen-cap">
+            <h3><span class="n">05</span><span data-en="Insights" data-zh="洞察">Insights</span></h3>
+            <p data-en="Habit check-ins, pomodoros, focus hours and completion rate, then a 14-day chart, an hour heatmap and a category share — all drawn by hand, no chart library." data-zh="习惯打卡、番茄数、专注时长和完成率，再往下是 14 天柱状图、小时热力图和分类占比——全部手写，不引图表库。">Habit check-ins, pomodoros, focus hours and completion rate, then a 14-day chart, an hour heatmap and a category share — all drawn by hand, no chart library.</p>
+          </div>
+        </article>
+
+        <article class="screen" data-reveal>
+          <div class="screen-shot">
+            <img src="img/focusos/settings.jpg" alt="FocusOS settings: theme, language, appearance and background controls">
+          </div>
+          <div class="screen-cap">
+            <h3><span class="n">06</span><span data-en="Settings" data-zh="设置">Settings</span></h3>
+            <p data-en="Six panes — theme, timer, schedule, notifications, data, about. Background mode lives here too: scrim, blur, vignette and whether the text should flip colour with the photo." data-zh="六栏：主题、计时、日程、通知、数据、关于。背景模式也在这儿：压暗、模糊、暗角，以及文字要不要跟着照片的明暗翻色。">Six panes — theme, timer, schedule, notifications, data, about. Background mode lives here too: scrim, blur, vignette and whether the text should flip colour with the photo.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIDE -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Architecture" data-zh="架构">Architecture</span>
+        <h2 class="display" data-en="The main process owns time." data-zh="主进程拥有时间。">The main process owns time.</h2>
+        <p data-en="Remaining time is always endsAt − now(). The renderer never counts — it only draws." data-zh="剩余时间永远是「结束时间 − 现在」。渲染层从不计时，只负责画。">Remaining time is always endsAt − now(). The renderer never counts — it only draws.</p>
+      </div>
+      <div class="arch" data-reveal>
+        <div class="arch-grid">
+          <div class="arch-col">
+            <div class="col-head"><b data-en="Main process" data-zh="主进程">Main process</b><span>Node</span></div>
+            <div class="arch-node hot"><b>Timer engine</b><span data-en="endsAt · catch-up replay" data-zh="endsAt · 睡眠回放">endsAt · catch-up replay</span></div>
+            <div class="arch-node"><b data-en="Scheduler" data-zh="排程器">Scheduler</b><span data-en="plans · conflicts" data-zh="计划 · 冲突">plans · conflicts</span></div>
+            <div class="arch-node"><b data-en="Store" data-zh="存储">Store</b><span data-en="atomic JSON" data-zh="原子 JSON">atomic JSON</span></div>
+          </div>
+          <div class="arch-arrow"><span>IPC</span></div>
+          <div class="arch-col">
+            <div class="col-head"><b data-en="Preload" data-zh="预加载">Preload</b><span>bridge</span></div>
+            <div class="arch-node"><b>window.api</b><span data-en="typed · promise-based" data-zh="带类型 · Promise">typed · promise-based</span></div>
+            <div class="arch-node"><b data-en="Events" data-zh="事件">Events</b><span data-en="tick · theme · tray" data-zh="计时 · 主题 · 托盘">tick · theme · tray</span></div>
+            <div class="arch-node"><b data-en="Isolation" data-zh="隔离">Isolation</b><span data-en="no Node in renderer" data-zh="渲染层无 Node">no Node in renderer</span></div>
+          </div>
+          <div class="arch-arrow"><span>window.api</span></div>
+          <div class="arch-col">
+            <div class="col-head"><b data-en="Renderer" data-zh="渲染层">Renderer</b><span>React</span></div>
+            <div class="arch-node hot"><b data-en="Views" data-zh="视图">Views</b><span data-en="focus · day · week" data-zh="专注 · 日 · 周">focus · day · week</span></div>
+            <div class="arch-node"><b data-en="Stores" data-zh="状态">Stores</b><span data-en="data · UI · theme" data-zh="数据 · 界面 · 主题">data · UI · theme</span></div>
+            <div class="arch-node"><b data-en="Draw" data-zh="绘制">Draw</b><span data-en="SVG charts · icons" data-zh="SVG 图表 · 图标">SVG charts · icons</span></div>
+          </div>
+        </div>
+        <div class="arch-foot">
+          <p><b data-en="Authority" data-zh="权威">Authority</b><span data-en="Timer state lives only in the main process. A UI reload cannot disturb a running phase." data-zh="计时状态只存在主进程。界面刷新不会打扰正在跑的阶段。">Timer state lives only in the main process. A UI reload cannot disturb a running phase.</span></p>
+          <p><b data-en="Durability" data-zh="持久化">Durability</b><span data-en="Temp file, then rename. 500 ms throttle, schema migrations, automatic backup on corruption." data-zh="先写临时文件再重命名。500ms 节流、schema 迁移、损坏时自动备份。">Temp file, then rename. 500 ms throttle, schema migrations, automatic backup on corruption.</span></p>
+          <p><b data-en="Portability" data-zh="可移植">Portability</b><span data-en="Platform chrome is measured once and injected as CSS variables. Components never branch on OS." data-zh="平台外框只测量一次，注入为 CSS 变量。组件从不按系统分支。">Platform chrome is measured once and injected as CSS variables. Components never branch on OS.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFT -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Craft" data-zh="工艺">Craft</span>
+        <h2 class="display" data-en="A small system, held to a strict standard." data-zh="一套小系统，用严格的标准养着。">A small system, held to a strict standard.</h2>
+        <p data-en="No component library — so every token, every size and every contrast ratio had to be written down." data-zh="不用组件库——所以每个令牌、每个尺寸、每个对比度都必须写下来。">No component library — so every token, every size and every contrast ratio had to be written down.</p>
+      </div>
+      <div class="craft-grid">
+        <div class="token-card" data-reveal>
+          <h3><span data-en="Colour · dark theme" data-zh="颜色 · 深色主题">Colour · dark theme</span><span>tokens.css</span></h3>
+          <div class="swatches">
+            <div class="swatch"><i style="background:#1c1c1e"></i><span>#1c1c1e</span></div>
+            <div class="swatch"><i style="background:#2c2c2e"></i><span>#2c2c2e</span></div>
+            <div class="swatch"><i style="background:#3a3a3c"></i><span>#3a3a3c</span></div>
+            <div class="swatch"><i style="background:#53a9ff"></i><span>#53a9ff</span></div>
+            <div class="swatch"><i style="background:#30d158"></i><span>#30d158</span></div>
+            <div class="swatch"><i style="background:#ff9f0a"></i><span>#ff9f0a</span></div>
+            <div class="swatch"><i style="background:#ff8079"></i><span>#ff8079</span></div>
+            <div class="swatch"><i style="background:#f2f3f7"></i><span>#f2f3f7</span></div>
+          </div>
+        </div>
+        <div class="token-card" data-reveal>
+          <h3><span data-en="Type scale" data-zh="字阶">Type scale</span><span>tokens.css</span></h3>
+          <div class="type-scale">
+            <div class="type-row"><span class="s" style="font-size:20px;">Focus, 25:00</span><span class="m">20 / h1</span></div>
+            <div class="type-row"><span class="s" style="font-size:17px;">Today’s timeline</span><span class="m">17 / h2</span></div>
+            <div class="type-row"><span class="s" style="font-size:14px;">A scheduled task card</span><span class="m">13 / body</span></div>
+            <div class="type-row"><span class="s" style="font-size:12px;">Metadata and tags</span><span class="m">12 / sm</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="case-section" id="install">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Install" data-zh="安装">Install</span>
+        <h2 class="display" data-en="Getting it open on macOS." data-zh="在 macOS 上把它打开。">Getting it open on macOS.</h2>
+      </div>
+      <div class="install-card" data-reveal>
+        <div class="install-copy">
+          <h3 data-en="If macOS says it is damaged" data-zh="如果 macOS 提示「已损坏」">If macOS says it is damaged</h3>
+          <p data-en="The build is not notarised, so Gatekeeper blocks it. Drag FocusOS into Applications, then run these two lines in Terminal — once is enough." data-zh="安装包没有做公证签名，会被 Gatekeeper 拦下。先把 FocusOS 拖进「应用程序」，再在终端执行下面两行，执行一次即可。">
+            The build is not notarised, so Gatekeeper blocks it. Drag FocusOS into Applications, then run these two lines in Terminal — once is enough.
+          </p>
+          <span class="note" data-en="Only removes the quarantine flag from the app on this machine." data-zh="只是去掉本机对这个应用的隔离标记。">Only removes the quarantine flag from the app on this machine.</span>
+        </div>
+        <div class="code-card">
+          <button class="copy-btn" type="button" data-copy="xattr -dr com.apple.quarantine /Applications/FocusOS.app&#10;open /Applications/FocusOS.app" data-en="Copy" data-zh="复制">Copy</button>
+          <pre id="install-cmd"><span class="prompt">$ </span>xattr -dr com.apple.quarantine /Applications/FocusOS.app
+<span class="prompt">$ </span>open /Applications/FocusOS.app</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <section class="case-next">
+    <div class="container">
+      <span class="eyebrow" data-en="Nº 03 · In progress" data-zh="第 03 号 · 进行中">Nº 03 · In progress</span>
+      <h2>The best is yet to come.</h2>
+      <div class="actions">
+        <a class="btn btn-primary" href="index.html#work">
+          <span data-en="Back to the work" data-zh="回到作品">Back to the work</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener" data-en="View source" data-zh="查看源码">View source</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <p data-en="Independent product studio. Interface, motion and code, made in one pair of hands." data-zh="独立产品工作室。界面、动效与代码，出自同一双手。">Independent product studio. Interface, motion and code, made in one pair of hands.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="index.html#studio" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span>The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
