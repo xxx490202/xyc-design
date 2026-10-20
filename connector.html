@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connectors — xyc design</title>
+<meta name="description" content="Quanta connectors — Feishu, QQ, WeChat and the Rhema voice sidecar. Four doors into the same agent, each with a live simulated conversation. Download and setup notes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="extensions.css">
+</head>
+<body data-title-en="Connectors — xyc design" data-title-zh="连接器 — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark">x</span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger" href="index.html#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-thumb">03</span>
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group-label" aria-hidden="true" data-en="Extensions" data-zh="扩展">Extensions</li>
+        <li class="nav-divider" aria-hidden="true"></li>
+        <li class="nav-ext"><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+        <li class="nav-ext"><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+        <li class="nav-ext"><a href="connector.html" class="is-current" data-en="Connector" data-zh="连接器">Connector</a></li>
+        <li class="nav-ext"><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <a class="btn btn-dark btn-sm" href="https://github.com/xxx490202/quanta-tools/releases/tag/v1.0.0" target="_blank" rel="noreferrer noopener" data-en="Downloads" data-zh="下载">Downloads</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="case-hero" id="top">
+    <div class="container">
+      <a class="case-back" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        <span data-en="Home" data-zh="首页">Home</span>
+      </a>
+      <span class="eyebrow" data-en="Extensions · 03 — Connector" data-zh="扩展 · 03 — 连接器">Extensions · 03 — Connector</span>
+      <h1 class="case-title" data-en="Connector<em>s</em>" data-zh="连接<em>器</em>">Connector<em>s</em></h1>
+      <p class="case-tagline" data-en="Four doors into the same agent: two chat platforms, one personal account, one microphone. The answer arrives where the question already was." data-zh="四扇门通向同一个助手：两个聊天平台、一个私人账号、一支麦克风。答案就落在问题本来待着的地方。">
+        Four doors into the same agent: two chat platforms, one personal account, one microphone. The answer arrives where the question already was.
+      </p>
+      <p class="case-meta-line">
+        <span><b data-en="Four connectors" data-zh="四个连接器">Four connectors</b></span>
+        <span data-en="Started by the bridge" data-zh="由桥启动">Started by the bridge</span>
+        <span>Python · Node</span>
+        <span data-en="One IM helper set" data-zh="一套 IM 公共件">One IM helper set</span>
+        <span>v1.0.0</span>
+      </p>
+
+      <nav class="xtabs" aria-label="Extensions">
+        <a href="skill.html"><em>01 · Skill</em><b data-en="Skills" data-zh="技能">Skills</b></a>
+        <a href="plugin.html"><em>02 · Plugin</em><b data-en="Plugins" data-zh="插件">Plugins</b></a>
+        <a href="connector.html" class="is-on" aria-current="page"><em>03 · Connector</em><b data-en="Connectors" data-zh="连接器">Connectors</b></a>
+        <a href="mcp.html"><em>04 · MCP</em><b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- WHAT A CONNECTOR IS -->
+  <section class="case-section" id="what">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="What a connector is" data-zh="什么是连接器">What a connector is</span>
+        <h2 class="display" data-en="The answer arrives where the question already was." data-zh="答案落在问题<br>本来待着的地方。">The answer arrives where the question already was.</h2>
+      </div>
+      <div class="case-two" data-reveal>
+        <div>
+          <p data-en="A connector is a long-lived client that Quanta's bridge starts for you. It receives a message, turns it into an agent turn, and sends the answer back into the same thread — with de-duplication, chunking and attachment download shared across all of them." data-zh="连接器是 Quanta 的桥替你启动的长连接客户端。它收到一条消息，把它变成一轮对话，再把答案送回同一个会话——去重、分片、附件下载，四个连接器共用同一套。">
+            A connector is a long-lived client that Quanta's bridge starts for you. It receives a message, turns it into an agent turn, and sends the answer back into the same thread — with de-duplication, chunking and attachment download shared across all of them.
+          </p>
+        </div>
+        <div>
+          <p data-en="None of them is a daemon you launch by hand. Quanta holds the credentials, starts the client, and routes each message as if it had been typed into the window — same memory, same pages, same tools." data-zh="它们都不是你要手动起的守护进程。凭据在 Quanta 手里，客户端由它启动，每条消息都当作在窗口里打进来的一样处理——同一份记忆、同一批页面、同一套工具。">
+            None of them is a daemon you launch by hand. Quanta holds the credentials, starts the client, and routes each message as if it had been typed into the window — same memory, same pages, same tools.
+          </p>
+        </div>
+      </div>
+
+      <div class="xfacts3" data-reveal>
+        <div>
+          <b data-en="Long connection or gateway" data-zh="长连接或网关">Long connection or gateway</b>
+          <p data-en="Feishu and QQ hold a socket open, so nothing needs a public callback URL, a tunnel or a server of your own." data-zh="飞书和 QQ 都是把 socket 挂在外面，不需要公网回调地址、不需要隧道、也不需要你自己的一台服务器。">Feishu and QQ hold a socket open, so nothing needs a public callback URL, a tunnel or a server of your own.</p>
+        </div>
+        <div>
+          <b data-en="Reply inside the window" data-zh="在窗口内回复">Reply inside the window</b>
+          <p data-en="QQ only accepts a passive reply for a while after the message. The connector tracks that clock; the agent does not get to be late." data-zh="QQ 只在消息之后的限定时间内接受被动回复。连接器盯着这个时钟；助手没有迟到的余地。">QQ only accepts a passive reply for a while after the message. The connector tracks that clock; the agent does not get to be late.</p>
+        </div>
+        <div>
+          <b data-en="Local stays local" data-zh="本地的留在本地">Local stays local</b>
+          <p data-en="WeChat and voice run on your machine against your own account or microphone. Nothing is relayed through a Quanta server." data-zh="微信和语音跑在你自己的机器上，用你自己的账号和麦克风。不经过任何 Quanta 服务器中转。">WeChat and voice run on your machine against your own account or microphone. Nothing is relayed through a Quanta server.</p>
+        </div>
+      </div>
+
+      <div class="xtax" data-reveal>
+        <div class="xtax-row">
+          <b>Skill</b>
+          <span data-en="A written procedure plus a script. Loaded when its description matches the request." data-zh="一份写下来的工序加一个脚本，描述匹配到请求时才被加载。">A written procedure plus a script. Loaded when its description matches the request.</span>
+          <em>SKILL.md</em>
+        </div>
+        <div class="xtax-row">
+          <b>Plugin</b>
+          <span data-en="Code inside the agent runtime. Changes how a run behaves rather than what it can call." data-zh="跑在智能体运行时里的代码，改的是「一轮怎么进行」，不是「能调什么」。">Code inside the agent runtime. Changes how a run behaves rather than what it can call.</span>
+          <em>dsh ACP</em>
+        </div>
+        <div class="xtax-row is-on">
+          <b>Connector</b>
+          <span data-en="A door into the agent from somewhere else — a chat app, a microphone." data-zh="从别处进到智能体的一道门——一个聊天软件，一支麦克风。">A door into the agent from somewhere else — a chat app, a microphone.</span>
+          <em>bridge</em>
+        </div>
+        <div class="xtax-row">
+          <b>MCP Server</b>
+          <span data-en="A separate process exposing tools over stdio JSON-RPC." data-zh="一个独立进程，用 stdio JSON-RPC 把工具暴露出来。">A separate process exposing tools over stdio JSON-RPC.</span>
+          <em>stdio</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRIES -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="The four" data-zh="四个连接器">The four</span>
+        <h2 class="display" data-en="Three inboxes and a microphone." data-zh="三个收件箱，<br>一支麦克风。">Three inboxes and a microphone.</h2>
+        <p data-en="Each demo below is the same shape: a message comes in, a turn runs, an answer goes back. What changes is the chrome and the rules." data-zh="下面每个演示都是同一个形状：消息进来、跑一轮、答案回去。变的是外壳和规矩。">Each demo below is the same shape: a message comes in, a turn runs, an answer goes back. What changes is the chrome and the rules.</p>
+      </div>
+
+      <div class="xentries">
+        <article class="xentry" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>CONNECTOR-01</em><span class="xname">feishu</span></div>
+            <h3 data-en="A long connection, no callback URL." data-zh="一条长连接，<br>没有回调地址。">A long connection, no callback URL.</h3>
+            <p data-en="A Feishu self-built app opens a WebSocket long connection and receives every message on it; replies go back through the OpenAPI. Quanta supplies the app_id and app_secret, and each message becomes an agent turn." data-zh="一个飞书自建应用拉起 WebSocket 长连接，所有消息都从这条连接进来；回复走 OpenAPI 出去。app_id 与 app_secret 由 Quanta 提供，每条消息都会变成一轮对话。">A Feishu self-built app opens a WebSocket long connection and receives every message on it; replies go back through the OpenAPI. Quanta supplies the app_id and app_secret, and each message becomes an agent turn.</p>
+            <ul class="xspecs">
+              <li><b data-en="Self-built app." data-zh="自建应用。">Self-built app.</b> <span data-en="Not a marketplace app — your tenant, your bot, your permissions." data-zh="不是应用市场里的应用——你的租户、你的机器人、你的权限。">Not a marketplace app — your tenant, your bot, your permissions.</span></li>
+              <li><b data-en="No public address." data-zh="不需要公网地址。">No public address.</b> <span data-en="The connection runs outbound, so a laptop behind a router works." data-zh="连接是往外发起的，所以一台在路由器后面的笔记本也能用。">The connection runs outbound, so a laptop behind a router works.</span></li>
+              <li><b data-en="Needs lark-oapi." data-zh="需要 lark-oapi。">Needs lark-oapi.</b> <span data-en="One Python dependency. Attachments are downloaded and filed like any other input." data-zh="一个 Python 依赖。附件会被下载下来，和别的输入一样归档。">One Python dependency. Attachments are downloaded and filed like any other input.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-connector-feishu.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-connector-feishu.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo">
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">feishu · websocket → agent → openapi</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="chat feishu" data-chat="feishu">
+                <div class="chat-top">
+                  <span class="chat-avatar">Q</span>
+                  <div>
+                    <div class="chat-name">Quanta</div>
+                    <div class="chat-sub">feishu · self-built app</div>
+                  </div>
+                  <span class="chat-status"><i></i>connected</span>
+                </div>
+                <div class="chat-body">
+                  <div class="typing"><i></i><i></i><i></i></div>
+                </div>
+                <div class="chat-foot">
+                  <span class="cf-hint">dedupe · chunk · attachments</span>
+                  <span class="d-spacer"></span>
+                  <button class="d-btn primary c-send" type="button">Send a message</button>
+                </div>
+              </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Press send: the message arrives on the long connection, runs as a turn, and comes back through the OpenAPI. Long replies are chunked; a file would be downloaded first." data-zh="点发送：消息从长连接进来，跑成一轮，再从 OpenAPI 回去。长回复会分片；如果带文件，会先下载。">Press send: the message arrives on the long connection, runs as a turn, and comes back through the OpenAPI. Long replies are chunked; a file would be downloaded first.</figcaption>
+          </figure>
+        </article>
+
+        <article class="xentry flip" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>CONNECTOR-02</em><span class="xname">qq</span></div>
+            <h3 data-en="Official bot, passive replies." data-zh="官方机器人，<br>被动回复。">Official bot, passive replies.</h3>
+            <p data-en="QQ's official bot gateway is a WebSocket too, but it answers with a rule: a reply is only valid for a short window after the message, and it must carry that message's id. The connector keeps the clock and the id, so a slow turn still lands." data-zh="QQ 的官方机器人网关同样是 WebSocket，但回复多一条规矩：只能在消息之后的短窗口内回复，而且必须带上那条消息的 id。连接器记着时钟和 id，慢一点的回答也能落地。">QQ's official bot gateway is a WebSocket too, but it answers with a rule: a reply is only valid for a short window after the message, and it must carry that message's id. The connector keeps the clock and the id, so a slow turn still lands.</p>
+            <ul class="xspecs">
+              <li><b data-en="Passive, not push." data-zh="被动，不是推送。">Passive, not push.</b> <span data-en="The bot may not message first. A reply is bound to one incoming message." data-zh="机器人不能先开口。一条回复绑定一条进来的消息。">The bot may not message first. A reply is bound to one incoming message.</span></li>
+              <li><b data-en="msg_id bound." data-zh="绑定 msg_id。">msg_id bound.</b> <span data-en="The id travels with the turn so the answer has somewhere to go." data-zh="id 跟着这一轮走，答案才知道该回哪儿。">The id travels with the turn so the answer has somewhere to go.</span></li>
+              <li><b data-en="Needs websocket-client." data-zh="需要 websocket-client。">Needs websocket-client.</b> <span data-en="No framework, no SDK — one small dependency and a socket." data-zh="不用框架、不用 SDK——一个小依赖加一条 socket。">No framework, no SDK — one small dependency and a socket.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-connector-qq.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-connector-qq.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo">
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">qq · official bot gateway</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="chat qq" data-chat="qq">
+                <div class="chat-top">
+                  <span class="chat-avatar">Q</span>
+                  <div>
+                    <div class="chat-name">Quanta · QQ bot</div>
+                    <div class="chat-sub">gateway · passive reply</div>
+                  </div>
+                  <span class="chat-status"><i></i>connected</span>
+                </div>
+                <div class="chat-body">
+                  <div class="typing"><i></i><i></i><i></i></div>
+                </div>
+                <div class="chat-foot">
+                  <span class="qq-window">passive · <b>5:00</b></span>
+                  <span class="d-spacer"></span>
+                  <button class="d-btn primary c-send" type="button">Send a message</button>
+                </div>
+              </div>
+            </div>
+            <figcaption class="demo-cap" data-en="The reply is sent as a passive answer inside the window, with the incoming message's id — the reason the footer shows a clock instead of a chat box." data-zh="回复是在窗口内以被动答复的形式发出的，带着那条消息的 id——所以脚注显示的是倒计时，而不是一个输入框。">The reply is sent as a passive answer inside the window, with the incoming message's id — the reason the footer shows a clock instead of a chat box.</figcaption>
+          </figure>
+        </article>
+
+        <article class="xentry" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>CONNECTOR-03</em><span class="xname">wechat</span></div>
+            <h3 data-en="Your own account, your own machine." data-zh="自己的号，<br>自己的机器。">Your own account, your own machine.</h3>
+            <p data-en="The WeChat connector bridges a personal account to the agent on the same computer. It is not a platform API, and it is not pretending to be one: the client runs locally, keeps the session on your disk, and needs an npm install before it starts." data-zh="微信连接器把个人的号接到同一台电脑上的助手。它不是一个平台 API，也不假装是：客户端跑在本地，会话留在你的磁盘上，启动之前要先 npm install。">The WeChat connector bridges a personal account to the agent on the same computer. It is not a platform API, and it is not pretending to be one: the client runs locally, keeps the session on your disk, and needs an npm install before it starts.</p>
+            <ul class="xspecs">
+              <li><b data-en="Local session." data-zh="本地会话。">Local session.</b> <span data-en="The login lives on your machine, not in a service. Sign out and it is gone." data-zh="登录状态在你的机器上，不在某个服务里。退出，它就没了。">The login lives on your machine, not in a service. Sign out and it is gone.</span></li>
+              <li><b data-en="npm install first." data-zh="先 npm install。">npm install first.</b> <span data-en="It is the only connector here with a Node dependency tree." data-zh="这是唯一一个带 Node 依赖树的连接器。">It is the only connector here with a Node dependency tree.</span></li>
+              <li><b data-en="Use it on your own account." data-zh="只在你自己的号上用。">Use it on your own account.</b> <span data-en="A personal account is not an enterprise tenant. Keep it to yourself, on your own machine." data-zh="个人号不是企业租户。只给自己用，就在自己的机器上。">A personal account is not an enterprise tenant. Keep it to yourself, on your own machine.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-connector-wechat.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-connector-wechat.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo">
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">wechat · local bridge · personal account</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="wx-login">
+                <span class="wx-qr" aria-hidden="true"></span>
+                <span><b data-en="Signed in" data-zh="已登录">Signed in</b> · <span data-en="session kept on this machine" data-zh="会话保存在本机">session kept on this machine</span></span>
+              </div>
+              <div class="chat wx" data-chat="wechat">
+                <div class="chat-top">
+                  <span class="chat-avatar">Q</span>
+                  <div>
+                    <div class="chat-name">Quanta</div>
+                    <div class="chat-sub">wechat · local bridge</div>
+                  </div>
+                  <span class="chat-status"><i></i>online</span>
+                </div>
+                <div class="chat-body">
+                  <div class="typing"><i></i><i></i><i></i></div>
+                </div>
+                <div class="chat-foot">
+                  <span class="cf-hint">npm start · session on disk</span>
+                  <span class="d-spacer"></span>
+                  <button class="d-btn primary c-send" type="button">Send a message</button>
+                </div>
+              </div>
+            </div>
+            <figcaption class="demo-cap" data-en="A personal chat, answered by the same agent. Files sent to it are downloaded, filed, and readable in the next turn." data-zh="一段私人对话，由同一个助手回答。发给它的文件会被下载、归档，下一轮就能读。">A personal chat, answered by the same agent. Files sent to it are downloaded, filed, and readable in the next turn.</figcaption>
+          </figure>
+        </article>
+
+        <article class="xentry flip" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>CONNECTOR-04</em><span class="xname">voice · rhema</span></div>
+            <h3 data-en="Voice in, voice out, one sidecar." data-zh="声音进，声音出，<br>一个旁挂进程。">Voice in, voice out, one sidecar.</h3>
+            <p data-en="Rhema is a streaming VAD / ASR / TTS sidecar. It decides when you have started and stopped speaking, transcribes while you talk, and speaks the answer back — the device is not asked to type." data-zh="Rhema 是一个流式 VAD / ASR / TTS 旁挂进程。它判断你什么时候开口、什么时候停下，边说边转写，再把答案读回来——不需要谁去打字。">Rhema is a streaming VAD / ASR / TTS sidecar. It decides when you have started and stopped speaking, transcribes while you talk, and speaks the answer back — the device is not asked to type.</p>
+            <ul class="xspecs">
+              <li><b data-en="Streaming, not a file." data-zh="流式，不是一个文件。">Streaming, not a file.</b> <span data-en="VAD cuts the utterance; the transcript grows while you speak." data-zh="VAD 切出这一句；转写在你说话的同时生长。">VAD cuts the utterance; the transcript grows while you speak.</span></li>
+              <li><b data-en="MLX on Apple silicon." data-zh="Apple 芯片上走 MLX。">MLX on Apple silicon.</b> <span data-en="The ASR path wants mlx-audio and huggingface_hub; on other machines it falls back." data-zh="ASR 这条路要 mlx-audio 与 huggingface_hub；其他机器上会退到备选。">The ASR path wants mlx-audio and huggingface_hub; on other machines it falls back.</span></li>
+              <li><b data-en="Interruptible." data-zh="可以被插话。">Interruptible.</b> <span data-en="Speaking over the answer stops the voice and keeps the transcript — the text is the record." data-zh="在回答上直接开口，会停掉语音、保留转写——文字才是记录。">Speaking over the answer stops the voice and keeps the transcript — the text is the record.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-connector-voice.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-connector-voice.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo" data-demo="voice">
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">rhema · vad → asr → agent → tts</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="wave" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="asr">waiting for a voice…</div>
+              <div class="tts-bar">
+                <span class="play">▶</span>
+                <span>rhema · tts</span>
+                <div class="tts-track"><i></i></div>
+                <span>3.4s</span>
+              </div>
+              <div class="d-row">
+                <button class="d-btn primary v-talk" type="button">Speak</button>
+                <span class="d-spacer"></span>
+                <span class="d-mono">interruptible · transcript kept</span>
+              </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Speak: the transcript is written while the waveform moves, then the answer is read back. The simulation stops short of audio — the shape is the point." data-zh="点说话：波形动着，转写同时在长；然后答案被读回来。演示不放真正的声音——形状才是重点。">Speak: the transcript is written while the waveform moves, then the answer is read back. The simulation stops short of audio — the shape is the point.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="case-section" id="install">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Setup" data-zh="配置">Setup</span>
+        <h2 class="display" data-en="Started by the bridge, not by you." data-zh="由桥启动，<br>不是你启动。">Started by the bridge, not by you.</h2>
+        <p data-en="A connector is a module Quanta starts when the app starts. You choose the door and give it credentials; the bridge does the launching." data-zh="连接器是 Quanta 启动时拉起的模块。你选门、给它凭据；启动这件事由桥来做。">A connector is a module Quanta starts when the app starts. You choose the door and give it credentials; the bridge does the launching.</p>
+      </div>
+      <div class="xinstall" data-reveal>
+        <ol class="xsteps">
+          <li><em>01</em><span><b data-en="Unzip and install the one dependency." data-zh="解压，装那一个依赖。">Unzip and install the one dependency.</b> <span data-en="lark-oapi for Feishu, websocket-client for QQ, npm install for WeChat, mlx-audio for voice on Apple silicon." data-zh="飞书要 lark-oapi，QQ 要 websocket-client，微信先 npm install，Apple 芯片上的语音要 mlx-audio。">lark-oapi for Feishu, websocket-client for QQ, npm install for WeChat, mlx-audio for voice on Apple silicon.</span></span></li>
+          <li><em>02</em><span><b data-en="Give it credentials." data-zh="把凭据交给它。">Give it credentials.</b> <span data-en="Feishu app_id and app_secret, a QQ bot token, or a WeChat sign-in on your own machine." data-zh="飞书的 app_id 与 app_secret、QQ 的机器人 token，或者在本机扫一次微信登录。">Feishu app_id and app_secret, a QQ bot token, or a WeChat sign-in on your own machine.</span></span></li>
+          <li><em>03</em><span><b data-en="Let the bridge start it." data-zh="让桥把它拉起来。">Let the bridge start it.</b> <span data-en="The connection state shows in the log. If the socket dies, the bridge reopens it — you do not babysit it." data-zh="连接状态会打在日志里。socket 断了，桥会重开——不用你盯着。">The connection state shows in the log. If the socket dies, the bridge reopens it — you do not babysit it.</span></span></li>
+        </ol>
+        <div class="code-card">
+          <pre><span class="prompt">$</span> pip install lark-oapi websocket-client
+<span class="prompt">$</span> npm install --prefix connectors/wechat
+<span class="prompt">$</span> pip install mlx-audio huggingface_hub
+
+<span class="prompt"># started by Quanta's bridge, not by hand:</span>
+feishu  · ws open · tenant xyc
+qq      · gateway ready · bot 1029…
+wechat  · session restored
+voice   · vad · asr · tts ready</pre>
+        </div>
+      </div>
+      <p class="xnote" data-en="Credentials live where Quanta keeps its settings, not in the connector folder. The connectors are replaceable; the account is not." data-zh="凭据放在 Quanta 存设置的地方，不在连接器目录里。连接器可以换，账号不能。">Credentials live where Quanta keeps its settings, not in the connector folder. The connectors are replaceable; the account is not.</p>
+    </div>
+  </section>
+
+  <section class="case-next">
+    <div class="container" data-reveal>
+      <span class="eyebrow" data-en="Next" data-zh="下一个">Next</span>
+      <h2 data-en="Nine small instruments on one bench." data-zh="一张台子上，九件小工具。">Nine small instruments on one bench.</h2>
+      <div class="actions">
+        <a class="btn btn-primary" href="mcp.html">
+          <span data-en="MCP servers" data-zh="MCP 服务">MCP servers</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent designer and AI engineer. Interface, agents and models, made in one pair of hands.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="index.html#about" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Extensions" data-zh="扩展">Extensions</h4>
+          <ul>
+            <li><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+            <li><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+            <li><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+            <li><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span data-en="The best is yet to come." data-zh="最好的还没来。">The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script src="extensions.js"></script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plugins — xyc design</title>
+<meta name="description" content="Quanta plugins — quanta-live-stream and quanta-preset-tools. One streams reasoning, status, job and compaction events to the interface; one narrows a subagent's tool list with ctx.tools.restrict. Download and how they load.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="extensions.css">
+</head>
+<body data-title-en="Plugins — xyc design" data-title-zh="插件 — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark">x</span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger" href="index.html#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-thumb">03</span>
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group-label" aria-hidden="true" data-en="Extensions" data-zh="扩展">Extensions</li>
+        <li class="nav-divider" aria-hidden="true"></li>
+        <li class="nav-ext"><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+        <li class="nav-ext"><a href="plugin.html" class="is-current" data-en="Plugin" data-zh="插件">Plugin</a></li>
+        <li class="nav-ext"><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+        <li class="nav-ext"><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <a class="btn btn-dark btn-sm" href="https://github.com/xxx490202/quanta-tools/releases/tag/v1.0.0" target="_blank" rel="noreferrer noopener" data-en="Downloads" data-zh="下载">Downloads</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="case-hero" id="top">
+    <div class="container">
+      <a class="case-back" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        <span data-en="Home" data-zh="首页">Home</span>
+      </a>
+      <span class="eyebrow" data-en="Extensions · 02 — Plugin" data-zh="扩展 · 02 — 插件">Extensions · 02 — Plugin</span>
+      <h1 class="case-title" data-en="Plugin<em>s</em>" data-zh="插<em>件</em>">Plugin<em>s</em></h1>
+      <p class="case-tagline" data-en="Plugins add no tools. They watch the run and narrow it: one streams what the agent is doing, the other decides what a delegate may touch." data-zh="插件不添工具。它们盯着这一轮怎么跑，并把它收窄：一个把助手正在做的事实时推出来，一个决定派出去的人能碰什么。">
+        Plugins add no tools. They watch the run and narrow it: one streams what the agent is doing, the other decides what a delegate may touch.
+      </p>
+      <p class="case-meta-line">
+        <span><b data-en="Two plugins" data-zh="两个插件">Two plugins</b></span>
+        <span>dsh ACP</span>
+        <span data-en="Generated at startup" data-zh="启动时生成">Generated at startup</span>
+        <span>JavaScript</span>
+        <span>v1.0.0</span>
+      </p>
+
+      <nav class="xtabs" aria-label="Extensions">
+        <a href="skill.html"><em>01 · Skill</em><b data-en="Skills" data-zh="技能">Skills</b></a>
+        <a href="plugin.html" class="is-on" aria-current="page"><em>02 · Plugin</em><b data-en="Plugins" data-zh="插件">Plugins</b></a>
+        <a href="connector.html"><em>03 · Connector</em><b data-en="Connectors" data-zh="连接器">Connectors</b></a>
+        <a href="mcp.html"><em>04 · MCP</em><b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- WHAT A PLUGIN IS -->
+  <section class="case-section" id="what">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="What a plugin is" data-zh="什么是插件">What a plugin is</span>
+        <h2 class="display" data-en="Not more tools — better plumbing." data-zh="不是更多工具，<br>是更好的管道。">Not more tools — better plumbing.</h2>
+      </div>
+      <div class="case-two" data-reveal>
+        <div>
+          <p data-en="A plugin is code that runs inside the agent runtime, not beside it. It sees events as they happen, can narrow a tool list before a child starts, and can push a status line to the interface while the turn is still running." data-zh="插件是跑在智能体运行时里面的代码，不是跑在旁边。它在事件发生的当下就看得到，能在子智能体启动前收窄工具清单，也能在这一轮还没跑完时把状态推到界面上。">
+            A plugin is code that runs inside the agent runtime, not beside it. It sees events as they happen, can narrow a tool list before a child starts, and can push a status line to the interface while the turn is still running.
+          </p>
+        </div>
+        <div>
+          <p data-en="Both plugins here are written by Quanta at startup and installed into the dsh ACP profile. The zips in the release are copies for reading and reuse — editing a copy will not change the one the app writes." data-zh="这里的两个插件由 Quanta 在启动时写出，并装进 dsh ACP 配置。发布里的 zip 是给人读和复用的副本——改副本不会改变应用自己写的那一份。">
+            Both plugins here are written by Quanta at startup and installed into the dsh ACP profile. The zips in the release are copies for reading and reuse — editing a copy will not change the one the app writes.
+          </p>
+        </div>
+      </div>
+
+      <div class="xfacts3" data-reveal>
+        <div>
+          <b data-en="Events, not polling" data-zh="靠事件，不靠轮询">Events, not polling</b>
+          <p data-en="Reasoning deltas, status changes, job events and compaction arrive as they happen, on a side channel that keeps the protocol clean." data-zh="推理增量、状态变化、后台任务、上下文压缩，发生即到达；走一条旁路，协议本身保持干净。">Reasoning deltas, status changes, job events and compaction arrive as they happen, on a side channel that keeps the protocol clean.</p>
+        </div>
+        <div>
+          <b data-en="Scope, not persuasion" data-zh="靠作用域，不靠劝说">Scope, not persuasion</b>
+          <p data-en="A child's tool list is restricted in code before it starts — not in a prompt politely asking it to hold back." data-zh="子智能体的工具清单在它启动前就用代码收窄了——不是写一句提示词请它克制。">A child's tool list is restricted in code before it starts — not in a prompt politely asking it to hold back.</p>
+        </div>
+        <div>
+          <b data-en="Generated, then installed" data-zh="先生成，再安装">Generated, then installed</b>
+          <p data-en="The app is the source of truth. The package is written on every startup and installed into the profile that runs the page." data-zh="应用才是真相。每次启动都重写这个包，再装进跑页面的那份配置里。">The app is the source of truth. The package is written on every startup and installed into the profile that runs the page.</p>
+        </div>
+      </div>
+
+      <div class="xtax" data-reveal>
+        <div class="xtax-row">
+          <b>Skill</b>
+          <span data-en="A written procedure plus a script. Loaded when its description matches the request." data-zh="一份写下来的工序加一个脚本，描述匹配到请求时才被加载。">A written procedure plus a script. Loaded when its description matches the request.</span>
+          <em>SKILL.md</em>
+        </div>
+        <div class="xtax-row is-on">
+          <b>Plugin</b>
+          <span data-en="Code inside the agent runtime. Changes how a run behaves rather than what it can call." data-zh="跑在智能体运行时里的代码，改的是「一轮怎么进行」，不是「能调什么」。">Code inside the agent runtime. Changes how a run behaves rather than what it can call.</span>
+          <em>dsh ACP</em>
+        </div>
+        <div class="xtax-row">
+          <b>Connector</b>
+          <span data-en="A door into the agent from somewhere else — a chat app, a microphone." data-zh="从别处进到智能体的一道门——一个聊天软件，一支麦克风。">A door into the agent from somewhere else — a chat app, a microphone.</span>
+          <em>bridge</em>
+        </div>
+        <div class="xtax-row">
+          <b>MCP Server</b>
+          <span data-en="A separate process exposing tools over stdio JSON-RPC." data-zh="一个独立进程，用 stdio JSON-RPC 把工具暴露出来。">A separate process exposing tools over stdio JSON-RPC.</span>
+          <em>stdio</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRIES -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="The two" data-zh="两个插件">The two</span>
+        <h2 class="display" data-en="One pushes, one withholds." data-zh="一个往外推，<br>一个把口子收窄。">One pushes, one withholds.</h2>
+        <p data-en="Both are small on purpose. A plugin that does too much becomes a second agent with nobody watching it." data-zh="两个都故意做得很小。一个做太多的插件，会变成第二个没人看着的智能体。">Both are small on purpose. A plugin that does too much becomes a second agent with nobody watching it.</p>
+      </div>
+
+      <div class="xentries">
+        <article class="xentry" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>PLUGIN-01</em><span class="xname">quanta-live-stream</span></div>
+            <h3 data-en="Every step, as it happens." data-zh="每一步，发生的当下。">Every step, as it happens.</h3>
+            <p data-en="The interface cannot show what it never hears. This plugin forwards four streams to stderr — reasoning deltas, agent status, background-job events, and context compaction — so the UI can draw the turn while it is still being written." data-zh="界面没法显示它从没听见的东西。这个插件把四路事件转到 stderr——推理增量、智能体状态、后台任务、上下文压缩——界面就能在这一轮还在写的时候把它画出来。">The interface cannot show what it never hears. This plugin forwards four streams to stderr — reasoning deltas, agent status, background-job events, and context compaction — so the UI can draw the turn while it is still being written.</p>
+            <ul class="xspecs">
+              <li><b data-en="Four streams." data-zh="四路事件。">Four streams.</b> <span data-en="assistant-stream · status · jobs · compaction. Each one is a line the UI knows how to read." data-zh="assistant-stream · status · jobs · compaction，每一路都是界面认得的一行。">assistant-stream · status · jobs · compaction. Each one is a line the UI knows how to read.</span></li>
+              <li><b data-en="stderr, not stdout." data-zh="走 stderr，不走 stdout。">stderr, not stdout.</b> <span data-en="The ACP channel stays JSON-only; UI events travel beside it." data-zh="ACP 通道保持纯 JSON；界面事件在旁边那条路上走。">The ACP channel stays JSON-only; UI events travel beside it.</span></li>
+              <li><b data-en="Needs a runtime with jobs." data-zh="要求运行时暴露 jobs。">Needs a runtime with jobs.</b> <span data-en="It listens for agent/assistant-stream and agent/status, and reads ctx.jobs for background work." data-zh="它监听 agent/assistant-stream 与 agent/status，并从 ctx.jobs 读后台任务。">It listens for agent/assistant-stream and agent/status, and reads ctx.jobs for background work.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-plugin-live-stream.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-plugin-live-stream.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo" data-demo="stream">
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">live-stream · one turn, four streams</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="stream-turn">
+                <div class="stream-q"><em>YOU</em><span>Why did the crawler keep failing last night?</span></div>
+                <div class="stream-think">waiting for a turn to start…</div>
+                <div class="status-row">
+                  <span class="status-pill on">thinking</span>
+                  <span class="status-pill">tool</span>
+                  <span class="status-pill">job</span>
+                  <span class="status-pill">compaction</span>
+                </div>
+                <div class="compact-note"><i></i>context compacted 41k → 8k · the turn continues</div>
+                <div class="evt-log">
+                  <div>agent/assistant-stream · idle</div>
+                </div>
+              </div>
+              <div class="d-row">
+                <button class="d-btn primary ls-run" type="button">Replay the turn</button>
+                <span class="d-spacer"></span>
+                <span class="d-mono">stderr · one JSON per line</span>
+              </div>
+            </div>
+            <figcaption class="demo-cap" data-en="The point is not the typewriter. It is that status, jobs and compaction arrive as events, so the interface never has to guess or poll." data-zh="重点不是逐字打出。重点是状态、后台任务和压缩都是以事件到达的，界面既不用猜，也不用轮询。">The point is not the typewriter. It is that status, jobs and compaction arrive as events, so the interface never has to guess or poll.</figcaption>
+          </figure>
+        </article>
+
+        <article class="xentry flip" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>PLUGIN-02</em><span class="xname">quanta-preset-tools</span></div>
+            <h3 data-en="A role is an allow-list." data-zh="一个角色，就是一张白名单。">A role is an allow-list.</h3>
+            <p data-en="A subagent is only useful if it is narrower than the parent. This plugin calls ctx.tools.restrict({ allow }) inside the child's preset scope, so a retriever has no write tool to reach for — not a prompt asking it nicely to behave." data-zh="子智能体只有比父级更窄才有意义。这个插件在子智能体的预设作用域里调用 ctx.tools.restrict({ allow })，于是检索员手边根本没有可写的工具——不是一句请它乖一点的提示词。">A subagent is only useful if it is narrower than the parent. This plugin calls ctx.tools.restrict({ allow }) inside the child's preset scope, so a retriever has no write tool to reach for — not a prompt asking it nicely to behave.</p>
+            <ul class="xspecs">
+              <li><b data-en="Restrict, not persuade." data-zh="收窄，不劝说。">Restrict, not persuade.</b> <span data-en="The tool list is decided before the child's first message exists." data-zh="工具清单在子智能体的第一条消息存在之前就定了。">The tool list is decided before the child's first message exists.</span></li>
+              <li><b data-en="Inside the preset scope." data-zh="在预设作用域里。">Inside the preset scope.</b> <span data-en="It runs where the child is built, so there is no window in which the full list is live." data-zh="它跑在子智能体被构建的地方，因此不存在「全量清单还活着」的那一小段时间。">It runs where the child is built, so there is no window in which the full list is live.</span></li>
+              <li><b data-en="Requires ctx.tools.restrict." data-zh="要求 ctx.tools.restrict。">Requires ctx.tools.restrict.</b> <span data-en="A dsh runtime that exposes the API; without it the plugin has nothing to call." data-zh="需要暴露这个 API 的 dsh 运行时；没有它，插件无从调用。">A dsh runtime that exposes the API; without it the plugin has nothing to call.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-plugin-preset-tools.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-plugin-preset-tools.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo" data-demo="scope">
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">preset-tools · subagent scope</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-row">
+                <span class="d-label">role</span>
+                <button class="d-chip scope-role on" type="button" data-role="retriever" data-name="retriever" data-allow="read glob grep web">retriever</button>
+                <button class="d-chip scope-role" type="button" data-role="executor" data-name="executor" data-allow="read write edit bash">executor</button>
+                <button class="d-chip scope-role" type="button" data-role="reviewer" data-name="reviewer" data-allow="read grep">reviewer</button>
+              </div>
+              <div class="d-label" style="margin-top:6px;">tools the child can see</div>
+              <div class="scope-tools">
+                <span class="tool-chip allow" data-tool="read">read</span>
+                <span class="tool-chip allow" data-tool="glob">glob</span>
+                <span class="tool-chip allow" data-tool="grep">grep</span>
+                <span class="tool-chip allow" data-tool="web">web</span>
+                <span class="tool-chip deny" data-tool="write">write</span>
+                <span class="tool-chip deny" data-tool="edit">edit</span>
+                <span class="tool-chip deny" data-tool="bash">bash</span>
+                <span class="tool-chip deny" data-tool="task">task</span>
+              </div>
+              <div class="scope-code">ctx.tools.<b>restrict</b>({ allow: <span class="sc-list">['read', 'glob', 'grep', 'web']</span> })<br><span class="sc-comment">// scope: <span class="scope-name">retriever</span></span></div>
+            </div>
+            <figcaption class="demo-cap" data-en="Switch the role: the allowed list is the only thing the child is built with. Struck-out tools are not hidden by CSS in the real thing — they are absent." data-zh="换个角色：子智能体就是带着这张允许清单被构建的。真实环境里，被划掉的工具不是用 CSS 藏起来，而是根本不存在。">Switch the role: the allowed list is the only thing the child is built with. Struck-out tools are not hidden by CSS in the real thing — they are absent.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT LOADS -->
+  <section class="case-section" id="loading">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Loading" data-zh="加载">Loading</span>
+        <h2 class="display" data-en="Written at startup, loaded per turn." data-zh="启动时写出，<br>每一轮加载。">Written at startup, loaded per turn.</h2>
+        <p data-en="A plugin is not a file you drop somewhere and hope gets picked up. It is generated, installed, then attached to the profile that runs the page." data-zh="插件不是丢到某个目录里、指望它被捡起来的文件。它生成、安装，然后挂到跑这一页的那份配置上。">A plugin is not a file you drop somewhere and hope gets picked up. It is generated, installed, then attached to the profile that runs the page.</p>
+      </div>
+      <div class="arch" data-reveal>
+        <div class="arch-grid">
+          <div class="arch-col">
+            <div class="col-head">Quanta <span>startup</span></div>
+            <div class="arch-node hot"><b>dsh_agent.py</b><span data-en="writes the package" data-zh="写出包">writes the package</span></div>
+            <div class="arch-node"><b>LIVE_PLUGIN_JS</b><span data-en="source, in the app" data-zh="源码，在应用里">source, in the app</span></div>
+            <div class="arch-node"><b>PRESET_TOOLS_JS</b><span data-en="source, in the app" data-zh="源码，在应用里">source, in the app</span></div>
+          </div>
+          <div class="arch-arrow"><span data-en="write" data-zh="写">write</span></div>
+          <div class="arch-col">
+            <div class="col-head">dsh ACP <span>profile</span></div>
+            <div class="arch-node"><b>package.json</b><span data-en="name · version · entry" data-zh="名字 · 版本 · 入口">name · version · entry</span></div>
+            <div class="arch-node hot"><b>lib/index.js</b><span data-en="the plugin itself" data-zh="插件本体">the plugin itself</span></div>
+            <div class="arch-node"><b data-en="Installed" data-zh="已安装">Installed</b><span data-en="on every launch" data-zh="每次启动">on every launch</span></div>
+          </div>
+          <div class="arch-arrow"><span data-en="hooks" data-zh="挂钩">hooks</span></div>
+          <div class="arch-col">
+            <div class="col-head"><span data-en="The turn" data-zh="这一轮">The turn</span><span>live</span></div>
+            <div class="arch-node"><b data-en="Reasoning deltas" data-zh="推理增量">Reasoning deltas</b><span data-en="→ the typing block" data-zh="→ 逐字块">→ the typing block</span></div>
+            <div class="arch-node"><b>status · jobs</b><span data-en="→ the step rail" data-zh="→ 步骤栏">→ the step rail</span></div>
+            <div class="arch-node"><b>ctx.tools.restrict</b><span data-en="→ the child's scope" data-zh="→ 子智能体作用域">→ the child's scope</span></div>
+          </div>
+        </div>
+        <div class="arch-foot">
+          <p><b data-en="Nothing to install" data-zh="无需安装">Nothing to install</b><span data-en="The app writes both plugins on launch. There is no registration screen." data-zh="应用启动时自己写这两个插件，没有注册界面。">The app writes both plugins on launch.</span></p>
+          <p><b data-en="Copies are for reading" data-zh="副本是给人读的">Copies are for reading</b><span data-en="The release zips mirror what the app generates, so you can read it without digging through the source." data-zh="发布里的 zip 与生成物一致，不必翻源码也能读到。">The release zips mirror what the app generates.</span></p>
+          <p><b data-en="Reuse needs a runtime" data-zh="复用要有运行时">Reuse needs a runtime</b><span data-en="Outside Quanta, they need a dsh runtime exposing ctx.jobs and ctx.tools.restrict." data-zh="离开 Quanta，它们需要一个暴露 ctx.jobs 与 ctx.tools.restrict 的 dsh 运行时。">Outside Quanta, they need a dsh runtime exposing ctx.jobs and ctx.tools.restrict.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="case-section" id="install">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Install" data-zh="安装">Install</span>
+        <h2 class="display" data-en="Nothing to drop in." data-zh="没有要拖进去的东西。">Nothing to drop in.</h2>
+        <p data-en="Both plugins ship with the app. The zips exist so the mechanism is readable, and so the same package can be reused on another dsh runtime." data-zh="两个插件都跟着应用走。zip 存在的意义是让机制可读，也让同一个包能被复用到别的 dsh 运行时上。">Both plugins ship with the app. The zips exist so the mechanism is readable, and so the same package can be reused on another dsh runtime.</p>
+      </div>
+      <div class="xinstall" data-reveal>
+        <ol class="xsteps">
+          <li><em>01</em><span><b data-en="Start Quanta." data-zh="启动 Quanta。">Start Quanta.</b> <span data-en="The package is written and installed into the profile before the first page opens." data-zh="在你打开第一页之前，包已经写好并装进配置里了。">The package is written and installed into the profile before the first page opens.</span></span></li>
+          <li><em>02</em><span><b data-en="Read the copy first." data-zh="先读副本。">Read the copy first.</b> <span data-en="Two files: package.json and lib/index.js. That is the whole plugin — no build, no dependency tree." data-zh="两个文件：package.json 和 lib/index.js。整个插件就这些——没有构建，也没有依赖树。">Two files: package.json and lib/index.js. That is the whole plugin — no build, no dependency tree.</span></span></li>
+          <li><em>03</em><span><b data-en="Reuse it elsewhere." data-zh="在别处复用。">Reuse it elsewhere.</b> <span data-en="Install into another dsh ACP profile. It will only load where ctx.jobs and ctx.tools.restrict exist." data-zh="装进另一个 dsh ACP 配置。只有在存在 ctx.jobs 与 ctx.tools.restrict 的地方，它才会加载。">Install into another dsh ACP profile. It will only load where ctx.jobs and ctx.tools.restrict exist.</span></span></li>
+        </ol>
+        <div class="code-card">
+          <pre><span class="prompt">$</span> cat package.json
+{
+  "name": "quanta-live-stream",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "dsh": { "api": "acp" }
+}
+
+<span class="prompt">$</span> cat lib/index.js
+export default function (ctx) {
+  ctx.on('agent/assistant-stream', (d) =&gt; emit('delta', d));
+  ctx.on('agent/status', (s) =&gt; emit('status', s));
+  ctx.jobs.on('change', (j) =&gt; emit('job', j));
+}</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-next">
+    <div class="container" data-reveal>
+      <span class="eyebrow" data-en="Next" data-zh="下一个">Next</span>
+      <h2 data-en="The door the conversation comes in by." data-zh="对话进来的那扇门。">The door the conversation comes in by.</h2>
+      <div class="actions">
+        <a class="btn btn-primary" href="connector.html">
+          <span data-en="Connectors" data-zh="连接器">Connectors</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent designer and AI engineer. Interface, agents and models, made in one pair of hands.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="index.html#about" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Extensions" data-zh="扩展">Extensions</h4>
+          <ul>
+            <li><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+            <li><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+            <li><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+            <li><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span data-en="The best is yet to come." data-zh="最好的还没来。">The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script src="extensions.js"></script>
+</body>
+</html>

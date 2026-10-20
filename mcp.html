@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP servers — xyc design</title>
+<meta name="description" content="Quanta MCP servers — ask, browser, memory, schedule, harness, cua, screen, materials and pages. Nine tools on one bench, each with a simulated scene and a download.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="extensions.css">
+</head>
+<body data-title-en="MCP servers — xyc design" data-title-zh="MCP 服务 — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark">x</span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger" href="index.html#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-thumb">03</span>
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group-label" aria-hidden="true" data-en="Extensions" data-zh="扩展">Extensions</li>
+        <li class="nav-divider" aria-hidden="true"></li>
+        <li class="nav-ext"><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+        <li class="nav-ext"><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+        <li class="nav-ext"><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+        <li class="nav-ext"><a href="mcp.html" class="is-current" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <a class="btn btn-dark btn-sm" href="https://github.com/xxx490202/quanta-tools/releases/tag/v1.0.0" target="_blank" rel="noreferrer noopener" data-en="Downloads" data-zh="下载">Downloads</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="case-hero" id="top">
+    <div class="container">
+      <a class="case-back" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        <span data-en="Home" data-zh="首页">Home</span>
+      </a>
+      <span class="eyebrow" data-en="Extensions · 04 — MCP Server" data-zh="扩展 · 04 — MCP 服务">Extensions · 04 — MCP Server</span>
+      <h1 class="case-title" data-en="MCP server<em>s</em>" data-zh="MCP 服<em>务</em>">MCP server<em>s</em></h1>
+      <p class="case-tagline" data-en="Nine small instruments on one bench: ask, browse, remember, schedule, consult, drive the desktop, capture the screen, read the materials, read the other pages." data-zh="一张台子上九件小工具：问、浏览、记住、排程、请教、操作桌面、截屏、读材料、读别的页面。">
+        Nine small instruments on one bench: ask, browse, remember, schedule, consult, drive the desktop, capture the screen, read the materials, read the other pages.
+      </p>
+      <p class="case-meta-line">
+        <span><b data-en="Nine servers" data-zh="九个服务">Nine servers</b></span>
+        <span>stdio JSON-RPC</span>
+        <span>Python 3.10+</span>
+        <span data-en="Runs beside Quanta" data-zh="跑在 Quanta 旁边">Runs beside Quanta</span>
+        <span>v1.0.0</span>
+      </p>
+
+      <nav class="xtabs" aria-label="Extensions">
+        <a href="skill.html"><em>01 · Skill</em><b data-en="Skills" data-zh="技能">Skills</b></a>
+        <a href="plugin.html"><em>02 · Plugin</em><b data-en="Plugins" data-zh="插件">Plugins</b></a>
+        <a href="connector.html"><em>03 · Connector</em><b data-en="Connectors" data-zh="连接器">Connectors</b></a>
+        <a href="mcp.html" class="is-on" aria-current="page"><em>04 · MCP</em><b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- WHAT AN MCP SERVER IS -->
+  <section class="case-section" id="what">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="What an MCP server is" data-zh="什么是 MCP 服务">What an MCP server is</span>
+        <h2 class="display" data-en="A small program on the other end of a pipe." data-zh="管道另一头，<br>一个小程序。">A small program on the other end of a pipe.</h2>
+      </div>
+      <div class="case-two" data-reveal>
+        <div>
+          <p data-en="Each server here is a short Python program speaking stdio JSON-RPC: one JSON object per line, stdout kept JSON-only so nothing but protocol ever goes out. Quanta starts it, reads its tool list, and calls a tool like any other step in a turn." data-zh="这里的每个服务都是一个短短的 Python 程序，讲 stdio JSON-RPC：一行一个 JSON 对象，stdout 只允许放协议本身。Quanta 把它拉起来，读它的工具清单，然后在一次对话里像别的步骤一样调用。">
+            Each server here is a short Python program speaking stdio JSON-RPC: one JSON object per line, stdout kept JSON-only so nothing but protocol ever goes out. Quanta starts it, reads its tool list, and calls a tool like any other step in a turn.
+          </p>
+        </div>
+        <div>
+          <p data-en="They import Quanta's config and read the app data directory, so they run beside a Quanta checkout rather than as standalone services. That is both a constraint and the point: the server sees the same files, memory and pages the app does." data-zh="它们 import Quanta 的 config、读应用的数据目录，所以要跑在一份 Quanta 源码旁边，而不是当独立服务。这既是限制也是重点：服务看到的文件、记忆和页面，和应用看到的是同一份。">
+            They import Quanta's config and read the app data directory, so they run beside a Quanta checkout rather than as standalone services. That is both a constraint and the point: the server sees the same files, memory and pages the app does.
+          </p>
+        </div>
+      </div>
+
+      <div class="xfacts3" data-reveal>
+        <div>
+          <b data-en="One line, one message" data-zh="一行一条消息">One line, one message</b>
+          <p data-en="No framing, no length prefix, no HTTP. A newline is the boundary; a stray print breaks the pipe." data-zh="没有帧头、没有长度前缀、没有 HTTP。换行就是边界；多打一句 print 就毁了这条管道。">No framing, no length prefix, no HTTP. A newline is the boundary; a stray print breaks the pipe.</p>
+        </div>
+        <div>
+          <b data-en="Small on purpose" data-zh="故意做小">Small on purpose</b>
+          <p data-en="Each server does one thing and exposes a few tools. When one misbehaves, you can read the whole file in a minute." data-zh="每个服务只干一件事，只放出几个工具。哪个出问题，一分钟就能把整个文件读完。">Each server does one thing and exposes a few tools. When one misbehaves, you can read the whole file in a minute.</p>
+        </div>
+        <div>
+          <b data-en="Reads the app's data" data-zh="读应用的数据">Reads the app's data</b>
+          <p data-en="Memory notes, scheduled runs, page outputs and materials are read from the same directory the window uses." data-zh="记忆、定时任务、页面产出和材料，都从窗口在用的那个目录读。">Memory notes, scheduled runs, page outputs and materials are read from the same directory the window uses.</p>
+        </div>
+      </div>
+
+      <div class="xtax" data-reveal>
+        <div class="xtax-row">
+          <b>Skill</b>
+          <span data-en="A written procedure plus a script. Loaded when its description matches the request." data-zh="一份写下来的工序加一个脚本，描述匹配到请求时才被加载。">A written procedure plus a script. Loaded when its description matches the request.</span>
+          <em>SKILL.md</em>
+        </div>
+        <div class="xtax-row">
+          <b>Plugin</b>
+          <span data-en="Code inside the agent runtime. Changes how a run behaves rather than what it can call." data-zh="跑在智能体运行时里的代码，改的是「一轮怎么进行」，不是「能调什么」。">Code inside the agent runtime. Changes how a run behaves rather than what it can call.</span>
+          <em>dsh ACP</em>
+        </div>
+        <div class="xtax-row">
+          <b>Connector</b>
+          <span data-en="A door into the agent from somewhere else — a chat app, a microphone." data-zh="从别处进到智能体的一道门——一个聊天软件，一支麦克风。">A door into the agent from somewhere else — a chat app, a microphone.</span>
+          <em>bridge</em>
+        </div>
+        <div class="xtax-row is-on">
+          <b>MCP Server</b>
+          <span data-en="A separate process exposing tools over stdio JSON-RPC." data-zh="一个独立进程，用 stdio JSON-RPC 把工具暴露出来。">A separate process exposing tools over stdio JSON-RPC.</span>
+          <em>stdio</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENCH -->
+  <section class="case-section" id="bench">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="The bench" data-zh="操作台">The bench</span>
+        <h2 class="display" data-en="Nine instruments, one bench." data-zh="九件工具，<br>一张台子。">Nine instruments, one bench.</h2>
+        <p data-en="Pick a server on the left. Each scene is a front-end simulation of what it does inside a turn — the buttons work, the API does not." data-zh="在左边挑一个服务。每个场景都是它在一轮对话里做什么的前端模拟——按钮是真的，接口不是。">Pick a server on the left. Each scene is a front-end simulation of what it does inside a turn — the buttons work, the API does not.</p>
+      </div>
+
+      <div class="bench" data-reveal>
+        <div class="bench-list">
+          <div class="bench-head">mcp · v1.0.0</div>
+          <button class="bench-item on" type="button" data-scene="ask"><em>01</em><span>quanta-ask</span></button>
+          <button class="bench-item" type="button" data-scene="browser"><em>02</em><span>quanta-browser</span></button>
+          <button class="bench-item" type="button" data-scene="memory"><em>03</em><span>quanta-memory</span></button>
+          <button class="bench-item" type="button" data-scene="schedule"><em>04</em><span>quanta-schedule</span></button>
+          <button class="bench-item" type="button" data-scene="harness"><em>05</em><span>quanta-harness</span></button>
+          <button class="bench-item" type="button" data-scene="cua"><em>06</em><span>quanta-cua</span></button>
+          <button class="bench-item" type="button" data-scene="screen"><em>07</em><span>quanta-screen</span></button>
+          <button class="bench-item" type="button" data-scene="materials"><em>08</em><span>quanta-materials</span></button>
+          <button class="bench-item" type="button" data-scene="pages"><em>09</em><span>quanta-pages</span></button>
+          <div class="bench-foot">stdio json-rpc<br>one json per line</div>
+        </div>
+
+        <div class="bench-stage">
+          <div class="bench-scene">
+
+            <!-- 01 ask -->
+            <div class="bscene on" data-scene="ask">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-ask</h3>
+                  <p class="bsub" data-en="Asks the user a question through Quanta's selection-card UI, and waits for the answer instead of guessing." data-zh="通过 Quanta 的选择卡片向用户提问，然后等答案，而不是自己猜。">Asks the user a question through Quanta's selection-card UI, and waits for the answer instead of guessing.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-ask.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="ask-card">
+                <div class="ask-q"><b>ASK</b>Where should the export go?</div>
+                <button class="ask-opt on" type="button" data-value="~/Desktop/quanta-export">~/Desktop/quanta-export</button>
+                <button class="ask-opt" type="button" data-value="~/Documents/exports/2026-10">~/Documents/exports/2026-10</button>
+                <button class="ask-opt" type="button" data-value="the working folder">the working folder</button>
+                <div class="d-row"><span class="d-spacer"></span><button class="d-btn primary ask-go" type="button">Continue</button></div>
+                <div class="ask-result d-note"></div>
+              </div>
+              <div class="bench-tagline">one card · one answer · the turn resumes</div>
+            </div>
+
+            <!-- 02 browser -->
+            <div class="bscene" data-scene="browser">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-browser</h3>
+                  <p class="bsub" data-en="Drives Quanta's built-in browser: open a URL, click, read the page — the tab stays where you can see it." data-zh="操作 Quanta 内置的浏览器：打开网址、点击、读页面——标签就摆在你眼皮底下。">Drives Quanta's built-in browser: open a URL, click, read the page — the tab stays where you can see it.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-browser.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="mini-browser">
+                <div class="mb-bar"><span class="mb-url">https://news.ycombinator.com</span><span class="d-mono">tab 1</span></div>
+                <div class="mb-page">
+                  <div class="mb-site">Hacker News</div>
+                  <div class="mb-row"><em>1</em><span>Show HN: a tiny MCP server for my desk lamp</span><em>412</em></div>
+                  <div class="mb-row"><em>2</em><span>Why text editors still matter</span><em>286</em></div>
+                  <div class="mb-row"><em>3</em><span>Embedding a whole wiki on a laptop</span><em>193</em></div>
+                  <span class="cursor"></span>
+                </div>
+              </div>
+              <div class="d-row"><button class="d-btn primary br-go" type="button">Open and click the first story</button><span class="br-note"></span></div>
+            </div>
+
+            <!-- 03 memory -->
+            <div class="bscene" data-scene="memory">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-memory</h3>
+                  <p class="bsub" data-en="Read and write Quanta's local memory store — plain Markdown notes with frontmatter, filed by area." data-zh="读写 Quanta 的本地记忆库——带 frontmatter 的纯 Markdown 笔记，按区块归档。">Read and write Quanta's local memory store — plain Markdown notes with frontmatter, filed by area.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-memory.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="mem-search">
+                <input class="d-input" type="text" placeholder="search memory — try “tables”" aria-label="Search memory">
+                <button class="d-btn mem-save" type="button">Save a note</button>
+              </div>
+              <div class="d-chiprow">
+                <button class="d-chip mem-chip" type="button" data-q="tables">tables</button>
+                <button class="d-chip mem-chip" type="button" data-q="crawler">crawler</button>
+                <button class="d-chip mem-chip" type="button" data-q="platform">platform</button>
+              </div>
+              <div class="d-label">wiki · <span class="mem-count">3</span> notes</div>
+              <div class="mem-note" data-tags="preference tables chinese">
+                <div class="mn-title">Prefers tables in Chinese</div>
+                <div class="mn-meta">Wiki/summaries · m-20261002-a1b2c3 · chat</div>
+                <div class="mn-body">When the answer has more than three fields, use a table; keep the headers Chinese.</div>
+              </div>
+              <div class="mem-note" data-tags="crawler platform bilibili">
+                <div class="mn-title">Crawler needs a login for Bilibili</div>
+                <div class="mn-meta">Raw/sources · m-20260928-k2 · crawler</div>
+                <div class="mn-body">Without cookies the comment endpoint returns 412 after the first page.</div>
+              </div>
+              <div class="mem-note" data-tags="platform sentiment">
+                <div class="mn-title">Weibo counts are platform-reported</div>
+                <div class="mn-meta">Wiki/concepts · m-20260914-c7 · sentiment</div>
+                <div class="mn-body">Do not sum reposts and comments as one number; they overlap.</div>
+              </div>
+            </div>
+
+            <!-- 04 schedule -->
+            <div class="bscene" data-scene="schedule">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-schedule</h3>
+                  <p class="bsub" data-en="Manages scheduled tasks and recurring runs: list them, switch them on, run one now." data-zh="管理定时任务与重复运行：列出来、开关、立刻跑一次。">Manages scheduled tasks and recurring runs: list them, switch them on, run one now.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-schedule.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="sched-row">
+                <div><div class="s-name">Morning sentiment brief</div><div class="s-cron">0 9 * * * · sentiment</div></div>
+                <span class="switch on" role="switch" aria-checked="true" tabindex="0"></span>
+                <span class="s-state ok">ready</span>
+              </div>
+              <div class="sched-row">
+                <div><div class="s-name">Crawler health check</div><div class="s-cron">*/30 * * * * · crawler</div></div>
+                <span class="switch on" role="switch" aria-checked="true" tabindex="0"></span>
+                <span class="s-state ok">ready</span>
+              </div>
+              <div class="sched-row">
+                <div><div class="s-name">Weekly memory health pass</div><div class="s-cron">0 20 * * 0 · maestra</div></div>
+                <span class="switch" role="switch" aria-checked="false" tabindex="0"></span>
+                <span class="s-state">paused</span>
+              </div>
+              <div class="d-row">
+                <button class="d-btn primary sched-run" type="button">Run the next one now</button>
+                <span class="d-spacer"></span>
+                <span class="d-mono sched-next">next · in 2h 41m</span>
+              </div>
+            </div>
+
+            <!-- 05 harness -->
+            <div class="bscene" data-scene="harness">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-harness</h3>
+                  <p class="bsub" data-en="Asks Claude Code, Codex or DeepSeek as consultants — three opinions, one thread, the main agent still decides." data-zh="把 Claude Code、Codex、DeepSeek 当顾问来问——三个意见，一条主对话，最后由主智能体决定。">Asks Claude Code, Codex or DeepSeek as consultants — three opinions, one thread, the main agent still decides.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-harness.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="cons-grid">
+                <div class="cons">
+                  <div class="cons-head"><b>claude-code</b><span class="c-dot"></span></div>
+                  <div class="c-role">consultant · read-only</div>
+                  <div class="c-ans">Cache the parse, not the render. The parse is the expensive half.</div>
+                </div>
+                <div class="cons">
+                  <div class="cons-head"><b>codex</b><span class="c-dot"></span></div>
+                  <div class="c-role">consultant · read-only</div>
+                  <div class="c-ans">Agrees on caching, but the invalidation key is wrong — it ignores locale.</div>
+                </div>
+                <div class="cons">
+                  <div class="cons-head"><b>deepseek</b><span class="c-dot"></span></div>
+                  <div class="c-role">consultant · read-only</div>
+                  <div class="c-ans">Two objections is a signal. Measure first; the cache may not be the bottleneck.</div>
+                </div>
+              </div>
+              <div class="d-row">
+                <button class="d-btn primary cons-ask" type="button">Ask all three</button>
+                <span class="d-spacer"></span>
+                <span class="cons-foot"></span>
+              </div>
+            </div>
+
+            <!-- 06 cua -->
+            <div class="bscene" data-scene="cua">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-cua</h3>
+                  <p class="bsub" data-en="Desktop computer use through @trycua/cua-driver — move, click, type, then look at the screen to check." data-zh="通过 @trycua/cua-driver 操作桌面——移动、点击、输入，再截一张屏确认。">Desktop computer use through @trycua/cua-driver — move, click, type, then look at the screen to check.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-cua.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="desktop">
+                <div class="dt-menubar"><b>Finder</b><span>File</span><span>Edit</span><span>View</span><span>Go</span></div>
+                <div class="dt-icons">
+                  <button class="dt-icon" type="button" data-app="Finder"><img src="img/cua/finder.png" alt=""><span>Finder</span></button>
+                  <button class="dt-icon" type="button" data-app="Settings"><img src="img/cua/settings.png" alt=""><span>Settings</span></button>
+                  <button class="dt-icon" type="button" data-app="Quanta"><img src="img/cua/quanta.png" alt=""><span>Quanta</span></button>
+                  <button class="dt-icon" type="button" data-app="Weather"><img src="img/cua/weather.png" alt=""><span>Weather</span></button>
+                </div>
+                <div class="dt-window">
+                  <div class="w-bar w-title">Settings — 3 rows</div>
+                  <div class="w-row">Appearance<em>Auto</em></div>
+                  <div class="w-row">Memory<em>84 notes</em></div>
+                  <div class="w-row">Voice<em>Rhema</em></div>
+                </div>
+                <span class="dt-cursor"></span>
+                <div class="dt-dock"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <div class="d-row">
+                <span class="d-mono">click an icon — the driver takes it from there</span>
+                <span class="d-spacer"></span>
+                <span class="cua-note"></span>
+              </div>
+            </div>
+
+            <!-- 07 screen -->
+            <div class="bscene" data-scene="screen">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-screen</h3>
+                  <p class="bsub" data-en="Screenshot-only fallback when the CUA driver is unavailable: capture, crop, hand the image to the model." data-zh="CUA 驱动不可用时的「只截屏」退路：截下来、裁一块、把图交给模型。">Screenshot-only fallback when the CUA driver is unavailable: capture, crop, hand the image to the model.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-screen.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="screen-area">
+                <div class="sa-bar"><i style="width:22%"></i><i style="width:14%"></i><i style="width:30%"></i><i style="width:10%"></i></div>
+                <div class="sa-grid">
+                  <div class="sa-card"></div>
+                  <div class="sa-card tall"></div>
+                  <div class="sa-card"></div>
+                  <div class="sa-card"></div>
+                  <div class="sa-card"></div>
+                </div>
+                <div class="screen-flash"></div>
+                <div class="marquee on" data-size="720 × 420" style="left:14px; top:52px; width:56%; height:46%;"></div>
+              </div>
+              <div class="d-row">
+                <button class="d-btn primary scr-shot" type="button">Capture the window</button>
+                <span class="d-spacer"></span>
+                <span class="scr-note">no driver · screenshot only</span>
+              </div>
+            </div>
+
+            <!-- 08 materials -->
+            <div class="bscene" data-scene="materials">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-materials</h3>
+                  <p class="bsub" data-en="Lists and reads the project materials, then runs the jev judgments over whichever files you pick." data-zh="列出并读取项目材料，然后对你挑中的文件跑一遍 jev 判断。">Lists and reads the project materials, then runs the jev judgments over whichever files you pick.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-materials.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="files">
+                <button class="file-row" type="button"><span class="f-ext">PDF</span><span class="f-name">chapter-3-method.pdf</span><span class="f-mark"></span></button>
+                <button class="file-row" type="button"><span class="f-ext">XLSX</span><span class="f-name">survey-2026-09.xlsx</span><span class="f-mark"></span></button>
+                <button class="file-row" type="button"><span class="f-ext">MD</span><span class="f-name">interview-notes.md</span><span class="f-mark"></span></button>
+                <button class="file-row" type="button"><span class="f-ext">PNG</span><span class="f-name">figure-3.png</span><span class="f-mark"></span></button>
+              </div>
+              <div class="d-row">
+                <button class="d-btn primary jev-run" type="button">Run judgments</button>
+                <span class="d-spacer"></span>
+                <div class="jev">
+                  <span>jev · coverage ok</span>
+                  <span>evidence · 2 sources</span>
+                  <span>context · ch. 3</span>
+                  <span>gap · none</span>
+                </div>
+              </div>
+              <div class="bench-tagline">list · read · judge — the files stay where they are</div>
+            </div>
+
+            <!-- 09 pages -->
+            <div class="bscene" data-scene="pages">
+              <div class="bscene-head">
+                <div>
+                  <h3>quanta-pages</h3>
+                  <p class="bsub" data-en="Reads the outputs of the other Quanta pages, so a turn on one page can use what another page just produced." data-zh="读别的 Quanta 页面产出的结果——于是这一页的一轮对话，能用上另一页刚做出来的东西。">Reads the outputs of the other Quanta pages, so a turn on one page can use what another page just produced.</p>
+                </div>
+                <a class="xdl bdl" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-pages.zip" target="_blank" rel="noreferrer noopener"><span data-en="Download" data-zh="下载">Download</span></a>
+              </div>
+              <div class="page-tabs">
+                <button class="page-tab on" type="button" data-pp="maestro">Maestro</button>
+                <button class="page-tab" type="button" data-pp="analyse">Analyse</button>
+                <button class="page-tab" type="button" data-pp="crawler">Crawler</button>
+                <button class="page-tab" type="button" data-pp="sentiment">Sentiment</button>
+              </div>
+              <div class="page-preview" data-pp="maestro">
+                <h4>Export plan, drafted</h4>
+                <div class="pp-meta">maestro · today 09:14 · 1.2k words</div>
+                <p>Three steps, one owner each. Step two blocked on the API key; the crawler page already has a token that can be reused.</p>
+                <div class="pp-line"></div>
+                <div class="pp-line short"></div>
+              </div>
+              <div class="page-preview" data-pp="analyse" hidden>
+                <h4>Failure clustering — Sep</h4>
+                <div class="pp-meta">analyse · yesterday 21:40 · 4 clusters</div>
+                <p>Timeouts cluster around two hosts. The third cluster is a cookie wall, not a network fault.</p>
+                <div class="pp-line"></div>
+                <div class="pp-line short"></div>
+              </div>
+              <div class="page-preview" data-pp="crawler" hidden>
+                <h4>Run log · 128 new</h4>
+                <div class="pp-meta">crawler · yesterday 23:58 · partial</div>
+                <p>Two platforms complete, Bilibili stopped at page 3 with 412. Cookies are still valid until Friday.</p>
+                <div class="pp-line"></div>
+                <div class="pp-line short"></div>
+              </div>
+              <div class="page-preview" data-pp="sentiment" hidden>
+                <h4>Negative share, week 41</h4>
+                <div class="pp-meta">sentiment · today 07:00 · 11%</div>
+                <p>Down from 18%. Most of the drop is one thread cooling off, not a change in tone.</p>
+                <div class="pp-line"></div>
+                <div class="pp-line short"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE NINE -->
+  <section class="case-section" id="nine">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="One by one" data-zh="一个个说">One by one</span>
+        <h2 class="display" data-en="Nine entries, each with its own argument." data-zh="九件，<br>各自有各自的道理。">Nine entries, each with its own argument.</h2>
+        <p data-en="The bench above is for poking. Below, each server is on its own: what it does, what it will not do, and the zip." data-zh="上面那张台子是拿来乱点的。下面把九个分开讲：它做什么、它不做什么，以及那一个 zip。">The bench above is for poking. Below, each server is on its own: what it does, what it will not do, and the zip.</p>
+      </div>
+
+      <nav class="qindex" aria-label="The nine servers" data-reveal>
+                <a href="#mcp-ask"><em>01</em>quanta-ask<span data-en="question → card" data-zh="提问 → 卡片">question → card</span></a>
+        <a href="#mcp-browser"><em>02</em>quanta-browser<span data-en="tab → text" data-zh="标签页 → 正文">tab → text</span></a>
+        <a href="#mcp-memory"><em>03</em>quanta-memory<span data-en="notes → recall" data-zh="笔记 → 回忆">notes → recall</span></a>
+        <a href="#mcp-schedule"><em>04</em>quanta-schedule<span data-en="cron → runs" data-zh="日程 → 运行">cron → runs</span></a>
+        <a href="#mcp-harness"><em>05</em>quanta-harness<span data-en="question → opinions" data-zh="问题 → 意见">question → opinions</span></a>
+        <a href="#mcp-cua"><em>06</em>quanta-cua<span data-en="pointer → screen" data-zh="指针 → 屏幕">pointer → screen</span></a>
+        <a href="#mcp-screen"><em>07</em>quanta-screen<span data-en="pixels → model" data-zh="像素 → 模型">pixels → model</span></a>
+        <a href="#mcp-materials"><em>08</em>quanta-materials<span data-en="files → judgment" data-zh="文件 → 判断">files → judgment</span></a>
+        <a href="#mcp-pages"><em>09</em>quanta-pages<span data-en="output → next turn" data-zh="产出 → 下一轮">output → next turn</span></a>
+      </nav>
+
+      <div class="xentries">
+        <article class="xentry" id="mcp-ask" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-01</em><span class="xname">quanta-ask</span></div>
+            <h3 data-en="When the answer is not in the model." data-zh="答案不在模型里的时候。">When the answer is not in the model.</h3>
+            <p data-en="Some decisions are not the agent’s to make: which folder, which account, which of two nearly identical files. quanta-ask turns that moment into a card in the window — a few options, one choice — and holds the turn until a person answers." data-zh="有些决定不该由助手来做：放哪个文件夹、用哪个账号、两个几乎一样的文件挑哪一个。quanta-ask 把这一刻变成窗口里的一张卡片——几个选项，一次选择——然后停住，等人回答。">Some decisions are not the agent’s to make: which folder, which account, which of two nearly identical files. quanta-ask turns that moment into a card in the window — a few options, one choice — and holds the turn until a person answers.</p>
+            <ul class="xspecs">
+              <li><b data-en="The turn waits" data-zh="一轮会停住">The turn waits</b> <span data-en="No default, no guess, no answering its own question. The tool returns when the card does." data-zh="没有默认值、没有猜、也没有自问自答。卡片有了结果，工具才返回。">No default, no guess, no answering its own question. The tool returns when the card does.</span></li>
+              <li><b data-en="Selection, not free text" data-zh="是选择，不是自由输入">Selection, not free text</b> <span data-en="Options come from the caller, so the answer is always something the code can act on." data-zh="选项由调用方给出，所以答案总是代码能执行的那一种。">Options come from the caller, so the answer is always something the code can act on.</span></li>
+              <li><b data-en="It stays in the transcript" data-zh="它留在对话里">It stays in the transcript</b> <span data-en="Question and answer remain in the thread, where the next turn can read them." data-zh="问题和答案都留在会话里，下一轮还能读到。">Question and answer remain in the thread, where the next turn can read them.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-ask.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-ask.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-ask · two endings to one turn</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="guess">guess</button>
+              <button class="d-chip tab" type="button" data-tab="ask">ask</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="guess">
+                <div class="d-note"><b>assumed</b> — saved to ~/Downloads/quanta-export, because that folder was used last time.</div><div class="d-row"><span class="status-pill live">wrong folder</span><span class="d-mono">nobody was asked</span></div>
+              </div>
+              <div class="tpanel" data-panel="ask">
+                <div class="ask-card"><div class="ask-q"><b>ASK</b>Where should the export go?</div><div class="ask-opt on"><i></i>~/Desktop/quanta-export</div><div class="ask-opt"><i></i>~/Documents/exports/2026-10</div><div class="ask-opt"><i></i>the working folder</div></div><div class="d-mono">answer · ~/Desktop/quanta-export</div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Two ways to end the same turn. The first guesses and is sometimes wrong; the second waits and is occasionally slow." data-zh="同一轮对话的两种收尾。第一种靠猜，偶尔猜错；第二种会等，偶尔慢一点。">Two ways to end the same turn. The first guesses and is sometimes wrong; the second waits and is occasionally slow.</figcaption>
+          </figure>
+        </article>
+        <article class="xentry flip" id="mcp-browser" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-02</em><span class="xname">quanta-browser</span></div>
+            <h3 data-en="A tab the agent can actually see." data-zh="一个助手真能看见的标签页。">A tab the agent can actually see.</h3>
+            <p data-en="Quanta’s browser is a real tab inside the window, not a headless browser in a container. quanta-browser drives that tab — open a URL, click a link, read the page — and what it read stays on screen where you can check it." data-zh="Quanta 的浏览器是窗口里一个真实的标签页，不是容器里的无头浏览器。quanta-browser 操作的就是它——打开网址、点链接、读页面——读到的东西留在屏幕上，你可以自己核对。">Quanta’s browser is a real tab inside the window, not a headless browser in a container. quanta-browser drives that tab — open a URL, click a link, read the page — and what it read stays on screen where you can check it.</p>
+            <ul class="xspecs">
+              <li><b data-en="The tab you can see" data-zh="你看得见的标签页">The tab you can see</b> <span data-en="No second, invisible browser with its own cookies and its own version of the page." data-zh="没有第二个看不见的浏览器，带着它自己的 cookie 和它自己那一版页面。">No second, invisible browser with its own cookies and its own version of the page.</span></li>
+              <li><b data-en="Read, then quote" data-zh="先读，再引用">Read, then quote</b> <span data-en="The text comes back as content, so an answer can point at what is on screen." data-zh="正文作为内容返回，于是答案能指着屏幕上的东西说话。">The text comes back as content, so an answer can point at what is on screen.</span></li>
+              <li><b data-en="Closing ends it" data-zh="关掉就结束">Closing ends it</b> <span data-en="No background automation is left running after the turn." data-zh="这一轮结束后，没有后台自动化还留在那里跑。">No background automation is left running after the turn.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-browser.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-browser.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-browser · what comes back</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="news">news</button>
+              <button class="d-chip tab" type="button" data-tab="docs">docs</button>
+              <button class="d-chip tab" type="button" data-tab="shop">shop</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="news">
+                <div class="mini-browser">
+                  <div class="mb-bar"><span class="mb-url">https://news.ycombinator.com</span><span class="d-mono">tab</span></div>
+                  <div class="mb-page">
+                    <div class="mb-site">Hacker News</div>
+                    <div class="mb-row is-hit"><em>1</em><span>Show HN: a tiny MCP server for my desk lamp</span><em>412</em></div><div class="mb-row"><em>2</em><span>Why text editors still matter</span><em>286</em></div>
+                  </div>
+                </div>
+                <div class="d-mono">read · 3 paragraphs · 41 links</div>
+              </div>
+              <div class="tpanel" data-panel="docs">
+                <div class="mini-browser">
+                  <div class="mb-bar"><span class="mb-url">https://developer.mozilla.org/…/Canvas_API</span><span class="d-mono">tab</span></div>
+                  <div class="mb-page">
+                    <div class="mb-site">Canvas API</div>
+                    <div class="mb-row is-hit"><em>·</em><span>getContext() returns a drawing context</span><em>9.1k</em></div><div class="mb-row"><em>·</em><span>toDataURL() exports the bitmap</span><em>4.2k</em></div>
+                  </div>
+                </div>
+                <div class="d-mono">read · 6 paragraphs · 12 links</div>
+              </div>
+              <div class="tpanel" data-panel="shop">
+                <div class="mini-browser">
+                  <div class="mb-bar"><span class="mb-url">https://store.example/item/12</span><span class="d-mono">tab</span></div>
+                  <div class="mb-page">
+                    <div class="mb-site">Some store</div>
+                    <div class="mb-row is-hit"><em>·</em><span>Price</span><em>¥ 219</em></div><div class="mb-row"><em>·</em><span>Ships from</span><em>Nanjing</em></div>
+                  </div>
+                </div>
+                <div class="d-mono">read · 2 paragraphs · 7 links</div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Three tabs, three kinds of page. What differs is what comes back: text, links, and how much of it was worth quoting." data-zh="三个标签页，三种页面。不一样的是回来的东西：正文、链接，以及有多少值得引用。">Three tabs, three kinds of page. What differs is what comes back: text, links, and how much of it was worth quoting.</figcaption>
+          </figure>
+        </article>
+        <article class="xentry" id="mcp-memory" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-03</em><span class="xname">quanta-memory</span></div>
+            <h3 data-en="Remembering is a file operation." data-zh="记住，是一次文件操作。">Remembering is a file operation.</h3>
+            <p data-en="The memory store is a folder of Markdown notes with frontmatter, filed by area. quanta-memory is how a turn touches it: save a note, search by meaning, read one back, link two together, list what is there." data-zh="记忆库是一目录带 frontmatter 的 Markdown 笔记，按区块归档。quanta-memory 就是一轮对话伸手进去的方式：存一条、按意思搜、读回来、把两条连起来、列出有什么。">The memory store is a folder of Markdown notes with frontmatter, filed by area. quanta-memory is how a turn touches it: save a note, search by meaning, read one back, link two together, list what is there.</p>
+            <ul class="xspecs">
+              <li><b data-en="Plain files" data-zh="纯文件">Plain files</b> <span data-en="Every note opens in any editor, and the folder can go into git." data-zh="每条笔记用任何编辑器都能打开，整个目录也能直接进 git。">Every note opens in any editor, and the folder can go into git.</span></li>
+              <li><b data-en="Filed by area" data-zh="按区块归档">Filed by area</b> <span data-en="Notes sit under the page they came from, not in one undifferentiated pile." data-zh="笔记归在它来自的那一页下面，而不是混成一堆。">Notes sit under the page they came from, not in one undifferentiated pile.</span></li>
+              <li><b data-en="Tools, not stuffing" data-zh="靠工具，不靠塞">Tools, not stuffing</b> <span data-en="save · search · read · link · list are calls the agent makes, not context pasted in." data-zh="save · search · read · link · list 是助手发起的调用，不是硬塞进上下文的文本。">save · search · read · link · list are calls the agent makes, not context pasted in.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-memory.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-memory.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-memory · three of the six tools</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="save">save</button>
+              <button class="d-chip tab" type="button" data-tab="search">search</button>
+              <button class="d-chip tab" type="button" data-tab="read">read</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="save">
+                <div class="mem-note hit">
+                  <div class="mn-title">Prefers tables in Chinese</div>
+                  <div class="mn-meta">Wiki/summaries · m-20261020-7f2a · chat</div>
+                  <div class="mn-body">When the answer has more than three fields, use a table; keep the headers Chinese.</div>
+                </div><div class="d-mono">wrote · memory/Wiki/summaries/m-20261020-7f2a.md</div>
+              </div>
+              <div class="tpanel" data-panel="search">
+                <div class="mem-note hit">
+                  <div class="mn-title">Prefers tables in Chinese</div>
+                  <div class="mn-meta">Wiki/summaries · m-20261002-a1b2c3 · chat</div>
+                  <div class="mn-body">When the answer has more than three fields, use a table.</div>
+                </div><div class="mem-note hit">
+                  <div class="mn-title">Crawler needs a login for Bilibili</div>
+                  <div class="mn-meta">Raw/sources · m-20260928-k2 · crawler</div>
+                  <div class="mn-body">Without cookies the comment endpoint returns 412 after the first page.</div>
+                </div><div class="d-mono">2 of 84 · on-device index · ranked by meaning</div>
+              </div>
+              <div class="tpanel" data-panel="read">
+                <div class="mem-note hit">
+                  <div class="mn-title">Crawler needs a login for Bilibili</div>
+                  <div class="mn-meta">Raw/sources · m-20260928-k2 · crawler</div>
+                  <div class="mn-body">Without cookies the comment endpoint returns 412 after the first page.</div>
+                </div><div class="d-mono">links · m-20260914-c7, m-20261002-a1b2c3</div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Save, search, read — three of the six tools. Nothing here is a black box: every result is a file you could have opened yourself." data-zh="存、搜、读——六个工具里的三个。这里没有黑盒：每个结果都是你本来能自己打开的文件。">Save, search, read — three of the six tools. Nothing here is a black box: every result is a file you could have opened yourself.</figcaption>
+          </figure>
+        </article>
+        <article class="xentry flip" id="mcp-schedule" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-04</em><span class="xname">quanta-schedule</span></div>
+            <h3 data-en="Work that happens while the window is closed." data-zh="窗口关着的时候，活照样在跑。">Work that happens while the window is closed.</h3>
+            <p data-en="Scheduled runs are how Quanta keeps working when nobody is watching. quanta-schedule lists them, switches them on and off, and can start one immediately — the same entries that appear on the Scheduled page." data-zh="定时任务是 Quanta 在没人看着时继续干活的方式。quanta-schedule 列出它们、开关它们、也能立刻跑一次——就是 Scheduled 页上那些条目。">Scheduled runs are how Quanta keeps working when nobody is watching. quanta-schedule lists them, switches them on and off, and can start one immediately — the same entries that appear on the Scheduled page.</p>
+            <ul class="xspecs">
+              <li><b data-en="Cron, not alarms" data-zh="是日程，不是闹钟">Cron, not alarms</b> <span data-en="Recurring work is a schedule with an owner, not a one-off reminder." data-zh="重复的活是一条有归属的日程，不是一次性的提醒。">Recurring work is a schedule with an owner, not a one-off reminder.</span></li>
+              <li><b data-en="The same sandbox" data-zh="同一个沙箱">The same sandbox</b> <span data-en="A run gets the tools and the folder the session already had; being unseen widens nothing." data-zh="一次运行拿到的工具和目录，就是这次会话本来就有的；没人看着，权限也不会变大。">A run gets the tools and the folder the session already had; being unseen widens nothing.</span></li>
+              <li><b data-en="A run leaves a record" data-zh="跑完留下记录">A run leaves a record</b> <span data-en="Output lands on the page it belongs to, so the next turn can read it." data-zh="产出落在它所属的那一页上，下一轮就能读到。">Output lands on the page it belongs to, so the next turn can read it.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-schedule.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-schedule.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-schedule · three rhythms</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="daily">daily 09:00</button>
+              <button class="d-chip tab" type="button" data-tab="half">every 30m</button>
+              <button class="d-chip tab" type="button" data-tab="weekly">weekly</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="daily">
+                <div class="sched-row">
+                  <div><div class="s-name">Morning sentiment brief</div><div class="s-cron">0 9 * * * · sentiment</div></div>
+                  <span class="switch on" role="switch" aria-checked="true" tabindex="0"></span>
+                  <span class="s-state ok">ready</span>
+                </div><div class="d-mono">next · tomorrow 09:00 · last run 2h ago</div>
+              </div>
+              <div class="tpanel" data-panel="half">
+                <div class="sched-row">
+                  <div><div class="s-name">Crawler health check</div><div class="s-cron">*/30 * * * * · crawler</div></div>
+                  <span class="switch on" role="switch" aria-checked="true" tabindex="0"></span>
+                  <span class="s-state ok">ready</span>
+                </div><div class="d-mono">next · 14:30 · last run 14:00 · ok</div>
+              </div>
+              <div class="tpanel" data-panel="weekly">
+                <div class="sched-row">
+                  <div><div class="s-name">Memory health pass</div><div class="s-cron">0 20 * * 0 · maestro</div></div>
+                  <span class="switch on" role="switch" aria-checked="true" tabindex="0"></span>
+                  <span class="s-state ok">paused</span>
+                </div><div class="d-mono">next · Sunday 20:00 · 84 notes queued</div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="The schedule is the boring part, and that is the point: three entries, three rhythms, one place to switch them off." data-zh="日程是无聊的那部分，而这正是重点：三个条目、三种节奏、一个地方可以关掉它们。">The schedule is the boring part, and that is the point: three entries, three rhythms, one place to switch them off.</figcaption>
+          </figure>
+        </article>
+        <article class="xentry" id="mcp-harness" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-05</em><span class="xname">quanta-harness</span></div>
+            <h3 data-en="A second opinion, on demand." data-zh="需要的时候，再要一个意见。">A second opinion, on demand.</h3>
+            <p data-en="When a decision is expensive, one model’s opinion is not enough. quanta-harness puts the same question to Claude Code, Codex or DeepSeek as consultants — separate contexts, no edits — and brings their answers back to the main thread, which still decides." data-zh="决定代价高的时候，一个模型的意见不够。quanta-harness 把同一个问题交给 Claude Code、Codex 或 DeepSeek 当顾问——各自独立的上下文，不动手改——再把意见带回主对话，由主对话来决定。">When a decision is expensive, one model’s opinion is not enough. quanta-harness puts the same question to Claude Code, Codex or DeepSeek as consultants — separate contexts, no edits — and brings their answers back to the main thread, which still decides.</p>
+            <ul class="xspecs">
+              <li><b data-en="Consultants, not delegates" data-zh="是顾问，不是下属">Consultants, not delegates</b> <span data-en="They answer the question and return. The plan stays where it was." data-zh="他们回答问题然后回来。计划还在原来的地方。">They answer the question and return. The plan stays where it was.</span></li>
+              <li><b data-en="Separate contexts" data-zh="各自独立的上下文">Separate contexts</b> <span data-en="Each consultant gets the question, not your whole history." data-zh="每个顾问只拿到问题，不附带你的全部历史。">Each consultant gets the question, not your whole history.</span></li>
+              <li><b data-en="Disagreement is the output" data-zh="分歧就是产出">Disagreement is the output</b> <span data-en="Two objections are worth more than three agreements, and the transcript keeps both." data-zh="两句反对比三句同意更值钱，而会话把两边都留着。">Two objections are worth more than three agreements, and the transcript keeps both.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-harness.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-harness.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-harness · ask one, or all three</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="claude">claude-code</button>
+              <button class="d-chip tab" type="button" data-tab="codex">codex</button>
+              <button class="d-chip tab" type="button" data-tab="deepseek">deepseek</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="claude">
+                <div class="cons answered">
+                  <div class="cons-head"><b>claude-code</b><span class="c-dot"></span></div>
+                  <div class="c-role">consultant · read-only</div>
+                  <div class="c-ans">Cache the parse, not the render. The parse is the expensive half.</div>
+                </div><div class="d-mono">1 call · read-only · 38s</div>
+              </div>
+              <div class="tpanel" data-panel="codex">
+                <div class="cons answered">
+                  <div class="cons-head"><b>codex</b><span class="c-dot"></span></div>
+                  <div class="c-role">consultant · read-only</div>
+                  <div class="c-ans">Agrees on caching, but the invalidation key is wrong — it ignores locale.</div>
+                </div><div class="d-mono">1 call · read-only · 51s</div>
+              </div>
+              <div class="tpanel" data-panel="deepseek">
+                <div class="cons answered">
+                  <div class="cons-head"><b>deepseek</b><span class="c-dot"></span></div>
+                  <div class="c-role">consultant · read-only</div>
+                  <div class="c-ans">Two objections is a signal. Measure first; the cache may not be the bottleneck.</div>
+                </div><div class="d-mono">1 call · read-only · 44s</div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="The value is not a vote; it is seeing where the answers stop agreeing, while the plan stays in one pair of hands." data-zh="价值不在投票，而在于看清答案从哪里开始不一致——同时计划始终只在一双手里。">The value is not a vote; it is seeing where the answers stop agreeing, while the plan stays in one pair of hands.</figcaption>
+          </figure>
+        </article>
+        <article class="xentry flip" id="mcp-cua" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-06</em><span class="xname">quanta-cua</span></div>
+            <h3 data-en="Hands on the desktop." data-zh="把手放到桌面上。">Hands on the desktop.</h3>
+            <p data-en="Some work only exists as a desktop app with no API. quanta-cua moves the pointer, clicks, types, and then looks at the screen to see whether it worked — through @trycua/cua-driver, on your machine." data-zh="有些活只存在于一个没有 API 的桌面应用里。quanta-cua 移动指针、点击、输入，然后看一眼屏幕确认有没有成功——通过 @trycua/cua-driver，在你的机器上。">Some work only exists as a desktop app with no API. quanta-cua moves the pointer, clicks, types, and then looks at the screen to see whether it worked — through @trycua/cua-driver, on your machine.</p>
+            <ul class="xspecs">
+              <li><b data-en="Move, click, look" data-zh="移动、点击、看">Move, click, look</b> <span data-en="The loop is not optional: every action is followed by a look at what it did." data-zh="这个循环不能省：每个动作之后都要看一眼它造成了什么。">The loop is not optional: every action is followed by a look at what it did.</span></li>
+              <li><b data-en="Needs a driver" data-zh="要有驱动">Needs a driver</b> <span data-en="@trycua/cua-driver, plus QUANTA_DATA_DIR and QUANTA_CUA_ROOT." data-zh="要 @trycua/cua-driver，还要 QUANTA_DATA_DIR 与 QUANTA_CUA_ROOT。">@trycua/cua-driver, plus QUANTA_DATA_DIR and QUANTA_CUA_ROOT.</span></li>
+              <li><b data-en="Your desktop, your risk" data-zh="你的桌面，你的风险">Your desktop, your risk</b> <span data-en="It can press anything you can press, which is why the permission prompt stays in the way." data-zh="你能按的它都能按，所以那道许可提示一直挡在中间。">It can press anything you can press, which is why the permission prompt stays in the way.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-cua.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-cua.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-cua · one action at a time</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="desktop">
+                <div class="dt-menubar"><b>Finder</b><span>File</span><span>Edit</span><span>View</span></div>
+                <div class="dt-icons">
+                  <span class="dt-icon"><img src="img/cua/finder.png" alt=""><span>Finder</span></span>
+                  <span class="dt-icon"><img src="img/cua/settings.png" alt=""><span>Settings</span></span>
+                  <span class="dt-icon"><img src="img/cua/quanta.png" alt=""><span>Quanta</span></span>
+                  <span class="dt-icon"><img src="img/cua/weather.png" alt=""><span>Weather</span></span>
+                </div>
+                <div class="dt-window">
+                  <div class="w-bar w-title">Settings — 3 rows</div>
+                  <div class="w-row">Appearance<em>Auto</em></div>
+                  <div class="w-row">Memory<em>84 notes</em></div>
+                  <div class="w-row">Voice<em>Rhema</em></div>
+                </div>
+                <span class="dt-cursor"></span>
+              </div>
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="move">move</button>
+              <button class="d-chip tab" type="button" data-tab="click">click</button>
+              <button class="d-chip tab" type="button" data-tab="look">look</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="move">
+                <div class="d-mono">pointer → (412, 286)</div><div class="d-note">No click yet. The move is its own step, so a hover menu can open first.</div>
+              </div>
+              <div class="tpanel" data-panel="click">
+                <div class="d-mono">click · left · Settings</div><div class="d-note">One press, then a look — before the next press, not after the next three.</div>
+              </div>
+              <div class="tpanel" data-panel="look">
+                <div class="d-mono">screenshot · window matched · 1440×900</div><div class="d-note">The window on screen is the receipt: same title, same three rows.</div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Three states of one loop, drawn around the same desktop. The screenshot at the end is the only proof the click worked." data-zh="同一个循环的三个状态，都落在这张桌面上。最后那张截图，是这次点击有没有生效的唯一证据。">Three states of one loop, drawn around the same desktop. The screenshot at the end is the only proof the click worked.</figcaption>
+          </figure>
+        </article>
+        <article class="xentry" id="mcp-screen" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-07</em><span class="xname">quanta-screen</span></div>
+            <h3 data-en="When it can only look, not touch." data-zh="只能看、不能动的时候。">When it can only look, not touch.</h3>
+            <p data-en="When the driver is missing — another machine, a locked-down system — quanta-screen is the smaller promise: take a screenshot, crop what matters, and hand the image to the model. Look, but do not touch." data-zh="驱动不在的时候——换一台机器、系统被锁得很紧——quanta-screen 是那个更小的承诺：截一张图、裁出要紧的一块、把图交给模型。只看，不动手。">When the driver is missing — another machine, a locked-down system — quanta-screen is the smaller promise: take a screenshot, crop what matters, and hand the image to the model. Look, but do not touch.</p>
+            <ul class="xspecs">
+              <li><b data-en="Fallback by design" data-zh="生来就是退路">Fallback by design</b> <span data-en="It exists so a machine without the driver still has eyes." data-zh="它存在，是为了让一台没有驱动的机器也还有眼睛。">It exists so a machine without the driver still has eyes.</span></li>
+              <li><b data-en="Crop before sending" data-zh="先裁再发">Crop before sending</b> <span data-en="A window crop is smaller and more legible than a whole desktop." data-zh="裁出来的窗口比整块桌面更小，也更好读。">A window crop is smaller and more legible than a whole desktop.</span></li>
+              <li><b data-en="No input" data-zh="不能输入">No input</b> <span data-en="A screenshot cannot click. If the task needs a click, it needs cua." data-zh="截图点不了东西。需要点击的活，得交给 cua。">A screenshot cannot click. If the task needs a click, it needs cua.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-screen.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-screen.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-screen · one capture, three crops</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="screen-area">
+                <div class="sa-bar"><i style="width:22%"></i><i style="width:14%"></i><i style="width:30%"></i><i style="width:10%"></i></div>
+                <div class="sa-grid">
+                  <div class="sa-card"></div>
+                  <div class="sa-card tall"></div>
+                  <div class="sa-card"></div>
+                  <div class="sa-card"></div>
+                  <div class="sa-card"></div>
+                </div>
+                <div class="screen-flash"></div>
+                <div class="marquee"></div>
+              </div>
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="full">full screen</button>
+              <button class="d-chip tab" type="button" data-tab="window">window</button>
+              <button class="d-chip tab" type="button" data-tab="crop">crop</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="full">
+                <div class="d-mono">full screen · 1440×900 · 386 KB</div><div class="d-note">Everything, including the parts that were never going to matter.</div>
+              </div>
+              <div class="tpanel" data-panel="window">
+                <div class="d-mono">window crop · 720×420 · 96 KB</div><div class="d-note">One app, its title bar, and the three rows that actually changed.</div>
+              </div>
+              <div class="tpanel" data-panel="crop">
+                <div class="d-mono">crop · 512×288 · 41 KB</div><div class="d-note">Just the field that failed, at a size a model can read without guessing.</div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Same screen, three crops. Sending less is often the difference between a model that reads the window and one that guesses." data-zh="同一块屏幕，三种裁法。少发一点，往往就是一个模型真读懂了窗口、还是只在猜的分界线。">Same screen, three crops. Sending less is often the difference between a model that reads the window and one that guesses.</figcaption>
+          </figure>
+        </article>
+        <article class="xentry flip" id="mcp-materials" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-08</em><span class="xname">quanta-materials</span></div>
+            <h3 data-en="The files are the evidence." data-zh="文件本身就是证据。">The files are the evidence.</h3>
+            <p data-en="A project’s materials — PDFs, spreadsheets, notes, figures — are read through this server, then judged: does this cover the claim, is there evidence, does the context hold. The files stay where they are." data-zh="项目材料——PDF、表格、笔记、图——由这个服务读取，再接受判断：覆盖了这个说法吗、有证据吗、上下文成立吗。文件留在原地。">A project’s materials — PDFs, spreadsheets, notes, figures — are read through this server, then judged: does this cover the claim, is there evidence, does the context hold. The files stay where they are.</p>
+            <ul class="xspecs">
+              <li><b data-en="List and read" data-zh="列表与读取">List and read</b> <span data-en="No import step and no copy into a database; the folder is the source." data-zh="没有导入步骤，也不复制进数据库；目录本身就是源。">No import step and no copy into a database; the folder is the source.</span></li>
+              <li><b data-en="Judgments, not summaries" data-zh="是判断，不是摘要">Judgments, not summaries</b> <span data-en="jev judgments ask whether the material supports something, not what it says." data-zh="jev 判断问的是「这份材料支持那件事吗」，而不是「它说了什么」。">jev judgments ask whether the material supports something, not what it says.</span></li>
+              <li><b data-en="Page-scoped" data-zh="按页归属">Page-scoped</b> <span data-en="Materials belong to a project, and the judgments are about that project’s claims." data-zh="材料属于某个项目，判断也是针对那个项目的说法。">Materials belong to a project, and the judgments are about that project’s claims.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-materials.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-materials.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-materials · four files, four verdicts</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="chapter">chapter-3</button>
+              <button class="d-chip tab" type="button" data-tab="survey">survey</button>
+              <button class="d-chip tab" type="button" data-tab="notes">notes</button>
+              <button class="d-chip tab" type="button" data-tab="figure">figure</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="chapter">
+                <div class="file-row on"><span class="f-ext">PDF</span><span class="f-name">chapter-3-method.pdf</span><span class="f-mark">selected</span></div>
+                <div class="d-note">p. 41 — the sample was recruited through two channels, and the second one is not described.</div>
+                <div class="jev"><span class="on pass">coverage ok</span><span class="on">evidence · 2 sources</span><span class="on">context · ch. 3</span></div>
+              </div>
+              <div class="tpanel" data-panel="survey">
+                <div class="file-row on"><span class="f-ext">XLSX</span><span class="f-name">survey-2026-09.xlsx</span><span class="f-mark">selected</span></div>
+                <div class="d-note">1,204 rows · 26 columns · three columns are 61% empty.</div>
+                <div class="jev"><span class="on pass">coverage ok</span><span class="on">evidence · 1 source</span><span class="on">context · appendix</span></div>
+              </div>
+              <div class="tpanel" data-panel="notes">
+                <div class="file-row on"><span class="f-ext">MD</span><span class="f-name">interview-notes.md</span><span class="f-mark">selected</span></div>
+                <div class="d-note">Four interviews; the quotations match the transcripts, the summary does not.</div>
+                <div class="jev"><span class="on">gap · summary only</span><span class="on">evidence · quotes</span><span class="on">context · p. 2</span></div>
+              </div>
+              <div class="tpanel" data-panel="figure">
+                <div class="file-row on"><span class="f-ext">PNG</span><span class="f-name">figure-3.png</span><span class="f-mark">selected</span></div>
+                <div class="d-note">No caption file. The axis label says n = 1,204, the text says 1,024.</div>
+                <div class="jev"><span class="on">gap · caption missing</span><span class="on">evidence · image</span><span class="on">context · ch. 5</span></div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="The judgment is the useful part; the summary you could write yourself. Each verdict points back at a page or a row." data-zh="有用的是那个判断；摘要你自己也能写。每条结论都指回某一页、某一行。">The judgment is the useful part; the summary you could write yourself. Each verdict points back at a page or a row.</figcaption>
+          </figure>
+        </article>
+        <article class="xentry" id="mcp-pages" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>MCP-09</em><span class="xname">quanta-pages</span></div>
+            <h3 data-en="One page reads another." data-zh="一页读另一页。">One page reads another.</h3>
+            <p data-en="Each page in Quanta produces something: a plan, a chart, a crawl log, a sentiment read. quanta-pages lets a turn read what another page produced, so work done in one room can be used in the next." data-zh="Quanta 每一页都会产出东西：一份计划、一张图、一份爬取日志、一次舆情判断。quanta-pages 让一轮对话读到另一页做出来的结果，于是这间房里做的活能在下一间用上。">Each page in Quanta produces something: a plan, a chart, a crawl log, a sentiment read. quanta-pages lets a turn read what another page produced, so work done in one room can be used in the next.</p>
+            <ul class="xspecs">
+              <li><b data-en="Read, not drive" data-zh="只读，不操作">Read, not drive</b> <span data-en="It reads another page’s output; the page that produced it stays in charge of it." data-zh="它只读另一页的产出；做出这份产出的那一页仍然归它自己管。">It reads another page’s output; the page that produced it stays in charge of it.</span></li>
+              <li><b data-en="Outputs are dated" data-zh="产出带时间">Outputs are dated</b> <span data-en="An output knows when it was written, which is how a turn tells fresh from stale." data-zh="产出知道自己是什么时候写的，一轮对话靠这个分清新旧。">An output knows when it was written, which is how a turn tells fresh from stale.</span></li>
+              <li><b data-en="One working folder" data-zh="同一个工作目录">One working folder</b> <span data-en="Pages share files, so reading an output is not a copy of it." data-zh="页面共用文件，所以读一份产出不是复制它。">Pages share files, so reading an output is not a copy of it.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/quanta-pages.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">quanta-pages.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo xdemo" data-tabs>
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">quanta-pages · four rooms</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-chiprow">
+              <button class="d-chip tab on" type="button" data-tab="maestro">maestro</button>
+              <button class="d-chip tab" type="button" data-tab="analyse">analyse</button>
+              <button class="d-chip tab" type="button" data-tab="crawler">crawler</button>
+              <button class="d-chip tab" type="button" data-tab="sentiment">sentiment</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tpanel on" data-panel="maestro">
+                <div class="page-preview">
+                  <h4>Export plan, drafted</h4>
+                  <div class="pp-meta">maestro · today 09:14 · 1.2k words</div>
+                  <p>Three steps, one owner each. Step two is blocked on the API key; the crawler page already has a token that can be reused.</p>
+                  <div class="pp-line"></div>
+                  <div class="pp-line short"></div>
+                </div>
+              </div>
+              <div class="tpanel" data-panel="analyse">
+                <div class="page-preview">
+                  <h4>Failure clustering — Sep</h4>
+                  <div class="pp-meta">analyse · yesterday 21:40 · 4 clusters</div>
+                  <p>Timeouts cluster around two hosts. The third cluster is a cookie wall, not a network fault.</p>
+                  <div class="pp-line"></div>
+                  <div class="pp-line short"></div>
+                </div>
+              </div>
+              <div class="tpanel" data-panel="crawler">
+                <div class="page-preview">
+                  <h4>Run log · 128 new</h4>
+                  <div class="pp-meta">crawler · yesterday 23:58 · partial</div>
+                  <p>Two platforms complete, Bilibili stopped at page 3 with 412. Cookies are valid until Friday.</p>
+                  <div class="pp-line"></div>
+                  <div class="pp-line short"></div>
+                </div>
+              </div>
+              <div class="tpanel" data-panel="sentiment">
+                <div class="page-preview">
+                  <h4>Negative share, week 41</h4>
+                  <div class="pp-meta">sentiment · today 07:00 · 11%</div>
+                  <p>Down from 18%. Most of the drop is one thread cooling off, not a change in tone.</p>
+                  <div class="pp-line"></div>
+                  <div class="pp-line short"></div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Four pages, four outputs. The last turn in a project can read every room it has already been in." data-zh="四页，四种产出。项目里的最后一轮，可以读到它已经去过的每一间房。">Four pages, four outputs. The last turn in a project can read every room it has already been in.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW THEY RUN -->
+  <section class="case-section" id="running">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Running" data-zh="运行">Running</span>
+        <h2 class="display" data-en="Started per session, spoken to in lines." data-zh="每次会话启动，<br>用行对话。">Started per session, spoken to in lines.</h2>
+        <p data-en="Quanta spawns a server, sends JSON on stdin, reads JSON on stdout. There is no port, no handshake to configure and nothing left running after the session ends." data-zh="Quanta 拉起一个服务，往 stdin 写 JSON，从 stdout 读 JSON。没有端口、没有要配的握手，会话结束后也不留任何东西在跑。">Quanta spawns a server, sends JSON on stdin, reads JSON on stdout. There is no port, no handshake to configure and nothing left running after the session ends.</p>
+      </div>
+      <div class="arch" data-reveal>
+        <div class="arch-grid">
+          <div class="arch-col">
+            <div class="col-head"><span data-en="The turn" data-zh="这一轮">The turn</span><span>agent</span></div>
+            <div class="arch-node hot"><b data-en="Tool call" data-zh="工具调用">Tool call</b><span data-en="name · arguments" data-zh="名字 · 参数">name · arguments</span></div>
+            <div class="arch-node"><b data-en="Permission" data-zh="许可">Permission</b><span data-en="asked in the window" data-zh="在窗口里问">asked in the window</span></div>
+            <div class="arch-node"><b data-en="Result" data-zh="结果">Result</b><span data-en="text · image · json" data-zh="文本 · 图片 · JSON">text · image · json</span></div>
+          </div>
+          <div class="arch-arrow"><span>stdio</span></div>
+          <div class="arch-col">
+            <div class="col-head"><span data-en="One line" data-zh="一行">One line</span><span>json-rpc</span></div>
+            <div class="arch-node"><b>stdin</b><span>{"jsonrpc":"2.0"}</span></div>
+            <div class="arch-node hot"><b>stdout</b><span data-en="JSON only — no prints" data-zh="只放 JSON——不许 print">JSON only — no prints</span></div>
+            <div class="arch-node"><b>stderr</b><span data-en="logs, freely" data-zh="日志随便写">logs, freely</span></div>
+          </div>
+          <div class="arch-arrow"><span>spawn</span></div>
+          <div class="arch-col">
+            <div class="col-head">Python <span>3.10+</span></div>
+            <div class="arch-node"><b>ask_tools.py</b><span data-en="one file per server" data-zh="每个服务一个文件">one file per server</span></div>
+            <div class="arch-node"><b data-en="Quanta config" data-zh="Quanta 配置">Quanta config</b><span data-en="data dir · paths" data-zh="数据目录 · 路径">data dir · paths</span></div>
+            <div class="arch-node"><b>QUANTA_DATA_DIR</b><span data-en="cua also wants CUA_ROOT" data-zh="cua 还要 CUA_ROOT">cua also wants CUA_ROOT</span></div>
+          </div>
+        </div>
+        <div class="arch-foot">
+          <p><b data-en="Nothing to install" data-zh="无需安装">Nothing to install</b><span data-en="Standard library only, except the CUA driver. No pip install for the rest." data-zh="除了 CUA 驱动，都只用标准库。其余不用 pip install。">Standard library only, except the CUA driver.</span></p>
+          <p><b data-en="One process each" data-zh="一个服务一个进程">One process each</b><span data-en="A crashing server takes down its own tool list, not the turn." data-zh="一个服务崩了，崩的是它自己的工具清单，不是这一轮对话。">A crashing server takes down its own tool list, not the turn.</span></p>
+          <p><b data-en="Same files as the window" data-zh="和窗口同一份文件">Same files as the window</b><span data-en="Memory, schedules and page outputs are read from the app's data directory." data-zh="记忆、日程、页面产出，都从应用的数据目录读。">Memory, schedules and page outputs are read from the app's data directory.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="case-section" id="install">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Install" data-zh="安装">Install</span>
+        <h2 class="display" data-en="Unzip beside the app, register, done." data-zh="解压到应用旁边，<br>登记，完事。">Unzip beside the app, register, done.</h2>
+      </div>
+      <div class="xinstall" data-reveal>
+        <ol class="xsteps">
+          <li><em>01</em><span><b data-en="Unzip into the mcp folder." data-zh="解压到 mcp 目录。">Unzip into the mcp folder.</b> <span data-en="One folder per server, next to the Quanta checkout — the imports expect the app's config module." data-zh="一个服务一个文件夹，放在 Quanta 源码旁边——它们 import 的是应用的 config 模块。">One folder per server, next to the Quanta checkout — the imports expect the app's config module.</span></span></li>
+          <li><em>02</em><span><b data-en="Run it once by hand." data-zh="先手动跑一次。">Run it once by hand.</b> <span data-en="python3 ask_tools.py. If it starts and waits on stdin, the pipe is fine." data-zh="python3 ask_tools.py。能起来并停在 stdin 上等，管道就是通的。">python3 ask_tools.py. If it starts and waits on stdin, the pipe is fine.</span></span></li>
+          <li><em>03</em><span><b data-en="Register it in Quanta." data-zh="在 Quanta 里登记。">Register it in Quanta.</b> <span data-en="Add the command to the MCP list; the server's tools join the turn's tool list." data-zh="把命令加进 MCP 清单；这个服务的工具就并进这一轮的工具清单。">Add the command to the MCP list; the server's tools join the turn's tool list.</span></span></li>
+        </ol>
+        <div class="code-card">
+          <pre><span class="prompt">$</span> unzip quanta-ask.zip -d mcp/
+<span class="prompt">$</span> python3 mcp/quanta-ask/ask_tools.py
+# waiting on stdin — one JSON object per line
+
+<span class="prompt">$</span> export QUANTA_DATA_DIR="$HOME/Library/Application Support/Quanta"
+<span class="prompt">$</span> export QUANTA_CUA_ROOT="$HOME/.quanta/cua"   <span class="prompt"># cua only</span>
+
+# register (Quanta → Settings → MCP)
+{ "command": "python3", "args": ["mcp/quanta-ask/ask_tools.py"] }</pre>
+        </div>
+      </div>
+      <p class="xnote" data-en="The CUA server is the one with a real dependency: @trycua/cua-driver. Without it, quanta-screen is the fallback — a screenshot and nothing more." data-zh="只有 CUA 服务有真依赖：@trycua/cua-driver。没有它，quanta-screen 就是退路——一张截图，仅此而已。">The CUA server is the one with a real dependency: @trycua/cua-driver. Without it, quanta-screen is the fallback — a screenshot and nothing more.</p>
+    </div>
+  </section>
+
+  <section class="case-next">
+    <div class="container" data-reveal>
+      <span class="eyebrow" data-en="Back to the app" data-zh="回到应用">Back to the app</span>
+      <h2 data-en="Seven pages, and everything above plugging into them." data-zh="七个页面，<br>上面这些全都插在里面。">Seven pages, and everything above plugging into them.</h2>
+      <div class="actions">
+        <a class="btn btn-primary" href="quanta.html">
+          <span data-en="Quanta case study" data-zh="Quanta 案例">Quanta case study</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/xxx490202/quanta-tools/releases/tag/v1.0.0" target="_blank" rel="noreferrer noopener" data-en="All downloads" data-zh="全部下载">All downloads</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent designer and AI engineer. Interface, agents and models, made in one pair of hands.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="index.html#about" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Extensions" data-zh="扩展">Extensions</h4>
+          <ul>
+            <li><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+            <li><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+            <li><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+            <li><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span data-en="The best is yet to come." data-zh="最好的还没来。">The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script src="extensions.js"></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skills — xyc design</title>
+<meta name="description" content="Quanta skills — agnes-image and agnes-video. Two procedures that hand a job to an outside model: one draws a still, one shoots five seconds of film. Download and install notes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="extensions.css">
+</head>
+<body data-title-en="Skills — xyc design" data-title-zh="技能 — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark">x</span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger" href="index.html#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+              <span class="pm-tag">2026</span>
+            </a>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-thumb">03</span>
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group-label" aria-hidden="true" data-en="Extensions" data-zh="扩展">Extensions</li>
+        <li class="nav-divider" aria-hidden="true"></li>
+        <li class="nav-ext"><a href="skill.html" class="is-current" data-en="Skill" data-zh="技能">Skill</a></li>
+        <li class="nav-ext"><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+        <li class="nav-ext"><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+        <li class="nav-ext"><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <a class="btn btn-dark btn-sm" href="https://github.com/xxx490202/quanta-tools/releases/tag/v1.0.0" target="_blank" rel="noreferrer noopener" data-en="Downloads" data-zh="下载">Downloads</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="case-hero" id="top">
+    <div class="container">
+      <a class="case-back" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        <span data-en="Home" data-zh="首页">Home</span>
+      </a>
+      <span class="eyebrow" data-en="Extensions · 01 — Skill" data-zh="扩展 · 01 — 技能">Extensions · 01 — Skill</span>
+      <h1 class="case-title" data-en="Skill<em>s</em>" data-zh="技<em>能</em>">Skill<em>s</em></h1>
+      <p class="case-tagline" data-en="A skill is a procedure the model reads before it acts: when to use it, how to shape the request, and where the API will refuse." data-zh="技能是一份模型动手前先读的工序：什么时候用、请求怎么写、接口会在哪里拒绝。">
+        A skill is a procedure the model reads before it acts: when to use it, how to shape the request, and where the API will refuse.
+      </p>
+      <p class="case-meta-line">
+        <span><b data-en="Two skills" data-zh="两个技能">Two skills</b></span>
+        <span>SKILL.md + CLI</span>
+        <span data-en="Python standard library" data-zh="Python 标准库">Python standard library</span>
+        <span>Agnes 2.5 Flash</span>
+        <span>v1.0.0</span>
+      </p>
+
+      <nav class="xtabs" aria-label="Extensions">
+        <a href="skill.html" class="is-on" aria-current="page"><em>01 · Skill</em><b data-en="Skills" data-zh="技能">Skills</b></a>
+        <a href="plugin.html"><em>02 · Plugin</em><b data-en="Plugins" data-zh="插件">Plugins</b></a>
+        <a href="connector.html"><em>03 · Connector</em><b data-en="Connectors" data-zh="连接器">Connectors</b></a>
+        <a href="mcp.html"><em>04 · MCP</em><b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- WHAT A SKILL IS -->
+  <section class="case-section" id="what">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="What a skill is" data-zh="什么是技能">What a skill is</span>
+        <h2 class="display" data-en="A folder it can read, a script it can run." data-zh="一个它能读的文件夹，<br>一个它能跑的脚本。">A folder it can read, a script it can run.</h2>
+      </div>
+      <div class="case-two" data-reveal>
+        <div>
+          <p data-en="An MCP server hands the model a tool. A skill hands it a procedure: the trigger words, the order of the request, the two API rules that will bite, and the command that does the work. One is a socket; the other is a recipe with the failures written in the margin." data-zh="MCP 服务给模型一件工具；技能给它的是一套工序：触发词、请求的先后、两条一定会踩的接口规矩，以及真正干活的那条命令。一个是插座，一个是把失败写在页边的菜谱。">
+            An MCP server hands the model a tool. A skill hands it a procedure: the trigger words, the order of the request, the two API rules that will bite, and the command that does the work. One is a socket; the other is a recipe with the failures written in the margin.
+          </p>
+        </div>
+        <div>
+          <p data-en="Both skills here share one shape — frontmatter that decides when it loads, a script that needs nothing but the Python standard library, and a reference file for the sharp edges. Nothing runs in the background, and nothing holds a key except a .env file you own." data-zh="这里的两个技能形状一样——frontmatter 决定它什么时候被加载，脚本只依赖 Python 标准库，另有一份写清锋刃在哪的参考文件。没有后台常驻，除了你自己的 .env，谁也不拿着钥匙。">
+            Both skills here share one shape — frontmatter that decides when it loads, a script that needs nothing but the Python standard library, and a reference file for the sharp edges. Nothing runs in the background, and nothing holds a key except a .env file you own.
+          </p>
+        </div>
+      </div>
+
+      <div class="xfacts3" data-reveal>
+        <div>
+          <b data-en="Loads by description" data-zh="按描述加载">Loads by description</b>
+          <p data-en="The frontmatter says which requests should wake it — including the words a Chinese user actually types. No menu, no command list." data-zh="frontmatter 写明哪些请求该叫醒它——包括中文用户真正会打的那几个词。没有菜单，也没有命令清单。">The frontmatter says which requests should wake it — including the words a Chinese user actually types. No menu, no command list.</p>
+        </div>
+        <div>
+          <b data-en="The script does the talking" data-zh="活由脚本说完">The script does the talking</b>
+          <p data-en="The curl-shaped mistakes are encoded once, in Python, instead of being re-derived every turn by a model that is guessing." data-zh="curl 层面的坑只写一次，写在 Python 里，而不是每一轮让一个正在猜的模型重新推一遍。">The curl-shaped mistakes are encoded once, in Python, instead of being re-derived every turn by a model that is guessing.</p>
+        </div>
+        <div>
+          <b data-en="The key stays local" data-zh="钥匙留在本地">The key stays local</b>
+          <p data-en="A .env beside the skill, resolved flag → environment → file. AGNES_API_KEY never enters the prompt, the log or the answer." data-zh="技能旁边一个 .env，按 参数 → 环境变量 → 文件 的顺序取值。AGNES_API_KEY 从不进提示词、日志或回答。">A .env beside the skill, resolved flag → environment → file. AGNES_API_KEY never enters the prompt, the log or the answer.</p>
+        </div>
+      </div>
+
+      <div class="xtax" data-reveal>
+        <div class="xtax-row is-on">
+          <b>Skill</b>
+          <span data-en="A written procedure plus a script. Loaded when its description matches the request." data-zh="一份写下来的工序加一个脚本，描述匹配到请求时才被加载。">A written procedure plus a script. Loaded when its description matches the request.</span>
+          <em>SKILL.md</em>
+        </div>
+        <div class="xtax-row">
+          <b>Plugin</b>
+          <span data-en="Code inside the agent runtime. Changes how a run behaves rather than what it can call." data-zh="跑在智能体运行时里的代码，改的是「一轮怎么进行」，不是「能调什么」。">Code inside the agent runtime. Changes how a run behaves rather than what it can call.</span>
+          <em>dsh ACP</em>
+        </div>
+        <div class="xtax-row">
+          <b>Connector</b>
+          <span data-en="A door into the agent from somewhere else — a chat app, a microphone." data-zh="从别处进到智能体的一道门——一个聊天软件，一支麦克风。">A door into the agent from somewhere else — a chat app, a microphone.</span>
+          <em>bridge</em>
+        </div>
+        <div class="xtax-row">
+          <b>MCP Server</b>
+          <span data-en="A separate process exposing tools over stdio JSON-RPC." data-zh="一个独立进程，用 stdio JSON-RPC 把工具暴露出来。">A separate process exposing tools over stdio JSON-RPC.</span>
+          <em>stdio</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRIES -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="The two" data-zh="两个技能">The two</span>
+        <h2 class="display" data-en="One draws a still. One shoots five seconds." data-zh="一个画静帧，<br>一个拍五秒。">One draws a still. One shoots five seconds.</h2>
+        <p data-en="Both hand the job to an outside model, and both come back with a file on disk." data-zh="两个都把活交给外面的模型，也都会带一个文件回到磁盘上。">Both hand the job to an outside model, and both come back with a file on disk.</p>
+      </div>
+
+      <div class="xentries">
+        <article class="xentry" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>SKILL-01</em><span class="xname">agnes-image</span><span>· 2.5 flash</span></div>
+            <h3 data-en="Draw it, then edit what you drew." data-zh="先画出来，再改它。">Draw it, then edit what you drew.</h3>
+            <p data-en="Text-to-image, image-to-image and multi-image composition. The skill's real work is the prompt shape — subject, scene, style, light, composition, quality — and, for an edit, naming what must survive it." data-zh="文生图、图生图、多图合成。技能真正管的是提示词的形状——主体、场景、风格、光照、构图、质量；改图时，还要写清楚什么必须留下来。">Text-to-image, image-to-image and multi-image composition. The skill's real work is the prompt shape — subject, scene, style, light, composition, quality — and, for an edit, naming what must survive it.</p>
+            <ul class="xspecs">
+              <li><b data-en="Three modes, one script." data-zh="三种模式，一个脚本。">Three modes, one script.</b> <span data-en="text · image · multi-image; local files become data URIs on the way in." data-zh="文生图 · 图生图 · 多图合成；本地文件会自动转成 data URI。">text · image · multi-image; local files become data URIs on the way in.</span></li>
+              <li><b data-en="Tiers, not pixels." data-zh="给档位，不给像素。">Tiers, not pixels.</b> <span data-en="Ask for 1K–4K plus a ratio — exact sizes like 1920×1080 get normalised anyway." data-zh="要 1K–4K 加一个比例——1920×1080 这种精确像素反正也会被归一化。">Ask for 1K–4K plus a ratio — exact sizes like 1920×1080 get normalised anyway.</span></li>
+              <li><b data-en="Saved, then shown." data-zh="先落盘，再给人看。">Saved, then shown.</b> <span data-en="The script prints Saved: &lt;path&gt;, and the image itself is presented — not described." data-zh="脚本打印 Saved: &lt;path&gt;，然后把图直接摆出来，而不是描述它。">The script prints Saved: &lt;path&gt;, and the image itself is presented — not described.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/agnes-image-skill.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">agnes-image-skill.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo" data-demo="image">
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">agnes-image · text-to-image</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-label">prompt</div>
+              <div class="imgdemo-prompt">A classical bust in profile, torn paper collage, warm ivory light, editorial composition, high detail.</div>
+              <div class="d-chiprow">
+                <button class="d-chip prompt-chip on" type="button" data-p="A classical bust in profile, torn paper collage, warm ivory light, editorial composition, high detail.">bust · collage</button>
+                <button class="d-chip prompt-chip" type="button" data-p="A quiet studio desk at dusk, one lamp, paper and pencil, soft grain, warm shadows, medium format.">desk · dusk</button>
+                <button class="d-chip prompt-chip" type="button" data-p="Keep the composition and the camera angle; change the palette to bone white and oxblood, remove the text.">edit · repalette</button>
+              </div>
+              <div class="d-row">
+                <span class="d-label">ratio</span>
+                <button class="d-chip ratio-chip on" type="button">3:4</button>
+                <button class="d-chip ratio-chip" type="button">16:9</button>
+                <button class="d-chip ratio-chip" type="button">9:16</button>
+                <span class="d-spacer"></span>
+                <button class="d-btn primary img-go" type="button">Generate 4</button>
+              </div>
+              <div class="img-status">ready</div>
+              <div class="progress"><i></i></div>
+              <div class="img-grid">
+                <button class="img-tile" type="button" aria-label="Result 1"><img src="img/method-1.jpg" alt=""></button>
+                <button class="img-tile" type="button" aria-label="Result 2"><img src="img/method-2.jpg" alt=""></button>
+                <button class="img-tile" type="button" aria-label="Result 3"><img src="img/method-3.jpg" alt=""></button>
+                <button class="img-tile" type="button" aria-label="Result 4"><img src="img/method-4.jpg" alt=""></button>
+              </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Click a prompt or ratio, then Generate. Four samples come back; click one to keep it. The demo is a front-end simulation — no request leaves the page." data-zh="换个提示词或比例，再点生成。四张样图回来，点一张留下。演示只在前端模拟，不发任何请求。">Click a prompt or ratio, then Generate. Four samples come back; click one to keep it. The demo is a front-end simulation — no request leaves the page.</figcaption>
+          </figure>
+        </article>
+
+        <article class="xentry flip" data-reveal>
+          <div class="xcopy">
+            <div class="xkicker"><em>SKILL-02</em><span class="xname">agnes-video</span><span>· 2.5 flash</span></div>
+            <h3 data-en="Five seconds, first frame to last." data-zh="五秒，从首帧到尾帧。">Five seconds, first frame to last.</h3>
+            <p data-en="Text-to-video, keyframe control and reference mode. The hard part is the waiting: the free tier allows one request a minute, so the skill creates a task, polls every 61 seconds, then downloads the mp4 — and says so, so the agent does not panic and relaunch it." data-zh="文生视频、首尾帧控制、参考模式。难的是等：免费额度一分钟只允许一次请求，所以技能先建任务、每 61 秒查一次、拿到 mp4 再下载——并且把这件事写明白，免得助手一慌又重开一个任务。">Text-to-video, keyframe control and reference mode. The hard part is the waiting: the free tier allows one request a minute, so the skill creates a task, polls every 61 seconds, then downloads the mp4 — and says so, so the agent does not panic and relaunch it.</p>
+            <ul class="xspecs">
+              <li><b data-en="Create, poll, download." data-zh="建任务、轮询、下载。">Create, poll, download.</b> <span data-en="One command runs the whole task; status lines are the only progress you get." data-zh="一条命令跑完整件事；进度只有那几行状态。">One command runs the whole task; status lines are the only progress you get.</span></li>
+              <li><b data-en="Keyframes." data-zh="首尾帧。">Keyframes.</b> <span data-en="First and/or last frame, as a public URL or a local path." data-zh="首帧和/或尾帧，可以给公网 URL，也可以给本地路径。">First and/or last frame, as a public URL or a local path.</span></li>
+              <li><b data-en="References." data-zh="参考素材。">References.</b> <span data-en="Up to 5 images and 3 audios, cited in the prompt as &lt;Picture 1&gt; and &lt;Audio 1&gt;." data-zh="最多 5 张图、3 段音频，在提示词里以 &lt;Picture 1&gt;、&lt;Audio 1&gt; 指认。">Up to 5 images and 3 audios, cited in the prompt as &lt;Picture 1&gt; and &lt;Audio 1&gt;.</span></li>
+              <li><b data-en="Flash limits, checked first." data-zh="先检查 Flash 的限额。">Flash limits, checked first.</b> <span data-en="720P only, 4–12 seconds, no video input. The script refuses before the API has to." data-zh="只支持 720P、4–12 秒、不接受视频输入。脚本先拒绝，不用等接口来拒。">720P only, 4–12 seconds, no video input. The script refuses before the API has to.</span></li>
+            </ul>
+            <div class="xaction">
+              <a class="xdl dark" href="https://github.com/xxx490202/quanta-tools/releases/download/v1.0.0/agnes-video-skill.zip" target="_blank" rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+                <span data-en="Download · zip" data-zh="下载 · zip">Download · zip</span>
+              </a>
+              <span class="xhint">agnes-video-skill.zip</span>
+            </div>
+          </div>
+
+          <figure class="demo" data-demo="video">
+            <div class="demo-bar">
+              <span class="demo-dots"><i></i><i></i><i></i></span>
+              <span class="demo-title">agnes-video · keyframe · 5s · 720P</span>
+              <span class="demo-live"><i></i>simulated</span>
+            </div>
+            <div class="demo-body">
+              <div class="d-row">
+                <span class="d-label">mode</span>
+                <button class="d-chip mode-chip on" type="button" data-mode="keyframe">keyframe</button>
+                <button class="d-chip mode-chip" type="button" data-mode="text">text</button>
+                <button class="d-chip mode-chip" type="button" data-mode="reference">reference</button>
+                <span class="d-spacer"></span>
+                <button class="d-btn primary vid-go" type="button">Generate clip</button>
+              </div>
+              <div class="vid-status">mode=keyframe</div>
+              <div class="vid-frames">
+                <div class="vid-frame is-play"><img src="img/hero-wide.jpg" alt="" style="object-position: 0% 50%;"><span>0.0s</span></div>
+                <div class="vid-frame"><img src="img/hero-wide.jpg" alt="" style="object-position: 33% 50%;"><span>1.4s</span></div>
+                <div class="vid-frame"><img src="img/hero-wide.jpg" alt="" style="object-position: 66% 50%;"><span>3.1s</span></div>
+                <div class="vid-frame"><img src="img/hero-wide.jpg" alt="" style="object-position: 100% 50%;"><span>5.0s</span></div>
+              </div>
+              <div class="vid-log">
+                <div>ready · task not created</div>
+                <div>stdout stays JSON-only, one line per event</div>
+              </div>
+            </div>
+            <figcaption class="demo-cap" data-en="Press Generate to watch the real shape of the task: create, poll, download. On the free tier those two polls are 61 seconds apart; here they are compressed into a second." data-zh="点生成，看任务的真实形状：建、查、下。免费额度下那两次轮询真的隔 61 秒；这里压缩成一秒。">Press Generate to watch the real shape of the task: create, poll, download. On the free tier those two polls are 61 seconds apart; here they are compressed into a second.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="case-section" id="install">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Install" data-zh="安装">Install</span>
+        <h2 class="display" data-en="Two folders and a key." data-zh="两个文件夹，<br>一把钥匙。">Two folders and a key.</h2>
+        <p data-en="No build step and no dependencies — the scripts import the standard library and nothing else." data-zh="不用构建，也没有依赖——脚本只 import 标准库。">No build step and no dependencies — the scripts import the standard library and nothing else.</p>
+      </div>
+      <div class="xinstall" data-reveal>
+        <ol class="xsteps">
+          <li><em>01</em><span><b data-en="Unzip into the skills folder." data-zh="解压到技能目录。">Unzip into the skills folder.</b> <span data-en="Each zip becomes one folder: agnes-image and agnes-video, side by side in Quanta's skill directory." data-zh="每个 zip 解出来就是一个文件夹：agnes-image 与 agnes-video，并排在 Quanta 的技能目录里。">Each zip becomes one folder: agnes-image and agnes-video, side by side in Quanta's skill directory.</span></span></li>
+          <li><em>02</em><span><b data-en="Copy .env.example to .env." data-zh="把 .env.example 复制成 .env。">Copy .env.example to .env.</b> <span data-en="Paste AGNES_API_KEY. No key yet? The skill asks instead of failing quietly." data-zh="贴上 AGNES_API_KEY。还没有密钥？技能会来问你，而不是悄悄失败。">Paste AGNES_API_KEY. No key yet? The skill asks instead of failing quietly.</span></span></li>
+          <li><em>03</em><span><b data-en="Restart Quanta." data-zh="重启 Quanta。">Restart Quanta.</b> <span data-en="The page's skill list picks both up from their frontmatter — no registration step." data-zh="页面的技能清单直接从 frontmatter 里读到它们——没有注册这一步。">The page's skill list picks both up from their frontmatter — no registration step.</span></span></li>
+        </ol>
+        <div class="code-card">
+          <pre><span class="prompt">$</span> tree skills -L 2
+skills/
+├── agnes-image/
+│   ├── SKILL.md
+│   ├── .env.example
+│   ├── scripts/generate_image.py
+│   └── references/api_docs.md
+└── agnes-video/
+    ├── SKILL.md
+    ├── .env.example
+    ├── scripts/generate_video.py
+    └── references/api_docs.md
+
+<span class="prompt">$</span> python3 skills/agnes-image/scripts/generate_image.py \
+    --prompt "bust, torn paper, ivory light" --size 2K --ratio 3:4
+Saved: ./output.png</pre>
+        </div>
+      </div>
+      <p class="xnote" data-en="The reference file is the part people skip. It holds the parameter table, the size matrix and the errors — which is why the agent does not have to rediscover them on every run." data-zh="参考文件是最容易被跳过的那部分。参数表、尺寸矩阵和错误码都在里面——所以助手不必每一轮重新发现一遍。">The reference file is the part people skip. It holds the parameter table, the size matrix and the errors — which is why the agent does not have to rediscover them on every run.</p>
+    </div>
+  </section>
+
+  <section class="case-next">
+    <div class="container" data-reveal>
+      <span class="eyebrow" data-en="Next" data-zh="下一个">Next</span>
+      <h2 data-en="The parts that watch the run." data-zh="盯着运行的那两件。">The parts that watch the run.</h2>
+      <div class="actions">
+        <a class="btn btn-primary" href="plugin.html">
+          <span data-en="Plugins" data-zh="插件">Plugins</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent designer and AI engineer. Interface, agents and models, made in one pair of hands.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="index.html#about" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Extensions" data-zh="扩展">Extensions</h4>
+          <ul>
+            <li><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+            <li><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+            <li><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+            <li><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span data-en="The best is yet to come." data-zh="最好的还没来。">The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script src="extensions.js"></script>
+</body>
+</html>
