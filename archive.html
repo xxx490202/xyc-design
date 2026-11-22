@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#faf9f5">
+<script>
+  /* theme before first paint — no flash of the wrong palette */
+  (function(){try{var s=localStorage.getItem('xyc-theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');document.documentElement.classList.add('js');}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.classList.add('js');}})();
+</script>
+<title>Archive — xyc design</title>
+<meta name="description" content="Selected linked works by XYC — interactive archives, information design, computational research and pixel games.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=20261123X">
+</head>
+<body data-title-en="Archive — xyc design" data-title-zh="作品档案 — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" decoding="async"></span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger" href="#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu mega" id="projectMenu" role="menu" aria-label="Projects">
+            <p class="pm-group" data-en="Projects" data-zh="项目">Projects</p>
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+            </a>
+            <p class="pm-group" data-en="More" data-zh="更多">More</p>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+        <li><a href="monitor.html" data-en="Monitor" data-zh="舆情">Monitor</a></li>
+        <li><a href="archive.html" class="is-current" data-en="Archive" data-zh="作品档案">Archive</a></li>
+        <li><a href="data.html" data-en="Data" data-zh="数据">Data</a></li>
+
+        <li class="nav-ext has-menu">
+          <a class="nav-trigger" href="skill.html"><span data-en="Extensions" data-zh="扩展">Extensions</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu mega mini" role="menu">
+            <p class="pm-group" data-en="Extensions" data-zh="扩展">Extensions</p>
+            <a class="pm-item" href="skill.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Skills" data-zh="技能">Skills</b>
+                <span data-en="A folder and a script the model reads first." data-zh="一个文件夹 + 一段脚本，模型先读再动手。">A folder and a script the model reads first.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="plugin.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Plugins" data-zh="插件">Plugins</b>
+                <span data-en="Code inside the agent runtime." data-zh="跑在 Agent 运行时里的代码。">Code inside the agent runtime.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="connector.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Connectors" data-zh="连接器">Connectors</b>
+                <span data-en="A door in from a chat app or a microphone." data-zh="从聊天软件或麦克风进来的那道门。">A door in from a chat app or a microphone.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="mcp.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b>
+                <span data-en="A separate process exposing tools over JSON-RPC." data-zh="独立进程，用 JSON-RPC 暴露工具。">A separate process exposing tools over JSON-RPC.</span>
+              </span>
+            </a>
+            <p class="pm-group" data-en="Workflows" data-zh="工作流">Workflows</p>
+            <a class="pm-item" href="comfyui.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="ComfyUI" data-zh="ComfyUI">ComfyUI</b>
+                <span data-en="Four SDXL Turbo graphs, with the node canvas." data-zh="四张 SDXL Turbo 工作流，带节点画布。">Four SDXL Turbo graphs, with the node canvas.</span>
+              </span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="t-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="t-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2v2.2M12 19.8V22M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2 12h2.2M19.8 12H22M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      </button>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <button class="btn btn-dark btn-sm" type="button" data-mail data-en="Say hello" data-zh="联系我">Say hello</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="container subnav-inner">
+      <span class="subnav-label" data-en="Archive" data-zh="作品档案">Archive</span>
+      <div class="subnav-explore has-menu">
+        <button class="subnav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <span data-en="Explore here" data-zh="继续看看">Explore here</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="project-menu mega explore-menu" role="menu">
+                        <p class="pm-group" data-en="Works" data-zh="作品">Works</p>
+            <a class="pm-item" href="https://wbapp-kb24chnybijzhdur3ckwhy.app.workbuddy.host/?sharecode=6OTVUDJBK6" target="_blank" rel="noreferrer noopener" role="menuitem">
+              <span class="pm-body">
+                <b data-en="The Porcelain Road Archive" data-zh="瓷路档案局">The Porcelain Road Archive</b>
+                <span data-en="interactive archive" data-zh="交互叙事">interactive archive</span>
+              </span>
+            </a>
+            <a class="pm-item" href="https://wbapp-vwoc4ryky4qkdtbarshend.app.workbuddy.host/?sharecode=ZEFJB5IARL" target="_blank" rel="noreferrer noopener" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Dream of the Ming Palace" data-zh="金陵故宫梦">Dream of the Ming Palace</b>
+                <span data-en="data reconstruction" data-zh="数字营造">data reconstruction</span>
+              </span>
+            </a>
+            <a class="pm-item" href="https://wbapp-btz0qb8zchnrq5w2fu5ajp.app.workbuddy.host/?sharecode=64WIDMAWMU" target="_blank" rel="noreferrer noopener" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Digital Mourning &amp; the Reversal" data-zh="数字哀悼与舆论反转">Digital Mourning &amp; the Reversal</b>
+                <span data-en="research study" data-zh="计算传播研究">research study</span>
+              </span>
+            </a>
+            <a class="pm-item" href="https://wbapp-nuqb222ipoqsw4errayijg.app.workbuddy.host/?sharecode=T4QWUICBLV" target="_blank" rel="noreferrer noopener" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Four Seasons" data-zh="四序">Four Seasons</b>
+                <span data-en="poster series" data-zh="系列海报">poster series</span>
+              </span>
+            </a>
+            <a class="pm-item" href="https://wbapp-stup1ftmpc6db6mri8adwl.app.workbuddy.host/?sharecode=EOEW74SIXH" target="_blank" rel="noreferrer noopener" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Pixel Run" data-zh="拾瓷记">Pixel Run</b>
+                <span data-en="pixel game" data-zh="像素游戏">pixel game</span>
+              </span>
+            </a>
+<p class="pm-group" data-en="Elsewhere" data-zh="其他">Elsewhere</p>
+            <a class="pm-item" href="index.html#work" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Studio work" data-zh="工作室作品">Studio work</b>
+              </span>
+            </a>
+            <a class="pm-item" href="data.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Research data" data-zh="研究数据">Research data</b>
+              </span>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="archive-hero" id="top">
+    <div class="container">
+      <div class="archive-head">
+        <div>
+          <span class="eyebrow" data-en="Archive · Linked works" data-zh="作品档案 · 已上线">Archive · Linked works</span>
+          <h1 class="display" data-en="Five worlds, built on the same desk." data-zh="五个世界，都在同一张桌子上搭出来。">Five worlds, built on the same desk.</h1>
+          <p class="lead" data-en="The other half of the work: an interactive porcelain archive, a palace rebuilt in data, a study of digital mourning, four seasonal posters and a pixel run. Each one opens in its own window." data-zh="产品之外的另一半：一册可以走进去的瓷器档案、一座用数据重搭的宫殿、一次关于数字哀悼的研究、四张季节海报，和一局像素跑酷。每一个都能直接打开。">
+            The other half of the work: an interactive porcelain archive, a palace rebuilt in data, a study of digital mourning, four seasonal posters and a pixel run. Each one opens in its own window.
+          </p>
+        </div>
+        <div class="archive-drawings" aria-hidden="true">
+          <div class="archive-drawing">
+            <img class="line-art" src="img/line/illu-folder-v.webp" alt="" width="512" height="512" decoding="async">
+          </div>
+          <div class="archive-drawing is-small">
+            <img class="line-art" src="img/line/icon-browser-lg.webp" alt="" width="512" height="512" decoding="async">
+          </div>
+        </div>
+      </div>
+      <div class="archive-meta">
+        <span><b>05</b> <span data-en="linked works" data-zh="个已上线作品">linked works</span></span>
+        <span><b>2025—2026</b></span>
+        <span data-en="Interactive · Visual · Research" data-zh="交互 · 可视化 · 研究">Interactive · Visual · Research</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="works">
+    <div class="container">
+      <div class="works-grid">
+        <article class="work-tile" data-reveal>
+          <a class="work-tile-media" href="https://wbapp-kb24chnybijzhdur3ckwhy.app.workbuddy.host/?sharecode=6OTVUDJBK6" target="_blank" rel="noreferrer noopener" aria-label="打开作品">
+            <img src="img/works/porcelain-road.webp" alt="瓷路档案局 — 开卷" width="832" height="1200" loading="lazy" decoding="async">
+          </a>
+          <div class="work-tile-body">
+            <div class="work-tile-kicker"><span><img class="line-art k-glyph" src="img/line/icon-location.webp" alt="" width="160" height="160" loading="lazy" decoding="async">01 · <em data-en="Database · Visualisation" data-zh="数据库 · 可视化">Database · Visualisation</em></span>
+              <span>LIVE</span></div>
+            <h3><a data-en="The Porcelain Road Archive" data-zh="瓷路档案局" href="https://wbapp-kb24chnybijzhdur3ckwhy.app.workbuddy.host/?sharecode=6OTVUDJBK6" target="_blank" rel="noreferrer noopener">瓷路档案局<span>The Porcelain Road Archive</span></a></h3>
+            <p data-en="Three centuries of the maritime porcelain trade, turned into an archive you can walk into: kiln nights, carrying bowls over the pass, trimming sails at sea, opening crates against the manifest — plus 112 verified entries, and one route that is missing on purpose." data-zh="把三百年海上瓷器之路做成一册可以走进去的档案：窑厂夜、担瓷过岭、海上调帆、开箱核货，外加 112 条已核验的条目——以及一段故意留白的欧洲航路。">Three centuries of the maritime porcelain trade, turned into an archive you can walk into: kiln nights, carrying bowls over the pass, trimming sails at sea, opening crates against the manifest — plus 112 verified entries, and one route that is missing on purpose.</p>
+            <div class="work-tile-foot">
+              <div class="work-tile-tags"><span data-en="Interactive" data-zh="交互叙事">Interactive</span><span data-en="Visualisation" data-zh="数据可视化">Visualisation</span><span data-en="History" data-zh="历史">History</span></div>
+              <div class="work-tile-links">
+                <a class="work-tile-open" href="https://wbapp-kb24chnybijzhdur3ckwhy.app.workbuddy.host/?sharecode=6OTVUDJBK6" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Live site" data-zh="线上版">Live site</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://cilu-archive.pages.dev/" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Cloudflare" data-zh="Cloudflare">Cloudflare</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://github.com/xxx490202/cilu-archive" target="_blank" rel="noreferrer noopener">
+                  <span data-en="GitHub" data-zh="GitHub">GitHub</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-tile" data-reveal>
+          <a class="work-tile-media" href="https://wbapp-vwoc4ryky4qkdtbarshend.app.workbuddy.host/?sharecode=ZEFJB5IARL" target="_blank" rel="noreferrer noopener" aria-label="打开作品">
+            <img src="img/works/jinling.webp" alt="金陵故宫梦 — 首屏" width="1440" height="900" loading="lazy" decoding="async">
+          </a>
+          <div class="work-tile-body">
+            <div class="work-tile-kicker"><span><img class="line-art k-glyph" src="img/line/icon-camera.webp" alt="" width="160" height="160" loading="lazy" decoding="async">02 · <em data-en="Information design" data-zh="信息可视化">Information design</em></span>
+              <span>LIVE</span></div>
+            <h3><a data-en="Dream of the Ming Palace" data-zh="金陵故宫梦" href="https://wbapp-vwoc4ryky4qkdtbarshend.app.workbuddy.host/?sharecode=ZEFJB5IARL" target="_blank" rel="noreferrer noopener">金陵故宫梦<span data-en="palace · data · reconstruction" data-zh="宫城 · 数据 · 营造">palace · data · reconstruction</span></a></h3>
+            <p data-en="A digital reconstruction of the Ming palace in Nanjing: twelve chapters from city layout and archaeology to the walls that remain, rebuilt as a scroll you can move through." data-zh="南京明故宫的数字营造：十二个章节，从宫城形制、考古实证、营造技艺到残垣守忆，把一座已经消失的宫殿重新搭起来。">A digital reconstruction of the Ming palace in Nanjing: twelve chapters from city layout and archaeology to the walls that remain, rebuilt as a scroll you can move through.</p>
+            <div class="work-tile-foot">
+              <div class="work-tile-tags"><span data-en="Information design" data-zh="信息可视化">Information design</span><span data-en="Reconstruction" data-zh="数字营造">Reconstruction</span><span data-en="History" data-zh="历史">History</span></div>
+              <div class="work-tile-links">
+                <a class="work-tile-open" href="https://wbapp-vwoc4ryky4qkdtbarshend.app.workbuddy.host/?sharecode=ZEFJB5IARL" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Live site" data-zh="线上版">Live site</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://jinling-palace.pages.dev/" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Cloudflare" data-zh="Cloudflare">Cloudflare</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://github.com/xxx490202/jinling-palace" target="_blank" rel="noreferrer noopener">
+                  <span data-en="GitHub" data-zh="GitHub">GitHub</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-tile" data-reveal>
+          <a class="work-tile-media" href="https://wbapp-btz0qb8zchnrq5w2fu5ajp.app.workbuddy.host/?sharecode=64WIDMAWMU" target="_blank" rel="noreferrer noopener" aria-label="打开作品">
+            <img src="img/works/mourning.webp" alt="数字哀悼与舆论反转 — 首屏" width="1440" height="900" loading="lazy" decoding="async">
+          </a>
+          <div class="work-tile-body">
+            <div class="work-tile-kicker"><span><img class="line-art k-glyph" src="img/line/icon-cloud.webp" alt="" width="160" height="160" loading="lazy" decoding="async">03 · <em data-en="Computational research" data-zh="计算传播研究">Computational research</em></span>
+              <span>LIVE</span></div>
+            <h3><a data-en="Digital Mourning &amp; the Reversal" data-zh="数字哀悼与舆论反转" href="https://wbapp-btz0qb8zchnrq5w2fu5ajp.app.workbuddy.host/?sharecode=64WIDMAWMU" target="_blank" rel="noreferrer noopener">数字哀悼与舆论反转<span>Digital Mourning</span></a></h3>
+            <p data-en="An empirical study of mourning on social media for four public figures — treating death as a reset button for public opinion, and watching the comments turn within days." data-zh="四位公众人物的社交媒体哀悼实证研究——把「死亡」当成一次舆论重置键，看评论如何在几天之内转向。">An empirical study of mourning on social media for four public figures — treating death as a reset button for public opinion, and watching the comments turn within days.</p>
+            <div class="work-tile-foot">
+              <div class="work-tile-tags"><span data-en="Computational" data-zh="计算传播">Computational</span><span data-en="Research" data-zh="研究可视化">Research</span></div>
+              <div class="work-tile-links">
+                <a class="work-tile-open" href="https://wbapp-btz0qb8zchnrq5w2fu5ajp.app.workbuddy.host/?sharecode=64WIDMAWMU" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Live site" data-zh="线上版">Live site</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://digital-mourning.pages.dev/" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Cloudflare" data-zh="Cloudflare">Cloudflare</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://github.com/xxx490202/digital-mourning" target="_blank" rel="noreferrer noopener">
+                  <span data-en="GitHub" data-zh="GitHub">GitHub</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-tile" data-reveal>
+          <a class="work-tile-media" href="https://wbapp-nuqb222ipoqsw4errayijg.app.workbuddy.host/?sharecode=T4QWUICBLV" target="_blank" rel="noreferrer noopener" aria-label="打开作品">
+            <img src="img/works/four-seasons.webp" alt="四序 — 首屏" width="1440" height="900" loading="lazy" decoding="async">
+          </a>
+          <div class="work-tile-body">
+            <div class="work-tile-kicker"><span><img class="line-art k-glyph" src="img/line/icon-music.webp" alt="" width="160" height="160" loading="lazy" decoding="async">04 · <em data-en="Poster series" data-zh="系列海报">Poster series</em></span>
+              <span>LIVE</span></div>
+            <h3><a data-en="Four Seasons" data-zh="四序" href="https://wbapp-nuqb222ipoqsw4errayijg.app.workbuddy.host/?sharecode=T4QWUICBLV" target="_blank" rel="noreferrer noopener">四序<span data-en="seasons · poster · series" data-zh="四季 · 海报 · 系列">seasons · poster · series</span></a></h3>
+            <p data-en="Four posters, four seasons, one life: spring's struggle, summer's wanting, autumn's fading and winter's quiet. Girls and plants as the double image." data-zh="春生、夏往、秋落、冬藏，四张海报以少女与草木为双意象，讲完一场所有人都要经历的人生旅程。">Four posters, four seasons, one life: spring's struggle, summer's wanting, autumn's fading and winter's quiet. Girls and plants as the double image.</p>
+            <div class="work-tile-foot">
+              <div class="work-tile-tags"><span data-en="Visual design" data-zh="视觉设计">Visual design</span><span data-en="Posters" data-zh="系列海报">Posters</span></div>
+              <div class="work-tile-links">
+                <a class="work-tile-open" href="https://wbapp-nuqb222ipoqsw4errayijg.app.workbuddy.host/?sharecode=T4QWUICBLV" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Live site" data-zh="线上版">Live site</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://sixu-328.pages.dev/" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Cloudflare" data-zh="Cloudflare">Cloudflare</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://github.com/xxx490202/sixu" target="_blank" rel="noreferrer noopener">
+                  <span data-en="GitHub" data-zh="GitHub">GitHub</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-tile" data-reveal>
+          <a class="work-tile-media" href="https://wbapp-stup1ftmpc6db6mri8adwl.app.workbuddy.host/?sharecode=EOEW74SIXH" target="_blank" rel="noreferrer noopener" aria-label="打开作品">
+            <img src="img/works/pixel-run.webp" alt="拾瓷记 — 首屏" width="1440" height="900" loading="lazy" decoding="async">
+          </a>
+          <div class="work-tile-body">
+            <div class="work-tile-kicker"><span><img class="line-art k-glyph" src="img/line/icon-star.webp" alt="" width="160" height="160" loading="lazy" decoding="async">05 · <em data-en="Pixel game" data-zh="像素游戏">Pixel game</em></span>
+              <span>LIVE</span></div>
+            <h3><a data-en="Pixel Run" data-zh="拾瓷记" href="https://wbapp-stup1ftmpc6db6mri8adwl.app.workbuddy.host/?sharecode=EOEW74SIXH" target="_blank" rel="noreferrer noopener">拾瓷记<span data-en="pixel · run · shards" data-zh="像素 · 跑酷 · 瓷片">pixel · run · shards</span></a></h3>
+            <p data-en="A night-time pixel run along the palace wall: jump the gaps, collect the scattered porcelain shards, ten pieces to bring home." data-zh="在夜色里的宫墙之间跑起来，收集散落的瓷片——十个碎片，一次关于修复的练习。">A night-time pixel run along the palace wall: jump the gaps, collect the scattered porcelain shards, ten pieces to bring home.</p>
+            <div class="work-tile-foot">
+              <div class="work-tile-tags"><span data-en="Pixel game" data-zh="像素游戏">Pixel game</span><span data-en="Interactive" data-zh="交互体验">Interactive</span></div>
+              <div class="work-tile-links">
+                <a class="work-tile-open" href="https://wbapp-stup1ftmpc6db6mri8adwl.app.workbuddy.host/?sharecode=EOEW74SIXH" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Live site" data-zh="线上版">Live site</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://shici-game.pages.dev/" target="_blank" rel="noreferrer noopener">
+                  <span data-en="Cloudflare" data-zh="Cloudflare">Cloudflare</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+                <a class="work-tile-open is-alt" href="https://github.com/xxx490202/shici-game" target="_blank" rel="noreferrer noopener">
+                  <span data-en="GitHub" data-zh="GitHub">GitHub</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="archive-foot">
+        <span data-en="All five are live prototypes — open them in a new tab." data-zh="五个都是可以直接点开、能玩能读的原型。">All five are live prototypes — open them in a new tab.</span>
+        <span class="archive-foot-links">
+          <a href="https://github.com/xxx490202/calculation-communication-data" target="_blank" rel="noreferrer noopener" data-en="Research data ↗" data-zh="研究数据 ↗">Research data ↗</a>
+          <a href="index.html#work" data-en="← Back to the studio work" data-zh="← 回到工作室作品">← Back to the studio work</a>
+        </span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent product studio. Interface, motion and code, made in one pair of hands.</p>
+        <div class="foot-art" aria-hidden="true">
+          <img class="line-art" src="img/line/illu-greek-ariadne-wide.webp" alt="" width="420" height="211" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="archive.html" class="is-current" data-en="Archive" data-zh="作品档案">Archive</a></li>
+            <li><a href="monitor.html" data-en="Monitor" data-zh="全球舆情">Monitor</a></li>
+            <li><a href="comfyui.html" data-en="ComfyUI" data-zh="ComfyUI 工作流">ComfyUI</a></li>
+            <li><a href="#map" data-en="Capability map" data-zh="能力图谱">Capability map</a></li>
+            <li><a href="#about" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Extensions" data-zh="扩展">Extensions</h4>
+          <ul>
+            <li><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+            <li><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+            <li><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+            <li><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+            <li><a href="data.html" data-en="Research data" data-zh="研究数据">Research data</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span>The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js?v=20261123X"></script>
+</body>
+</html>

@@ -3,19 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#faf9f5">
+<script>
+  /* theme before first paint — no flash of the wrong palette */
+  (function(){try{var s=localStorage.getItem('xyc-theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');document.documentElement.classList.add('js');}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.classList.add('js');}})();
+</script>
 <title>Quanta — xyc design</title>
 <meta name="description" content="Quanta case study — a seven-page AI workspace for macOS and Windows: chat, analysis, crawling, sentiment, generation, voice and web, with a file-based memory and a team of subagents. Download for macOS and Windows.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=20261123X">
 </head>
 <body data-title-en="Quanta — xyc design" data-title-zh="Quanta — xyc design">
 
 <header class="nav" id="siteNav">
   <div class="container nav-inner">
     <a class="brand" href="index.html" aria-label="xyc design — home">
-      <span class="mark">x</span>xyc<em>design.</em>
+      <span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" decoding="async"></span>xyc<em>design.</em>
     </a>
     <nav aria-label="Primary">
       <ul class="nav-links" id="primaryMenu">
@@ -25,45 +33,83 @@
             <span data-en="Project" data-zh="项目">Project</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
           </a>
-          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
-            <a class="pm-item" href="quanta.html" role="menuitem" aria-current="page">
-              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
+          <div class="project-menu mega" id="projectMenu" role="menu" aria-label="Projects">
+            <p class="pm-group" data-en="Projects" data-zh="项目">Projects</p>
+            <a class="pm-item" href="quanta.html" role="menuitem">
               <span class="pm-body">
                 <b>Quanta</b>
                 <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
               </span>
-              <span class="pm-tag">2026</span>
             </a>
             <a class="pm-item" href="focusos.html" role="menuitem">
-              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
               <span class="pm-body">
                 <b>FocusOS</b>
                 <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
               </span>
-              <span class="pm-tag">2026</span>
             </a>
+            <p class="pm-group" data-en="More" data-zh="更多">More</p>
             <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
-              <span class="pm-thumb">03</span>
               <span class="pm-body">
                 <b>The best is yet to come.</b>
                 <span data-en="In progress" data-zh="进行中">In progress</span>
               </span>
             </div>
             <div class="pm-foot">
-              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <a href="#work" data-en="All work" data-zh="全部作品">All work</a>
               <span>XYC-2026</span>
             </div>
           </div>
         </li>
-        <li class="nav-group-label" aria-hidden="true" data-en="Extensions" data-zh="扩展">Extensions</li>
-        <li class="nav-divider" aria-hidden="true"></li>
-        <li class="nav-ext"><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
-        <li class="nav-ext"><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
-        <li class="nav-ext"><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
-        <li class="nav-ext"><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+        <li><a href="monitor.html" data-en="Monitor" data-zh="舆情">Monitor</a></li>
+        <li><a href="archive.html" data-en="Archive" data-zh="作品档案">Archive</a></li>
+        <li><a href="data.html" data-en="Data" data-zh="数据">Data</a></li>
+
+        <li class="nav-ext has-menu">
+          <a class="nav-trigger" href="skill.html"><span data-en="Extensions" data-zh="扩展">Extensions</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu mega mini" role="menu">
+            <p class="pm-group" data-en="Extensions" data-zh="扩展">Extensions</p>
+            <a class="pm-item" href="skill.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Skills" data-zh="技能">Skills</b>
+                <span data-en="A folder and a script the model reads first." data-zh="一个文件夹 + 一段脚本，模型先读再动手。">A folder and a script the model reads first.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="plugin.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Plugins" data-zh="插件">Plugins</b>
+                <span data-en="Code inside the agent runtime." data-zh="跑在 Agent 运行时里的代码。">Code inside the agent runtime.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="connector.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Connectors" data-zh="连接器">Connectors</b>
+                <span data-en="A door in from a chat app or a microphone." data-zh="从聊天软件或麦克风进来的那道门。">A door in from a chat app or a microphone.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="mcp.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b>
+                <span data-en="A separate process exposing tools over JSON-RPC." data-zh="独立进程，用 JSON-RPC 暴露工具。">A separate process exposing tools over JSON-RPC.</span>
+              </span>
+            </a>
+            <p class="pm-group" data-en="Workflows" data-zh="工作流">Workflows</p>
+            <a class="pm-item" href="comfyui.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="ComfyUI" data-zh="ComfyUI">ComfyUI</b>
+                <span data-en="Four SDXL Turbo graphs, with the node canvas." data-zh="四张 SDXL Turbo 工作流，带节点画布。">Four SDXL Turbo graphs, with the node canvas.</span>
+              </span>
+            </a>
+          </div>
+        </li>
       </ul>
     </nav>
     <div class="nav-right">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="t-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="t-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2v2.2M12 19.8V22M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2 12h2.2M19.8 12H22M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      </button>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-lang="en" class="on">EN</button>
         <span class="sep">/</span>
@@ -71,6 +117,45 @@
       </div>
       <a class="btn btn-dark btn-sm" href="#download" data-en="Download" data-zh="下载">Download</a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="container subnav-inner">
+      <span class="subnav-label" data-en="Project · Quanta" data-zh="项目 · Quanta">Project · Quanta</span>
+      <div class="subnav-explore has-menu">
+        <button class="subnav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <span data-en="Explore here" data-zh="继续看看">Explore here</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="project-menu mega explore-menu" role="menu">
+            <p class="pm-group" data-en="On this page" data-zh="本页">On this page</p>
+            <a class="pm-item" href="quanta.html#pages" role="menuitem">
+              <span class="pm-body">
+                <b data-en="The seven pages" data-zh="七个页面">The seven pages</b>
+              </span>
+            </a>
+            <a class="pm-item" href="quanta.html#architecture" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Architecture" data-zh="架构">Architecture</b>
+              </span>
+            </a>
+            <a class="pm-item" href="quanta.html#memory" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Memory" data-zh="记忆">Memory</b>
+              </span>
+            </a>
+            <a class="pm-item" href="quanta.html#agents" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Agents" data-zh="子智能体">Agents</b>
+              </span>
+            </a>
+            <a class="pm-item" href="quanta.html#install" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Install" data-zh="安装">Install</b>
+              </span>
+            </a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -83,7 +168,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
         <span data-en="All work" data-zh="全部作品">All work</span>
       </a>
-      <img class="case-line" src="img/quanta-mark.png" alt="" aria-hidden="true">
+      <img class="case-line" src="img/quanta-mark.webp" alt="" aria-hidden="true" width="300" height="300" decoding="async">
       <h1 class="case-title" style="margin-top:18px;">Quanta</h1>
       <p class="case-tagline" data-en="Seven workspaces for one assistant — a window where the tools live next to the conversation." data-zh="给同一个助手七间房间——工具就摆在对话旁边的那个窗口。">
         Seven workspaces for one assistant — a window where the tools live next to the conversation.
@@ -120,7 +205,7 @@
 
     <div class="container">
       <div class="hero-shot qhero" data-reveal>
-        <img src="img/quanta/hero.jpg" alt="Quanta, Maestro page: a finished turn with its work steps, a diff and the composer">
+        <img src="img/quanta/hero.webp" alt="Quanta, Maestro page: a finished turn with its work steps, a diff and the composer" width="2000" height="1250" decoding="async">
       </div>
     </div>
   </section>
@@ -182,7 +267,7 @@
         <!-- 01 MAESTRO -->
         <article class="qpage" id="p-maestro">
           <div class="qshot" data-reveal>
-            <img src="img/quanta/maestro.jpg" alt="Quanta Maestro page, empty project: the knot watermark, “Quantify everything.” and the composer">
+            <img src="img/quanta/maestro.webp" alt="Quanta Maestro page, empty project: the knot watermark, “Quantify everything.” and the composer" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap" data-reveal>
             <div class="qkicker"><span>01</span><em>Quanta Nova</em></div>
@@ -201,7 +286,7 @@
         <!-- 02 ANALYSE -->
         <article class="qpage flip" id="p-analyse">
           <div class="qshot" data-reveal>
-            <img src="img/quanta/analyse.jpg" alt="Quanta Analyse page: a chart read as a table on the left, a narrow chat answering on the right">
+            <img src="img/quanta/analyse.webp" alt="Quanta Analyse page: a chart read as a table on the left, a narrow chat answering on the right" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap" data-reveal>
             <div class="qkicker"><span>02</span><em>Quanta Metric</em></div>
@@ -220,7 +305,7 @@
         <!-- 03 CRAWLER -->
         <article class="qpage" id="p-crawler">
           <div class="qshot" data-reveal>
-            <img src="img/quanta/crawler.jpg" alt="Quanta Crawler page: crawler settings, a run in progress and the output list beside a chat">
+            <img src="img/quanta/crawler.webp" alt="Quanta Crawler page: crawler settings, a run in progress and the output list beside a chat" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap" data-reveal>
             <div class="qkicker"><span>03</span><em>Quanta Scout</em></div>
@@ -239,7 +324,7 @@
         <!-- 04 SENTIMENT -->
         <article class="qpage flip" id="p-sentiment">
           <div class="qshot" data-reveal>
-            <img src="img/quanta/sentiment.jpg" alt="Quanta Sentiment page: a world map painted by country, a round of events and a chat explaining what moved">
+            <img src="img/quanta/sentiment.webp" alt="Quanta Sentiment page: a world map painted by country, a round of events and a chat explaining what moved" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap" data-reveal>
             <div class="qkicker"><span>04</span><em>Quanta Echo</em></div>
@@ -258,7 +343,7 @@
         <!-- 05 GENESIS -->
         <article class="qpage" id="p-genesis">
           <div class="qshot" data-reveal>
-            <img src="img/quanta/genesis.jpg" alt="Quanta Genesis page: a generated image on the stage, the Image shelf with four results and a chat">
+            <img src="img/quanta/genesis.webp" alt="Quanta Genesis page: a generated image on the stage, the Image shelf with four results and a chat" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap" data-reveal>
             <div class="qkicker"><span>05</span><em>Quanta Pneuma</em></div>
@@ -277,7 +362,7 @@
         <!-- 06 RHEMA -->
         <article class="qpage flip" id="p-rhema">
           <div class="qshot" data-reveal>
-            <img src="img/quanta/rhema.jpg" alt="Quanta Rhema page: a particle orb, the “I’m listening” state, captions and the mic button">
+            <img src="img/quanta/rhema.webp" alt="Quanta Rhema page: a particle orb, the “I’m listening” state, captions and the mic button" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap" data-reveal>
             <div class="qkicker"><span>06</span><em>Quanta Lalia</em></div>
@@ -296,7 +381,7 @@
         <!-- 07 COLLOQUY -->
         <article class="qpage" id="p-colloquy">
           <div class="qshot" data-reveal>
-            <img src="img/quanta/colloquy.jpg" alt="Quanta Colloquy page: the welcome state with the knot, the composer and DeepThink and Search switches">
+            <img src="img/quanta/colloquy.webp" alt="Quanta Colloquy page: the welcome state with the knot, the composer and DeepThink and Search switches" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap" data-reveal>
             <div class="qkicker"><span>07</span><em>Quanta Agora</em></div>
@@ -326,7 +411,7 @@
       <div class="qminor">
         <div data-reveal id="p-scheduled">
           <div class="qshot">
-            <img src="img/quanta/scheduled.jpg" alt="Quanta Scheduled page: keep-awake switch, create buttons and three queued tasks">
+            <img src="img/quanta/scheduled.webp" alt="Quanta Scheduled page: keep-awake switch, create buttons and three queued tasks" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap">
             <div class="qkicker"><span>08</span><em data-en="Every hour, every Sunday" data-zh="每小时，每周日">Every hour, every Sunday</em></div>
@@ -339,7 +424,7 @@
 
         <div data-reveal id="p-settings">
           <div class="qshot">
-            <img src="img/quanta/settings.jpg" alt="Quanta Settings: eleven panes, permissions, data folder and backup">
+            <img src="img/quanta/settings.webp" alt="Quanta Settings: eleven panes, permissions, data folder and backup" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="qcap">
             <div class="qkicker"><span>09</span><em data-en="Eleven panes" data-zh="十一栏">Eleven panes</em></div>
@@ -552,22 +637,22 @@
       </div>
       <div class="feature-grid" style="margin-top:22px;">
         <div class="feature" data-reveal>
-          <span class="fnum">01</span>
+          <img class="line-art glyph" src="img/line/icon-lock.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="fnum">01</span>
           <h3 data-en="Narrow tools by role" data-zh="按角色收窄工具">Narrow tools by role</h3>
           <p data-en="The retriever cannot write, the executor is not asked to judge, the reviewer is not asked to fix. A role is a tool allow-list, not a job title." data-zh="检索员不能写，执行员不被要求评判，复核员不被要求动手。一个角色是一张工具白名单，不是一个头衔。">The retriever cannot write, the executor is not asked to judge, the reviewer is not asked to fix. A role is a tool allow-list, not a job title.</p>
         </div>
         <div class="feature" data-reveal>
-          <span class="fnum">02</span>
+          <img class="line-art glyph" src="img/line/icon-cloud.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="fnum">02</span>
           <h3 data-en="Isolated contexts" data-zh="各自独立的上下文">Isolated contexts</h3>
           <p data-en="A delegate starts with a brief, not with your whole history. No context bleed, no half-remembered instructions, no token bill for a conversation it does not need." data-zh="派出去的人只拿到一份任务说明，不附带整段历史。上下文不串味，也不为一个不需要的对话付 token。">A delegate starts with a brief, not with your whole history. No context bleed, no half-remembered instructions, no token bill for a conversation it does not need.</p>
         </div>
         <div class="feature" data-reveal>
-          <span class="fnum">03</span>
+          <img class="line-art glyph" src="img/line/icon-clock.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="fnum">03</span>
           <h3 data-en="Parallel, and visible" data-zh="并发，而且看得见">Parallel, and visible</h3>
           <p data-en="Several delegates can run at once; each one appears as a card inside the turn, and the Context card lists the subagents this conversation actually used." data-zh="可以同时派几个人；每个都在这一轮里有一张卡，右栏 Context 卡只列这次对话真用到的子智能体。">Several delegates can run at once; each one appears as a card inside the turn, and the Context card lists the subagents this conversation actually used.</p>
         </div>
         <div class="feature" data-reveal>
-          <span class="fnum">04</span>
+          <img class="line-art glyph" src="img/line/icon-search.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="fnum">04</span>
           <h3 data-en="A second opinion, on demand" data-zh="要的时候请教别人">A second opinion, on demand</h3>
           <p data-en="ask_claude, ask_codex and ask_deepseek are ordinary tools — a page can consult another model without leaving the app or copying text between windows." data-zh="ask_claude、ask_codex、ask_deepseek 就是普通工具——某一页可以就地请教另一个模型，不用切窗口、不用复制文本。">ask_claude, ask_codex and ask_deepseek are ordinary tools — a page can consult another model without leaving the app or copying text between windows.</p>
         </div>
@@ -662,8 +747,11 @@
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <a class="brand" href="index.html"><span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></span>xyc<em>design.</em></a>
         <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent designer and AI engineer. Interface, agents and models, made in one pair of hands.</p>
+        <div class="foot-art" aria-hidden="true">
+          <img class="line-art" src="img/line/illu-greek-ariadne-wide.webp" alt="" width="420" height="211" loading="lazy" decoding="async">
+        </div>
       </div>
       <div class="foot-links">
         <div class="foot-col">
@@ -672,6 +760,7 @@
             <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
             <li><a href="index.html#about" data-en="About" data-zh="关于">About</a></li>
             <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="comfyui.html" data-en="ComfyUI" data-zh="ComfyUI 工作流">ComfyUI</a></li>
             <li><a href="focusos.html">FocusOS</a></li>
           </ul>
         </div>
@@ -701,6 +790,6 @@
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js?v=20261123X"></script>
 </body>
 </html>

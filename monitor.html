@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#faf9f5">
+<script>
+  /* theme before first paint — no flash of the wrong palette */
+  (function(){try{var s=localStorage.getItem('xyc-theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');document.documentElement.classList.add('js');}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.classList.add('js');}})();
+</script>
+<title>Monitor — xyc design</title>
+<meta name="description" content="A global sentiment board rebuilt from Quanta's Sentiment page: 18 public hot lists, geolocated across China's provinces and the world, ranked by heat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=20261123X">
+</head>
+<body data-title-en="Monitor — xyc design" data-title-zh="全球舆情 — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" decoding="async"></span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger" href="index.html#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu mega" id="projectMenu" role="menu" aria-label="Projects">
+            <p class="pm-group" data-en="Projects" data-zh="项目">Projects</p>
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+            </a>
+            <p class="pm-group" data-en="More" data-zh="更多">More</p>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+        <li><a href="monitor.html" class="is-current" data-en="Monitor" data-zh="舆情">Monitor</a></li>
+        <li><a href="archive.html" data-en="Archive" data-zh="作品档案">Archive</a></li>
+        <li><a href="data.html" data-en="Data" data-zh="数据">Data</a></li>
+
+        <li class="nav-ext has-menu">
+          <a class="nav-trigger" href="skill.html"><span data-en="Extensions" data-zh="扩展">Extensions</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu mega mini" role="menu">
+            <p class="pm-group" data-en="Extensions" data-zh="扩展">Extensions</p>
+            <a class="pm-item" href="skill.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Skills" data-zh="技能">Skills</b>
+                <span data-en="A folder and a script the model reads first." data-zh="一个文件夹 + 一段脚本，模型先读再动手。">A folder and a script the model reads first.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="plugin.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Plugins" data-zh="插件">Plugins</b>
+                <span data-en="Code inside the agent runtime." data-zh="跑在 Agent 运行时里的代码。">Code inside the agent runtime.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="connector.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Connectors" data-zh="连接器">Connectors</b>
+                <span data-en="A door in from a chat app or a microphone." data-zh="从聊天软件或麦克风进来的那道门。">A door in from a chat app or a microphone.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="mcp.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b>
+                <span data-en="A separate process exposing tools over JSON-RPC." data-zh="独立进程，用 JSON-RPC 暴露工具。">A separate process exposing tools over JSON-RPC.</span>
+              </span>
+            </a>
+            <p class="pm-group" data-en="Workflows" data-zh="工作流">Workflows</p>
+            <a class="pm-item" href="comfyui.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="ComfyUI" data-zh="ComfyUI">ComfyUI</b>
+                <span data-en="Four SDXL Turbo graphs, with the node canvas." data-zh="四张 SDXL Turbo 工作流，带节点画布。">Four SDXL Turbo graphs, with the node canvas.</span>
+              </span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="t-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="t-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2v2.2M12 19.8V22M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2 12h2.2M19.8 12H22M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      </button>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <button class="btn btn-dark btn-sm" type="button" data-mail data-en="Say hello" data-zh="联系我">Say hello</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="container subnav-inner">
+      <span class="subnav-label" data-en="Monitor" data-zh="全球舆情">Monitor</span>
+      <div class="subnav-explore has-menu">
+        <button class="subnav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <span data-en="Explore here" data-zh="继续看看">Explore here</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="project-menu mega explore-menu" role="menu">
+          <p class="pm-group" data-en="On this page" data-zh="本页">On this page</p>
+          <a class="pm-item" href="#board" role="menuitem">
+            <span class="pm-body"><b data-en="The board" data-zh="舆情地图">The board</b></span>
+          </a>
+          <a class="pm-item" href="#feed" role="menuitem">
+            <span class="pm-body"><b data-en="Signal feed" data-zh="信号流">Signal feed</b></span>
+          </a>
+          <a class="pm-item" href="#scout" role="menuitem">
+            <span class="pm-body"><b data-en="Ask Scout" data-zh="问 Scout">Ask Scout</b></span>
+          </a>
+          <a class="pm-item" href="#how" role="menuitem">
+            <span class="pm-body"><b data-en="How it works" data-zh="怎么做的">How it works</b></span>
+          </a>
+          <p class="pm-group" data-en="Elsewhere" data-zh="别处">Elsewhere</p>
+          <a class="pm-item" href="quanta.html" role="menuitem">
+            <span class="pm-body"><b>Quanta</b></span>
+          </a>
+          <a class="pm-item" href="data.html" role="menuitem">
+            <span class="pm-body"><b data-en="Research data" data-zh="研究数据">Research data</b></span>
+          </a>
+          <a class="pm-item" href="archive.html" role="menuitem">
+            <span class="pm-body"><b data-en="Archive" data-zh="作品档案">Archive</b></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="archive-hero monitor-hero" id="top">
+    <div class="container">
+      <div class="archive-head">
+        <div>
+          <span class="eyebrow" data-en="Monitor · Global sentiment" data-zh="Monitor · 全球舆情">Monitor · Global sentiment</span>
+          <h1 class="display"><span data-en="What the world is" data-zh="此刻，">What the world is</span><br><span data-en="talking about." data-zh="世界在说什么。">talking about.</span></h1>
+        </div>
+        <div class="archive-drawing mon-hero-art" aria-hidden="true">
+          <img class="line-art" src="img/line/illu-philo-cave.webp" alt="" width="512" height="512" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="archive-meta mon-hero-meta">
+        <span><b id="metaEvents">—</b> <span data-en="headlines" data-zh="条热榜标题">headlines</span></span>
+        <span><b id="metaRegions">—</b> <span data-en="regions located" data-zh="个地区">regions located</span></span>
+        <span><b id="metaSources">—</b> <span data-en="public sources" data-zh="个公开来源">public sources</span></span>
+        <span><b id="metaStamp">—</b> <span data-en="data time" data-zh="数据时间">data time</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── the board: map first, then controls + feed and the Scout column ── -->
+  <section class="section mon-section" id="board">
+    <div class="container">
+      <div class="mon-board" id="monBoard" data-view="world">
+        <div class="mon-map-stage" id="monStage" aria-label="World sentiment map">
+          <div class="mon-map-loading" id="monLoading">
+            <span class="mon-load-dot"></span>
+            <span data-en="Loading the map…" data-zh="地图加载中…">Loading the map…</span>
+          </div>
+        </div>
+
+        <div class="mon-map-bar">
+          <div class="mon-map-id">
+            <span class="mon-live-dot" aria-hidden="true"></span>
+            <span data-en="Global sentiment board" data-zh="全球舆情板">Global sentiment board</span>
+            <span class="mon-map-stamp" id="mapStamp">—</span>
+            <button class="mon-mode" id="monMode" type="button">Snapshot</button>
+          </div>
+        </div>
+
+        <div class="mon-map-legend">
+          <span><i class="mon-k low"></i><span data-en="1–5" data-zh="1–5 条">1–5</span></span>
+          <span><i class="mon-k mid"></i><span data-en="6–10" data-zh="6–10 条">6–10</span></span>
+          <span><i class="mon-k high"></i><span data-en="11+" data-zh="11 条以上">11+</span></span>
+          <span class="mon-legend-hint" data-en="Hover or tap a region for headlines" data-zh="悬浮或点一个地区看标题">Hover or tap a region for headlines</span>
+        </div>
+
+        <div class="mon-tip hidden" id="monTip" role="status"></div>
+
+        <div class="mon-pop hidden" id="monPop" aria-live="polite">
+          <div class="mon-pop-head">
+            <span class="mon-pop-title" id="monPopTitle">—</span>
+            <button class="mon-pop-x" type="button" id="monPopClose" aria-label="Close">✕</button>
+          </div>
+          <div class="mon-pop-list" id="monPopList"></div>
+        </div>
+      </div>
+
+      <div class="mon-lower">
+        <div class="mon-controls" id="feed" data-reveal>
+          <div class="mon-actions">
+            <button class="mon-start" type="button" id="monStart">
+              <span class="mon-start-label" id="monStartLabel" data-en="Start monitoring" data-zh="开始监测">Start monitoring</span>
+              <span class="mon-start-bar"><i id="monStartFill"></i></span>
+            </button>
+            <button class="mon-settings-btn" type="button" id="monSettingsBtn" aria-expanded="false">
+              <span data-en="Sentiment settings" data-zh="舆情设置">Sentiment settings</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+          </div>
+          <p class="mon-action-note" id="monActionNote" data-en="Replays the stored snapshot in the browser. No API call, no server." data-zh="在浏览器里重放已存好的快照，不请求接口，也不需要服务器。">Replays the stored snapshot in the browser. No API call, no server.</p>
+
+          <div class="mon-settings hidden" id="monSettings">
+            <div class="mon-settings-head">
+              <span data-en="Sources in this board" data-zh="这份看板里的来源">Sources in this board</span>
+              <button type="button" class="mon-settings-all" id="monAllSources" data-en="All on" data-zh="全部开启">All on</button>
+            </div>
+            <div class="mon-sources" id="monSources"></div>
+            <p class="mon-settings-note" data-en="Switch a source off and the map, the counts and the briefing recompute locally." data-zh="关掉某个来源，地图、计数与简报都会在本地重新计算。">Switch a source off and the map, the counts and the briefing recompute locally.</p>
+            <div class="mon-live">
+              <div class="mon-live-head">
+                <span data-en="Live proxy" data-zh="实时代理">Live proxy</span>
+                <span class="mon-live-badge" id="monLiveBadge">Off</span>
+              </div>
+              <div class="mon-live-row">
+                <input id="monLiveUrl" type="url" inputmode="url" autocomplete="off" spellcheck="false" data-en-placeholder="https://…workers.dev/api/monitor" data-zh-placeholder="https://…workers.dev/api/monitor" placeholder="https://…workers.dev/api/monitor" aria-label="Live proxy URL">
+                <button class="mon-live-save" id="monLiveSave" type="button" data-en="Use" data-zh="使用">Use</button>
+              </div>
+              <p class="mon-live-status" id="monLiveStatus" role="status" aria-live="polite">Snapshot mode.</p>
+            </div>
+          </div>
+
+          <div class="mon-feed-head">
+            <div>
+              <h2 class="mon-feed-title" data-en="Signal feed" data-zh="信号流">Signal feed</h2>
+              <span class="mon-feed-sub"><b id="feedCount">—</b> <span data-en="stories in view" data-zh="条可见">stories in view</span></span>
+              <span class="mon-feed-lang" data-en="Headlines run in their original language." data-zh="标题保留发布时的原文。">Headlines run in their original language.</span>
+            </div>
+            <label class="mon-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path></svg>
+              <input type="search" id="monSearch" data-en-placeholder="Filter headlines" data-zh-placeholder="筛选标题" placeholder="Filter headlines" aria-label="Filter headlines">
+            </label>
+          </div>
+
+          <div class="mon-cats" id="monCats" role="group" aria-label="Categories"></div>
+
+          <div class="mon-feed" id="monFeed"></div>
+          <div class="mon-feed-foot">
+            <span id="monFeedFoot" data-en="Showing the 60 hottest of 419" data-zh="显示 419 条里最热的 60 条">Showing the 60 hottest of 419</span>
+            <button class="mon-more" type="button" id="monMore" data-en="Load 60 more" data-zh="再加载 60 条">Load 60 more</button>
+          </div>
+        </div>
+
+        <aside class="mon-scout" id="scout" data-reveal>
+          <div class="mon-scout-head">
+            <span class="mon-scout-mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></span>
+            <div>
+              <b>Quanta Scout</b>
+              <span data-en="Briefing · this board" data-zh="简报 · 这份看板">Briefing · this board</span>
+            </div>
+            <span class="mon-scout-live" data-en="local" data-zh="本地">local</span>
+          </div>
+          <div class="mon-chat" id="monChat" aria-live="polite"></div>
+          <div class="mon-chips" id="monChips"></div>
+          <form class="mon-ask" id="monAsk">
+            <input type="text" id="monAskInput" data-en-placeholder="Ask about a country, province or topic…" data-zh-placeholder="问一个国家、省份或话题…" placeholder="Ask about a country, province or topic…" aria-label="Ask Scout">
+            <button type="submit" aria-label="Send">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"></path></svg>
+            </button>
+          </form>
+          <p class="mon-ask-note" data-en="Answers are matched locally against this snapshot." data-zh="回答只在这份快照里做本地匹配。">Answers are matched locally against this snapshot.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head has-art">
+        <div>
+          <span class="eyebrow" data-en="How it is made" data-zh="怎么做的">How it is made</span>
+          <h2 class="display" data-en="Collected, located, ranked." data-zh="抓取、定位、排序。">Collected, located, ranked.</h2>
+          <p data-en="The same three steps as the desktop app, running as a build script instead of a backend." data-zh="和桌面端一样的三步，只是把后端换成了一段构建脚本。">The same three steps as the desktop app, running as a build script instead of a backend.</p>
+        </div>
+        <img class="line-art head-art" src="img/line/icon-search-lg.webp" alt="" width="512" height="512" loading="lazy" decoding="async">
+      </div>
+
+      <ol class="mon-steps">
+        <li data-reveal>
+          <span class="mon-step-n">01</span>
+          <div>
+            <strong data-en="Collect" data-zh="抓取">Collect</strong>
+            <p data-en="Eighteen public hot lists, read through the same newsnow endpoint TrendRadar uses. Duplicate stories are merged and every board that carried one is kept." data-zh="十八个公开热榜，走 TrendRadar 同款 newsnow 接口。同一话题在多榜出现时合并成一条，并记下它上过哪些榜。">Eighteen public hot lists, read through the same newsnow endpoint TrendRadar uses. Duplicate stories are merged and every board that carried one is kept.</p>
+          </div>
+        </li>
+        <li data-reveal>
+          <span class="mon-step-n">02</span>
+          <div>
+            <strong data-en="Locate" data-zh="定位">Locate</strong>
+            <p data-en="Place names in each headline are matched to China's 34 province-level regions and 80 countries. Headlines without a place stay in the feed but not on the map." data-zh="把标题里的地名匹配到中国 34 个省级行政区与 80 个国家。没有地名的标题留在信息流里，不上地图。">Place names in each headline are matched to China's 34 province-level regions and 80 countries. Headlines without a place stay in the feed but not on the map.</p>
+          </div>
+        </li>
+        <li data-reveal>
+          <span class="mon-step-n">03</span>
+          <div>
+            <strong data-en="Rank" data-zh="排序">Rank</strong>
+            <p data-en="Heat is board position multiplied by the number of boards carrying the story. A region is tinted at 1–5, 6–10 and 11+ stories; the badge is the count." data-zh="热度＝榜单位次 × 同题出现的榜数。地区按 1–5、6–10、11 条以上三档上色，圆点里就是条数。">Heat is board position multiplied by the number of boards carrying the story. A region is tinted at 1–5, 6–10 and 11+ stories; the badge is the count.</p>
+          </div>
+        </li>
+        <li data-reveal>
+          <span class="mon-step-n">04</span>
+          <div>
+            <strong data-en="Freeze" data-zh="冻结成快照">Freeze</strong>
+            <p data-en="The last round is written to monitor-data.js at build time. GitHub Pages serves that file — which is why this page needs no backend." data-zh="最后一轮在构建时写进 monitor-data.js，由 GitHub Pages 直接提供——所以这一页不需要后端。">The last round is written to monitor-data.js at build time. GitHub Pages serves that file — which is why this page needs no backend.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="mon-source-block" data-reveal>
+        <div class="mon-source-head">
+          <h3 data-en="Sources" data-zh="来源">Sources</h3>
+          <span id="sourceSummary">18 public boards</span>
+        </div>
+        <ul class="mon-source-list" id="monSourceList"></ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="container">
+    <p class="data-legal" role="note" data-reveal>
+      <span class="dl-dot" aria-hidden="true"></span>
+      <span data-en="Headlines and links come from public hot lists and remain with their original platforms and authors. This board is for learning and demonstration only — not for redistribution or commercial use." data-zh="标题与链接来自公开热榜，版权归原平台与作者所有。本页仅用于学习与展示，请勿转载或作商业用途。">Headlines and links come from public hot lists and remain with their original platforms and authors. This board is for learning and demonstration only — not for redistribution or commercial use.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="archive-foot">
+      <span data-en="Snapshot generated by tools/build_monitor_data.py; ages quickly by design." data-zh="快照由 tools/build_monitor_data.py 生成；它会很快过时，这是刻意的。">Snapshot generated by tools/build_monitor_data.py; ages quickly by design.</span>
+      <span class="archive-foot-links">
+        <a href="quanta.html" data-en="See the app behind it →" data-zh="看看它背后的 App →">See the app behind it →</a>
+      </span>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent designer and AI engineer. Interface, agents and models, made in one pair of hands.</p>
+        <div class="foot-art" aria-hidden="true">
+          <img class="line-art" src="img/line/illu-greek-ariadne-wide.webp" alt="" width="420" height="211" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="archive.html" data-en="Archive" data-zh="作品档案">Archive</a></li>
+            <li><a href="monitor.html" data-en="Monitor" data-zh="全球舆情">Monitor</a></li>
+            <li><a href="comfyui.html" data-en="ComfyUI" data-zh="ComfyUI 工作流">ComfyUI</a></li>
+            <li><a href="data.html" data-en="Research data" data-zh="研究数据">Research data</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Extensions" data-zh="扩展">Extensions</h4>
+          <ul>
+            <li><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+            <li><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+            <li><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+            <li><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+            <li><a href="data.html" data-en="Research data" data-zh="研究数据">Research data</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span>The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script defer src="monitor-live.js?v=20261123X"></script>
+<script defer src="monitor-data.js?v=20261123X"></script>
+<script src="site.js?v=20261123X"></script>
+<script defer src="monitor.js?v=20261123X"></script>
+</body>
+</html>

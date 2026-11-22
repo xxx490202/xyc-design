@@ -1,0 +1,179 @@
+{
+  "last_node_id": 10,
+  "last_link_id": 12,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [50, 100],
+      "size": [315, 98],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {"name": "MODEL", "type": "MODEL", "links": [1], "slot_index": 0},
+        {"name": "CLIP", "type": "CLIP", "links": [2, 3], "slot_index": 1},
+        {"name": "VAE", "type": "VAE", "links": [7], "slot_index": 2}
+      ],
+      "properties": {"Node name for S&R": "CheckpointLoaderSimple"},
+      "widgets_values": ["sd_xl_turbo_1.0_fp16.safetensors"]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [415, 100],
+      "size": [400, 220],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [{"name": "clip", "type": "CLIP", "link": 2}],
+      "outputs": [{"name": "CONDITIONING", "type": "CONDITIONING", "links": [4], "slot_index": 0}],
+      "title": "正面提示词 (Positive)",
+      "properties": {"Node name for S&R": "CLIPTextEncode"},
+      "widgets_values": ["1girl, solo, black hair, long flowing hair, extremely detailed eyes, beautiful detailed face, perfect skin, soft smile, elegant pose, looking at viewer, upper body portrait, flowing white silk dress, golden hour lighting, professional photography, bokeh background, blooming garden, rose petals floating, gentle breeze, ultra high quality, highly detailed, 8k resolution, photorealistic, masterpiece, best quality, sharp focus, professional color grading"],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [415, 370],
+      "size": [400, 200],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [{"name": "clip", "type": "CLIP", "link": 3}],
+      "outputs": [{"name": "CONDITIONING", "type": "CONDITIONING", "links": [5], "slot_index": 0}],
+      "title": "负面提示词 (Negative)",
+      "properties": {"Node name for S&R": "CLIPTextEncode"},
+      "widgets_values": ["ugly, deformed, noisy, blurry, low quality, distorted, grainy, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, poorly drawn face, poorly drawn hands, poorly rendered hands, low resolution, worst quality, lowres, jpeg artifacts, compression artifacts, watermark, signature, text, username, logo"],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 4,
+      "type": "EmptyLatentImage",
+      "pos": [50, 300],
+      "size": [315, 106],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [{"name": "LATENT", "type": "LATENT", "links": [6], "slot_index": 0}],
+      "properties": {"Node name for S&R": "EmptyLatentImage"},
+      "widgets_values": [768, 768, 1],
+      "title": "图像尺寸 (提升到768x768)"
+    },
+    {
+      "id": 5,
+      "type": "KSampler",
+      "pos": [863, 100],
+      "size": [315, 474],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 1},
+        {"name": "positive", "type": "CONDITIONING", "link": 4},
+        {"name": "negative", "type": "CONDITIONING", "link": 5},
+        {"name": "latent_image", "type": "LATENT", "link": 6}
+      ],
+      "outputs": [{"name": "LATENT", "type": "LATENT", "links": [10], "slot_index": 0}],
+      "properties": {"Node name for S&R": "KSampler"},
+      "widgets_values": [123456, "randomize", 4, 2, "euler", "normal", 1],
+      "title": "采样器 (4步高质量)"
+    },
+    {
+      "id": 9,
+      "type": "LatentUpscale",
+      "pos": [1230, 100],
+      "size": [315, 130],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [{"name": "samples", "type": "LATENT", "link": 10}],
+      "outputs": [{"name": "LATENT", "type": "LATENT", "links": [11], "slot_index": 0}],
+      "properties": {"Node name for S&R": "LatentUpscale"},
+      "widgets_values": ["nearest-exact", 1024, 1024, "disabled"],
+      "title": "Latent放大到1024x1024"
+    },
+    {
+      "id": 10,
+      "type": "KSampler",
+      "pos": [1230, 280],
+      "size": [315, 474],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 12},
+        {"name": "positive", "type": "CONDITIONING", "link": 13},
+        {"name": "negative", "type": "CONDITIONING", "link": 14},
+        {"name": "latent_image", "type": "LATENT", "link": 11}
+      ],
+      "outputs": [{"name": "LATENT", "type": "LATENT", "links": [8], "slot_index": 0}],
+      "properties": {"Node name for S&R": "KSampler"},
+      "widgets_values": [123456, "fixed", 2, 2, "euler", "normal", 0.5],
+      "title": "细化采样器 (降噪0.5)"
+    },
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [1600, 400],
+      "size": [210, 46],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {"name": "samples", "type": "LATENT", "link": 8},
+        {"name": "vae", "type": "VAE", "link": 7}
+      ],
+      "outputs": [{"name": "IMAGE", "type": "IMAGE", "links": [9], "slot_index": 0}],
+      "properties": {"Node name for S&R": "VAEDecode"}
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [1600, 500],
+      "size": [315, 270],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 9}],
+      "properties": {},
+      "widgets_values": ["SDXL_Turbo_HQ"]
+    },
+    {
+      "id": 8,
+      "type": "Note",
+      "pos": [863, 600],
+      "size": [315, 180],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "properties": {"text": ""},
+      "widgets_values": ["高质量版本改进：\n\n1. 分辨率：768x768 → 1024x1024\n2. 提示词：更详细的质量描述\n3. 两阶段生成：\n   - 阶段1: 768x768 基础生成\n   - 阶段2: 放大+细化\n\n生成时间约15-25秒"],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [1, 1, 0, 5, 0, "MODEL"],
+    [2, 1, 1, 2, 0, "CLIP"],
+    [3, 1, 1, 3, 0, "CLIP"],
+    [4, 2, 0, 5, 1, "CONDITIONING"],
+    [5, 3, 0, 5, 2, "CONDITIONING"],
+    [6, 4, 0, 5, 3, "LATENT"],
+    [7, 1, 2, 6, 1, "VAE"],
+    [8, 10, 0, 6, 0, "LATENT"],
+    [9, 6, 0, 7, 0, "IMAGE"],
+    [10, 5, 0, 9, 0, "LATENT"],
+    [11, 9, 0, 10, 3, "LATENT"],
+    [12, 1, 0, 10, 0, "MODEL"],
+    [13, 2, 0, 10, 1, "CONDITIONING"],
+    [14, 3, 0, 10, 2, "CONDITIONING"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

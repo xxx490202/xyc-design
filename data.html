@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#faf9f5">
+<script>
+  /* theme before first paint — no flash of the wrong palette */
+  (function(){try{var s=localStorage.getItem('xyc-theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');document.documentElement.classList.add('js');}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.classList.add('js');}})();
+</script>
+<title>Data — xyc design</title>
+<meta name="description" content="The public dataset behind the digital mourning study — four figures, four periods, 56 tables, 70.3 MB.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=20261123X">
+</head>
+<body data-title-en="Data — xyc design" data-title-zh="研究数据 — xyc design">
+
+<header class="nav" id="siteNav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="xyc design — home">
+      <span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" decoding="async"></span>xyc<em>design.</em>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li class="has-menu" id="projectNav">
+          <a class="nav-trigger" href="#work" aria-haspopup="true" aria-expanded="false" aria-controls="projectMenu">
+            <span data-en="Project" data-zh="项目">Project</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu mega" id="projectMenu" role="menu" aria-label="Projects">
+            <p class="pm-group" data-en="Projects" data-zh="项目">Projects</p>
+            <a class="pm-item" href="quanta.html" role="menuitem">
+              <span class="pm-body">
+                <b>Quanta</b>
+                <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
+              </span>
+            </a>
+            <a class="pm-item" href="focusos.html" role="menuitem">
+              <span class="pm-body">
+                <b>FocusOS</b>
+                <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
+              </span>
+            </a>
+            <p class="pm-group" data-en="More" data-zh="更多">More</p>
+            <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
+              <span class="pm-body">
+                <b>The best is yet to come.</b>
+                <span data-en="In progress" data-zh="进行中">In progress</span>
+              </span>
+            </div>
+            <div class="pm-foot">
+              <a href="#work" data-en="All work" data-zh="全部作品">All work</a>
+              <span>XYC-2026</span>
+            </div>
+          </div>
+        </li>
+        <li><a href="monitor.html" data-en="Monitor" data-zh="舆情">Monitor</a></li>
+        <li><a href="archive.html" data-en="Archive" data-zh="作品档案">Archive</a></li>
+        <li><a href="data.html" class="is-current" data-en="Data" data-zh="数据">Data</a></li>
+
+        <li class="nav-ext has-menu">
+          <a class="nav-trigger" href="skill.html"><span data-en="Extensions" data-zh="扩展">Extensions</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu mega mini" role="menu">
+            <p class="pm-group" data-en="Extensions" data-zh="扩展">Extensions</p>
+            <a class="pm-item" href="skill.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Skills" data-zh="技能">Skills</b>
+                <span data-en="A folder and a script the model reads first." data-zh="一个文件夹 + 一段脚本，模型先读再动手。">A folder and a script the model reads first.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="plugin.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Plugins" data-zh="插件">Plugins</b>
+                <span data-en="Code inside the agent runtime." data-zh="跑在 Agent 运行时里的代码。">Code inside the agent runtime.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="connector.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Connectors" data-zh="连接器">Connectors</b>
+                <span data-en="A door in from a chat app or a microphone." data-zh="从聊天软件或麦克风进来的那道门。">A door in from a chat app or a microphone.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="mcp.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b>
+                <span data-en="A separate process exposing tools over JSON-RPC." data-zh="独立进程，用 JSON-RPC 暴露工具。">A separate process exposing tools over JSON-RPC.</span>
+              </span>
+            </a>
+            <p class="pm-group" data-en="Workflows" data-zh="工作流">Workflows</p>
+            <a class="pm-item" href="comfyui.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="ComfyUI" data-zh="ComfyUI">ComfyUI</b>
+                <span data-en="Four SDXL Turbo graphs, with the node canvas." data-zh="四张 SDXL Turbo 工作流，带节点画布。">Four SDXL Turbo graphs, with the node canvas.</span>
+              </span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="t-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="t-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2v2.2M12 19.8V22M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2 12h2.2M19.8 12H22M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      </button>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+      <button class="btn btn-dark btn-sm" type="button" data-mail data-en="Say hello" data-zh="联系我">Say hello</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="container subnav-inner">
+      <span class="subnav-label" data-en="Data" data-zh="研究数据">Data</span>
+      <div class="subnav-explore has-menu">
+        <button class="subnav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <span data-en="Explore here" data-zh="继续看看">Explore here</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="project-menu mega explore-menu" role="menu">
+            <p class="pm-group" data-en="On this page" data-zh="本页">On this page</p>
+            <a class="pm-item" href="data.html#scale" role="menuitem">
+              <span class="pm-body">
+                <b data-en="At a glance" data-zh="规模">At a glance</b>
+              </span>
+            </a>
+            <a class="pm-item" href="data.html#schema" role="menuitem">
+              <span class="pm-body">
+                <b data-en="The four periods" data-zh="四个阶段">The four periods</b>
+              </span>
+            </a>
+            <a class="pm-item" href="data.html#ethics" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Before you download" data-zh="下载之前">Before you download</b>
+              </span>
+            </a>
+            <p class="pm-group" data-en="Files" data-zh="文件">Files</p>
+            <a class="pm-item" href="https://github.com/xxx490202/calculation-communication-data" target="_blank" rel="noreferrer noopener" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Repository" data-zh="数据仓库">Repository</b>
+              </span>
+            </a>
+            <a class="pm-item" href="https://github.com/xxx490202/calculation-communication-data/releases/download/v1.0.0/calculation-communication-data.zip" target="_blank" rel="noreferrer noopener" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Download the zip" data-zh="下载压缩包">Download the zip</b>
+              </span>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="archive-hero data-hero" id="top">
+    <div class="container">
+      <div class="archive-head">
+        <div>
+          <span class="eyebrow" data-en="Data · Digital mourning" data-zh="数据 · 数字哀悼">Data · Digital mourning</span>
+          <h1 class="display" data-en="The corpus behind the study." data-zh="研究背后的那批数据。">The corpus behind the study.</h1>
+          <p class="lead" data-en="Four public figures, four periods around each death, three kinds of table pulled from Douyin and Bilibili. 56 files, 70.3 MB, published so the study can be re-run." data-zh="四位公众人物，以离世为原点，各切出四段时间；抖音与 B 站的评论、视频、创作者三类表一并收好。56 个文件、70.3 MB，公开出来，是希望这项研究能被重跑。">
+            Four public figures, four periods around each death, three kinds of table pulled from Douyin and Bilibili. 56 files, 70.3 MB, published so the study can be re-run.
+          </p>
+        </div>
+        <div class="archive-drawing" aria-hidden="true">
+          <img class="line-art" src="img/line/illu-documents.webp" alt="" width="512" height="512" decoding="async">
+        </div>
+      </div>
+      <div class="archive-meta">
+        <span><b>56</b> <span data-en="tables" data-zh="张数据表">tables</span></span>
+        <span><b>70.3 MB</b> <span data-en="uncompressed" data-zh="未压缩">uncompressed</span></span>
+        <span data-en="Douyin · Bilibili · 2026-06" data-zh="抖音 · B 站 · 2026-06">Douyin · Bilibili · 2026-06</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="scale">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="At a glance" data-zh="规模">At a glance</span>
+        <h2 class="display" data-en="What is in the folder." data-zh="文件夹里有什么。">What is in the folder.</h2>
+        <p data-en="Volumes below are the size of the published tables, not the number of posts they describe." data-zh="下列体量是已发布数据表的文件大小，而非它们所记录的帖文条数。">Volumes below are the size of the published tables, not the number of posts they describe.</p>
+      </div>
+
+      <ul class="data-stats" data-reveal>
+        <li>
+          <div class="ds-top"><b>4</b><img class="line-art ds-icon" src="img/line/icon-user.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <span class="ds-label" data-en="public figures" data-zh="位公众人物">public figures</span>
+          <span class="ds-sub" data-en="Li Wen · Qiong Yao · Zhang Xuefeng · Zhou Haimei" data-zh="李玟 · 琼瑶 · 张雪峰 · 周海媚">李玟 · 琼瑶 · 张雪峰 · 周海媚</span>
+        </li>
+        <li>
+          <div class="ds-top"><b>4</b><img class="line-art ds-icon" src="img/line/icon-calendar.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <span class="ds-label" data-en="periods per figure" data-zh="个时间段／每人">periods per figure</span>
+          <span class="ds-sub" data-en="T1–T4 · before / outbreak / mourning / memory" data-zh="T1–T4 · 生前 / 爆发 / 哀悼 / 长忆">T1–T4 · 生前 / 爆发 / 哀悼 / 长忆</span>
+        </li>
+        <li>
+          <div class="ds-top"><b>56</b><img class="line-art ds-icon" src="img/line/icon-star.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <span class="ds-label" data-en="tables" data-zh="张数据表">tables</span>
+          <span class="ds-sub" data-en="CSV 42 · XLSX 14" data-zh="CSV 42 · XLSX 14">CSV 42 · XLSX 14</span>
+        </li>
+        <li>
+          <div class="ds-top"><b>70.3</b><img class="line-art ds-icon" src="img/line/icon-download.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <span class="ds-label" data-en="MB in total" data-zh="MB，合计">MB in total</span>
+          <span class="ds-sub" data-en="comments 63.3 · video 3.4 · content 2.1 · creators 1.6" data-zh="评论 63.3 · 视频 3.4 · 内容 2.1 · 创作者 1.6">评论 63.3 · 视频 3.4 · 内容 2.1 · 创作者 1.6</span>
+        </li>
+        <li>
+          <div class="ds-top"><b><span data-en="261.6" data-zh="26.2">26.2</span><span class="ds-unit" data-en="K" data-zh="万">万</span></b><img class="line-art ds-icon" src="img/line/icon-cloud.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <span class="ds-label" data-en="records in the study" data-zh="条数据（研究口径）">records in the study</span>
+          <span class="ds-sub" data-en="261,559 records · 248,385 comments · 13,174 videos" data-zh="261,559 条 · 评论 248,385 · 视频 13,174">261,559 条 · 评论 248,385 · 视频 13,174</span>
+        </li>
+      </ul>
+
+      <figure class="chart-block" data-reveal>
+        <div class="chart-head">
+          <h3 data-en="Volume by subject" data-zh="按研究对象">Volume by subject</h3>
+          <span>MB · FILES</span>
+        </div>
+      <svg class="chart-svg" viewBox="0 0 900 240" role="img" aria-label="按研究对象统计的数据体量">
+        <text class="c-label" x="0" y="40" data-en="Li Wen" data-zh="李玟">Li Wen</text>
+        <text class="c-code" x="86" y="40">liwen</text>
+        <rect x="190" y="24" width="261" height="22" rx="3" fill="var(--ink)" opacity="0.82"/>
+        <text class="c-value" x="463" y="40">15.3 MB</text>
+        <text class="c-label" x="0" y="94" data-en="Qiong Yao" data-zh="琼瑶">Qiong Yao</text>
+        <text class="c-code" x="86" y="94">qiongyao</text>
+        <rect x="190" y="78" width="182" height="22" rx="3" fill="var(--ink)" opacity="0.82"/>
+        <text class="c-value" x="384" y="94">10.7 MB</text>
+        <text class="c-label" x="0" y="148" data-en="Zhang Xuefeng" data-zh="张雪峰">Zhang Xuefeng</text>
+        <text class="c-code" x="86" y="148">zhangxuefeng</text>
+        <rect x="190" y="132" width="620" height="22" rx="3" fill="var(--red)" opacity="0.92"/>
+        <text class="c-value" x="822" y="148">36.4 MB</text>
+        <text class="c-label" x="0" y="202" data-en="Zhou Haimei" data-zh="周海媚">Zhou Haimei</text>
+        <text class="c-code" x="86" y="202">zhouhaimei</text>
+        <rect x="190" y="186" width="136" height="22" rx="3" fill="var(--ink)" opacity="0.82"/>
+        <text class="c-value" x="338" y="202">8.0 MB</text>
+      </svg>
+        <p class="chart-note" data-en="Zhang Xuefeng carries two platforms (Douyin and Bilibili), which is why it is the heaviest folder." data-zh="张雪峰有两套平台数据（抖音与 B 站），所以是体量最大的一组。">Zhang Xuefeng carries two platforms (Douyin and Bilibili), which is why it is the heaviest folder.</p>
+      </figure>
+
+      <figure class="chart-block" data-reveal>
+        <div class="chart-head">
+          <h3 data-en="Volume by period" data-zh="按时间段">Volume by period</h3>
+          <span>MB · T1–T4</span>
+        </div>
+      <svg class="chart-svg" viewBox="0 0 900 270" role="img" aria-label="四个阶段的取样体量">
+        <line x1="0" y1="210" x2="900" y2="210" stroke="var(--line-strong)" stroke-width="1"/>
+        <rect x="60" y="122" width="96" height="88" rx="3" fill="var(--ink)" opacity="0.8"/>
+        <text class="c-value" x="108" y="112" text-anchor="middle">14.5 MB</text>
+        <text class="c-label" x="108" y="232" text-anchor="middle">T1</text>
+        <text class="c-label soft" x="108" y="250" text-anchor="middle" data-en="before" data-zh="生前争议期">before</text>
+        <rect x="270" y="60" width="96" height="150" rx="3" fill="var(--red)" opacity="0.92"/>
+        <text class="c-value" x="318" y="50" text-anchor="middle">24.8 MB</text>
+        <text class="c-label" x="318" y="232" text-anchor="middle">T2</text>
+        <text class="c-label soft" x="318" y="250" text-anchor="middle" data-en="outbreak" data-zh="死亡爆发期">outbreak</text>
+        <rect x="480" y="88" width="96" height="122" rx="3" fill="var(--ink)" opacity="0.8"/>
+        <text class="c-value" x="528" y="78" text-anchor="middle">20.1 MB</text>
+        <text class="c-label" x="528" y="232" text-anchor="middle">T3</text>
+        <text class="c-label soft" x="528" y="250" text-anchor="middle" data-en="mourning" data-zh="哀悼持续期">mourning</text>
+        <rect x="690" y="143" width="96" height="67" rx="3" fill="var(--ink)" opacity="0.8"/>
+        <text class="c-value" x="738" y="133" text-anchor="middle">11.0 MB</text>
+        <text class="c-label" x="738" y="232" text-anchor="middle">T4</text>
+        <text class="c-label soft" x="738" y="250" text-anchor="middle" data-en="memory" data-zh="长期记忆期">memory</text>
+      </svg>
+        <p class="chart-note" data-en="The death announcement (T2) is the peak: the week when comment volume explodes and the reading of a life is rewritten." data-zh="峰值落在死亡爆发期（T2）——评论量炸开、一个人的评价被重新书写的那几天。">The death announcement (T2) is the peak: the week when comment volume explodes and the reading of a life is rewritten.</p>
+      </figure>
+
+      <figure class="chart-block" data-reveal>
+        <div class="chart-head">
+          <h3 data-en="What the tables are" data-zh="这三类表">What the tables are</h3>
+          <span>% OF VOLUME</span>
+        </div>
+      <svg class="chart-svg" viewBox="0 0 900 26" preserveAspectRatio="none" role="img" aria-label="数据表构成">
+        <rect x="0.0" y="0" width="809.2" height="26" fill="var(--ink)" opacity="0.85"/>
+        <rect x="809.2" y="0" width="43.5" height="26" fill="var(--red)" opacity="0.85"/>
+        <rect x="852.7" y="0" width="20.5" height="26" fill="var(--faint)" opacity="0.85"/>
+        <rect x="873.2" y="0" width="26.8" height="26" fill="var(--line-strong)" opacity="0.85"/>
+      </svg>
+        <ul class="chart-legend"><li><i style="background:var(--ink)"></i>评论 <em>63.3 MB</em></li> <li><i style="background:var(--red)"></i>视频 <em>3.4 MB</em></li> <li><i style="background:var(--faint)"></i>创作者 <em>1.6 MB</em></li> <li><i style="background:var(--line-strong)"></i>内容 <em>2.1 MB</em></li></ul>
+        <p class="chart-note" data-en="Comments are 90% of the corpus. Videos and creators are kept only as the context that produced them." data-zh="评论占了语料九成；视频与创作者表只作背景保留，用来回答「这些话从哪里来」。">Comments are 90% of the corpus. Videos and creators are kept only as the context that produced them.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="schema">
+    <div class="container">
+      <div class="section-head has-art">
+        <div>
+          <span class="eyebrow" data-en="How it is cut" data-zh="怎么切的">How it is cut</span>
+          <h2 class="display" data-en="Four periods around one death." data-zh="一次死亡，四段时间。">Four periods around one death.</h2>
+        </div>
+        <img class="line-art head-art" src="img/line/illu-book.webp" alt="" width="512" height="512" loading="lazy" decoding="async">
+      </div>
+      <ol class="period-list" data-reveal>
+        <li><b>T1</b><div><strong data-en="Before · controversy" data-zh="生前争议期">Before · controversy</strong><p data-en="The public argument that was already running while the person was alive." data-zh="人还在的时候，舆论场里已经跑着的那场争论。">The public argument that was already running while the person was alive.</p></div></li>
+        <li><b>T2</b><div><strong data-en="The death · outbreak" data-zh="死亡爆发期">The death · outbreak</strong><p data-en="The window right after the announcement, when volume peaks and the tone flips." data-zh="消息公布之后的那几天，评论量的峰值，也是语气反转的地方。">The window right after the announcement, when volume peaks and the tone flips.</p></div></li>
+        <li><b>T3</b><div><strong data-en="Mourning · sustained" data-zh="哀悼持续期">Mourning · sustained</strong><p data-en="Condolence settles into ritual: recollections, quotes, the same clips again." data-zh="悼念沉淀成仪式：回忆、引用、同几段影像被反复转发。">Condolence settles into ritual: recollections, quotes, the same clips again.</p></div></li>
+        <li><b>T4</b><div><strong data-en="Long memory" data-zh="长期记忆期">Long memory</strong><p data-en="Months later, what is left: anniversaries, references, an occasional return." data-zh="几个月之后还剩下什么：周年、引用，与偶尔的一次回头。">Months later, what is left: anniversaries, references, an occasional return.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="ethics">
+    <div class="container">
+      <div class="note-card" data-reveal>
+        <img class="line-art note-art" src="img/line/illu-plant-v.webp" alt="" width="512" height="512" loading="lazy" decoding="async">
+        <span class="eyebrow" data-en="Before you download" data-zh="下载之前">Before you download</span>
+        <h2 class="display" data-en="It is real people's comments." data-zh="这是真人的评论。">It is real people's comments.</h2>
+        <p data-en="The repository is public and contains nicknames, user IDs, avatar links and comment text pulled from public platforms. It is published for course reproduction and academic discussion only — not for doxxing, harassment or commercial use. Cite the platform terms and research ethics when you reuse it." data-zh="仓库是公开的，里面有从公开平台抓取的昵称、用户 ID、头像链接和评论文本。仅用于课程复现与学术讨论，不得用于人肉、骚扰或商业用途；引用时请遵守平台条款与研究伦理。">
+          The repository is public and contains nicknames, user IDs, avatar links and comment text pulled from public platforms. It is published for course reproduction and academic discussion only — not for doxxing, harassment or commercial use. Cite the platform terms and research ethics when you reuse it.
+        </p>
+        <div class="note-actions">
+          <a class="btn btn-primary" href="https://github.com/xxx490202/calculation-communication-data" target="_blank" rel="noreferrer noopener" data-en="Open the repository" data-zh="打开仓库">Open the repository</a>
+          <a class="btn btn-ghost" href="https://github.com/xxx490202/calculation-communication-data/releases/download/v1.0.0/calculation-communication-data.zip" data-en="Download the zip (34 MB)" data-zh="下载压缩包（34 MB）">Download the zip (34 MB)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <p class="data-legal" role="note" data-reveal>
+      <span class="dl-dot" aria-hidden="true"></span>
+      <span data-en="These tables are shared for learning and course reproduction only — please do not redistribute them or use them commercially." data-zh="本数据仅供学习与课程复现使用，请勿传播，亦不得用于商业用途。">本数据仅供学习与课程复现使用，请勿传播，亦不得用于商业用途。</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="archive-foot">
+      <span data-en="Sizes are measured from the published files; the zip is compressed." data-zh="体量按已发布文件统计；压缩包为压缩后大小。">Sizes are measured from the published files; the zip is compressed.</span>
+      <span class="archive-foot-links">
+        <a href="archive.html" data-en="← Back to the archive" data-zh="← 回到作品档案">← Back to the archive</a>
+      </span>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></span>xyc<em>design.</em></a>
+        <p data-en="Independent designer and AI engineer. Interface, agents and models, made in one pair of hands." data-zh="独立设计师与 AI 工程师。界面、Agent 与模型，出自同一双手。">Independent product studio. Interface, motion and code, made in one pair of hands.</p>
+        <div class="foot-art" aria-hidden="true">
+          <img class="line-art" src="img/line/illu-greek-ariadne-wide.webp" alt="" width="420" height="211" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-en="Studio" data-zh="工作室">Studio</h4>
+          <ul>
+            <li><a href="#work" data-en="Work" data-zh="作品">Work</a></li>
+            <li><a href="archive.html" data-en="Archive" data-zh="作品档案">Archive</a></li>
+            <li><a href="monitor.html" data-en="Monitor" data-zh="全球舆情">Monitor</a></li>
+            <li><a href="comfyui.html" data-en="ComfyUI" data-zh="ComfyUI 工作流">ComfyUI</a></li>
+            <li><a href="#map" data-en="Capability map" data-zh="能力图谱">Capability map</a></li>
+            <li><a href="#about" data-en="About" data-zh="关于">About</a></li>
+            <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="focusos.html">FocusOS</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Extensions" data-zh="扩展">Extensions</h4>
+          <ul>
+            <li><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
+            <li><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
+            <li><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
+            <li><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4 data-en="Elsewhere" data-zh="别处">Elsewhere</h4>
+          <ul>
+            <li><button class="foot-mail" type="button" data-mail>Email</button></li>
+            <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+            <li><a href="data.html" data-en="Research data" data-zh="研究数据">Research data</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 xyc design</span>
+      <span>The best is yet to come.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js?v=20261123X"></script>
+</body>
+</html>

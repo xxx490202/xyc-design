@@ -1,0 +1,41 @@
+name: Refresh Monitor snapshot
+
+on:
+  schedule:
+    # hourly, at :17 — off the top of the hour so it is not queued behind everything else
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monitor-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild the snapshot
+        run: python3 tools/build_monitor_data.py
+
+      - name: Commit if it changed
+        run: |
+          if git diff --quiet -- monitor-data.js; then
+            echo "No change — the snapshot is identical."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add monitor-data.js
+          git commit -m "chore(monitor): refresh snapshot"
+          git push

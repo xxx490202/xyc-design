@@ -3,19 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#faf9f5">
+<script>
+  /* theme before first paint — no flash of the wrong palette */
+  (function(){try{var s=localStorage.getItem('xyc-theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');document.documentElement.classList.add('js');}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.classList.add('js');}})();
+</script>
 <title>FocusOS — xyc design</title>
 <meta name="description" content="FocusOS case study — a pomodoro and schedule app for macOS and Windows, designed and built end to end by xyc design. Download for macOS and Windows.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=20261123X">
 </head>
 <body data-title-en="FocusOS — xyc design" data-title-zh="FocusOS — xyc design">
 
 <header class="nav" id="siteNav">
   <div class="container nav-inner">
     <a class="brand" href="index.html" aria-label="xyc design — home">
-      <span class="mark">x</span>xyc<em>design.</em>
+      <span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" decoding="async"></span>xyc<em>design.</em>
     </a>
     <nav aria-label="Primary">
       <ul class="nav-links" id="primaryMenu">
@@ -25,45 +33,83 @@
             <span data-en="Project" data-zh="项目">Project</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
           </a>
-          <div class="project-menu" id="projectMenu" role="menu" aria-label="Projects">
+          <div class="project-menu mega" id="projectMenu" role="menu" aria-label="Projects">
+            <p class="pm-group" data-en="Projects" data-zh="项目">Projects</p>
             <a class="pm-item" href="quanta.html" role="menuitem">
-              <span class="pm-thumb"><img src="img/lab-3.jpg" alt=""></span>
               <span class="pm-body">
                 <b>Quanta</b>
                 <span data-en="Seven-page AI workspace" data-zh="七页的 AI 工作台">Seven-page AI workspace</span>
               </span>
-              <span class="pm-tag">2026</span>
             </a>
-            <a class="pm-item" href="focusos.html" role="menuitem" aria-current="page">
-              <span class="pm-thumb"><img src="img/lab-2.jpg" alt=""></span>
+            <a class="pm-item" href="focusos.html" role="menuitem">
               <span class="pm-body">
                 <b>FocusOS</b>
                 <span data-en="Pomodoro &amp; schedule" data-zh="番茄钟与日程">Pomodoro &amp; schedule</span>
               </span>
-              <span class="pm-tag">2026</span>
             </a>
+            <p class="pm-group" data-en="More" data-zh="更多">More</p>
             <div class="pm-item is-soon" role="menuitem" aria-disabled="true">
-              <span class="pm-thumb">03</span>
               <span class="pm-body">
                 <b>The best is yet to come.</b>
                 <span data-en="In progress" data-zh="进行中">In progress</span>
               </span>
             </div>
             <div class="pm-foot">
-              <a href="index.html#work" data-en="All work" data-zh="全部作品">All work</a>
+              <a href="#work" data-en="All work" data-zh="全部作品">All work</a>
               <span>XYC-2026</span>
             </div>
           </div>
         </li>
-        <li class="nav-group-label" aria-hidden="true" data-en="Extensions" data-zh="扩展">Extensions</li>
-        <li class="nav-divider" aria-hidden="true"></li>
-        <li class="nav-ext"><a href="skill.html" data-en="Skill" data-zh="技能">Skill</a></li>
-        <li class="nav-ext"><a href="plugin.html" data-en="Plugin" data-zh="插件">Plugin</a></li>
-        <li class="nav-ext"><a href="connector.html" data-en="Connector" data-zh="连接器">Connector</a></li>
-        <li class="nav-ext"><a href="mcp.html" data-en="MCP Server" data-zh="MCP 服务">MCP Server</a></li>
+        <li><a href="monitor.html" data-en="Monitor" data-zh="舆情">Monitor</a></li>
+        <li><a href="archive.html" data-en="Archive" data-zh="作品档案">Archive</a></li>
+        <li><a href="data.html" data-en="Data" data-zh="数据">Data</a></li>
+
+        <li class="nav-ext has-menu">
+          <a class="nav-trigger" href="skill.html"><span data-en="Extensions" data-zh="扩展">Extensions</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <div class="project-menu mega mini" role="menu">
+            <p class="pm-group" data-en="Extensions" data-zh="扩展">Extensions</p>
+            <a class="pm-item" href="skill.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Skills" data-zh="技能">Skills</b>
+                <span data-en="A folder and a script the model reads first." data-zh="一个文件夹 + 一段脚本，模型先读再动手。">A folder and a script the model reads first.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="plugin.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Plugins" data-zh="插件">Plugins</b>
+                <span data-en="Code inside the agent runtime." data-zh="跑在 Agent 运行时里的代码。">Code inside the agent runtime.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="connector.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Connectors" data-zh="连接器">Connectors</b>
+                <span data-en="A door in from a chat app or a microphone." data-zh="从聊天软件或麦克风进来的那道门。">A door in from a chat app or a microphone.</span>
+              </span>
+            </a>
+            <a class="pm-item" href="mcp.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="MCP servers" data-zh="MCP 服务">MCP servers</b>
+                <span data-en="A separate process exposing tools over JSON-RPC." data-zh="独立进程，用 JSON-RPC 暴露工具。">A separate process exposing tools over JSON-RPC.</span>
+              </span>
+            </a>
+            <p class="pm-group" data-en="Workflows" data-zh="工作流">Workflows</p>
+            <a class="pm-item" href="comfyui.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="ComfyUI" data-zh="ComfyUI">ComfyUI</b>
+                <span data-en="Four SDXL Turbo graphs, with the node canvas." data-zh="四张 SDXL Turbo 工作流，带节点画布。">Four SDXL Turbo graphs, with the node canvas.</span>
+              </span>
+            </a>
+          </div>
+        </li>
       </ul>
     </nav>
     <div class="nav-right">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="t-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="t-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2v2.2M12 19.8V22M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2 12h2.2M19.8 12H22M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      </button>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-lang="en" class="on">EN</button>
         <span class="sep">/</span>
@@ -71,6 +117,41 @@
       </div>
       <a class="btn btn-dark btn-sm" href="#download" data-en="Download" data-zh="下载">Download</a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="container subnav-inner">
+      <span class="subnav-label" data-en="Project · FocusOS" data-zh="项目 · FocusOS">Project · FocusOS</span>
+      <div class="subnav-explore has-menu">
+        <button class="subnav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <span data-en="Explore here" data-zh="继续看看">Explore here</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="project-menu mega explore-menu" role="menu">
+            <p class="pm-group" data-en="On this page" data-zh="本页">On this page</p>
+            <a class="pm-item" href="focusos.html#install" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Install" data-zh="安装">Install</b>
+              </span>
+            </a>
+            <p class="pm-group" data-en="Elsewhere" data-zh="其他">Elsewhere</p>
+            <a class="pm-item" href="index.html#work" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Studio work" data-zh="工作室作品">Studio work</b>
+              </span>
+            </a>
+            <a class="pm-item" href="archive.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Archive" data-zh="作品档案">Archive</b>
+              </span>
+            </a>
+            <a class="pm-item" href="data.html" role="menuitem">
+              <span class="pm-body">
+                <b data-en="Research data" data-zh="研究数据">Research data</b>
+              </span>
+            </a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -83,7 +164,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
         <span data-en="All work" data-zh="全部作品">All work</span>
       </a>
-      <img class="case-line icon" src="img/focusos-mark.svg" alt="" aria-hidden="true">
+      <img class="case-line icon" src="img/focusos-mark.svg" alt="" aria-hidden="true" width="160" height="160" decoding="async">
       <h1 class="case-title" style="margin-top:18px;">Focus<em>OS</em></h1>
       <p class="case-tagline" data-en="A time container for the day you planned and the hour you are in." data-zh="把「今天要做什么」和「现在正在做什么」放进同一个地方。">
         A time container for the day you planned and the hour you are in.
@@ -119,7 +200,7 @@
     </div>
     <div class="container">
       <div class="hero-shot" data-reveal>
-        <img src="img/focusos/focus.jpg" alt="FocusOS focus view: 24:18 over a photograph, the current task and the cycle dots">
+        <img src="img/focusos/focus.webp" alt="FocusOS focus view: 24:18 over a photograph, the current task and the cycle dots" width="2000" height="1250" decoding="async">
       </div>
     </div>
   </section>
@@ -164,60 +245,60 @@
       <div class="screens">
         <article class="screen" data-reveal>
           <div class="screen-shot">
-            <img src="img/focusos/focus.jpg" alt="FocusOS focus view with a countdown ring over a photo background">
+            <img src="img/focusos/focus.webp" alt="FocusOS focus view with a countdown ring over a photo background" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="screen-cap">
-            <h3><span class="n">01</span><span data-en="Focus view" data-zh="专注视图">Focus view</span></h3>
+            <h3><img class="line-art s-glyph" src="img/line/icon-clock.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="n">01</span><span data-en="Focus view" data-zh="专注视图">Focus view</span></h3>
             <p data-en="One number, one ring, one task. Put a photograph behind it and the controls fade when the mouse rests; the countdown stays the only bright thing." data-zh="一个数字，一个圆环，一件事。背后可以放一张照片，鼠标停下控件就淡出，只剩倒计时亮着。">One number, one ring, one task. Put a photograph behind it and the controls fade when the mouse rests; the countdown stays the only bright thing.</p>
           </div>
         </article>
 
         <article class="screen" data-reveal>
           <div class="screen-shot">
-            <img src="img/focusos/day.jpg" alt="FocusOS day timeline with plan blocks between 08:00 and 17:00">
+            <img src="img/focusos/day.webp" alt="FocusOS day timeline with plan blocks between 08:00 and 17:00" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="screen-cap">
-            <h3><span class="n">02</span><span data-en="Day timeline" data-zh="日时间轴">Day timeline</span></h3>
+            <h3><img class="line-art s-glyph" src="img/line/icon-calendar.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="n">02</span><span data-en="Day timeline" data-zh="日时间轴">Day timeline</span></h3>
             <p data-en="A 24-hour canvas. Tasks expand into 25-minute plan blocks, the current hour is marked, and the whole day can be dragged into a different shape." data-zh="一条 24 小时画布。任务展开成 25 分钟的番茄块，当前小时有标记，一整天都能拖着换个形状。">A 24-hour canvas. Tasks expand into 25-minute plan blocks, the current hour is marked, and the whole day can be dragged into a different shape.</p>
           </div>
         </article>
 
         <article class="screen" data-reveal>
           <div class="screen-shot">
-            <img src="img/focusos/week.jpg" alt="FocusOS week view: seven columns on the same hour scale">
+            <img src="img/focusos/week.webp" alt="FocusOS week view: seven columns on the same hour scale" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="screen-cap">
-            <h3><span class="n">03</span><span data-en="Week view" data-zh="周视图">Week view</span></h3>
+            <h3><img class="line-art s-glyph" src="img/line/icon-star.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="n">03</span><span data-en="Week view" data-zh="周视图">Week view</span></h3>
             <p data-en="Seven columns on one hour scale, today tinted. Tomorrow's work is visible without opening a second app, and the footer counts the pomodoros already banked." data-zh="七列共用一条时间刻度，今天有底色。明天的事不用另开应用就看得见，底下一行数着这周已经攒下的番茄。">Seven columns on one hour scale, today tinted. Tomorrow's work is visible without opening a second app, and the footer counts the pomodoros already banked.</p>
           </div>
         </article>
 
         <article class="screen" data-reveal>
           <div class="screen-shot">
-            <img src="img/focusos/inbox.jpg" alt="FocusOS inbox with seven unscheduled tasks and the quick-add bar">
+            <img src="img/focusos/inbox.webp" alt="FocusOS inbox with seven unscheduled tasks and the quick-add bar" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="screen-cap">
-            <h3><span class="n">04</span><span data-en="Tasks &amp; inbox" data-zh="任务与收件箱">Tasks &amp; inbox</span></h3>
+            <h3><img class="line-art s-glyph" src="img/line/icon-shopping-bag.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="n">04</span><span data-en="Tasks &amp; inbox" data-zh="任务与收件箱">Tasks &amp; inbox</span></h3>
             <p data-en="Type “3pm tomorrow meeting 1 hour #work” and it becomes a dated, timed, tagged task. Everything unplanned waits in the inbox until it has an hour." data-zh="输入「明天下午3点开会 1 小时 #工作」，它就会变成带日期、时间、标签的任务。没安排的事都留在收件箱，直到它有了一个钟点。">Type “3pm tomorrow meeting 1 hour #work” and it becomes a dated, timed, tagged task. Everything unplanned waits in the inbox until it has an hour.</p>
           </div>
         </article>
 
         <article class="screen" data-reveal>
           <div class="screen-shot">
-            <img src="img/focusos/insights.jpg" alt="FocusOS insights: habit check-ins, metric cards and a 14-day bar chart">
+            <img src="img/focusos/insights.webp" alt="FocusOS insights: habit check-ins, metric cards and a 14-day bar chart" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="screen-cap">
-            <h3><span class="n">05</span><span data-en="Insights" data-zh="洞察">Insights</span></h3>
+            <h3><img class="line-art s-glyph" src="img/line/icon-search.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="n">05</span><span data-en="Insights" data-zh="洞察">Insights</span></h3>
             <p data-en="Habit check-ins, pomodoros, focus hours and completion rate, then a 14-day chart, an hour heatmap and a category share — all drawn by hand, no chart library." data-zh="习惯打卡、番茄数、专注时长和完成率，再往下是 14 天柱状图、小时热力图和分类占比——全部手写，不引图表库。">Habit check-ins, pomodoros, focus hours and completion rate, then a 14-day chart, an hour heatmap and a category share — all drawn by hand, no chart library.</p>
           </div>
         </article>
 
         <article class="screen" data-reveal>
           <div class="screen-shot">
-            <img src="img/focusos/settings.jpg" alt="FocusOS settings: theme, language, appearance and background controls">
+            <img src="img/focusos/settings.webp" alt="FocusOS settings: theme, language, appearance and background controls" width="2000" height="1250" loading="lazy" decoding="async">
           </div>
           <div class="screen-cap">
-            <h3><span class="n">06</span><span data-en="Settings" data-zh="设置">Settings</span></h3>
+            <h3><img class="line-art s-glyph" src="img/line/icon-gear.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span class="n">06</span><span data-en="Settings" data-zh="设置">Settings</span></h3>
             <p data-en="Six panes — theme, timer, schedule, notifications, data, about. Background mode lives here too: scrim, blur, vignette and whether the text should flip colour with the photo." data-zh="六栏：主题、计时、日程、通知、数据、关于。背景模式也在这儿：压暗、模糊、暗角，以及文字要不要跟着照片的明暗翻色。">Six panes — theme, timer, schedule, notifications, data, about. Background mode lives here too: scrim, blur, vignette and whether the text should flip colour with the photo.</p>
           </div>
         </article>
@@ -344,8 +425,11 @@
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="index.html"><span class="mark">x</span>xyc<em>design.</em></a>
+        <a class="brand" href="index.html"><span class="mark"><img class="line-art" src="img/line/mark.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></span>xyc<em>design.</em></a>
         <p data-en="Independent product studio. Interface, motion and code, made in one pair of hands." data-zh="独立产品工作室。界面、动效与代码，出自同一双手。">Independent product studio. Interface, motion and code, made in one pair of hands.</p>
+        <div class="foot-art" aria-hidden="true">
+          <img class="line-art" src="img/line/illu-greek-ariadne-wide.webp" alt="" width="420" height="211" loading="lazy" decoding="async">
+        </div>
       </div>
       <div class="foot-links">
         <div class="foot-col">
@@ -354,6 +438,7 @@
             <li><a href="index.html#work" data-en="Work" data-zh="作品">Work</a></li>
             <li><a href="index.html#studio" data-en="About" data-zh="关于">About</a></li>
             <li><a href="quanta.html">Quanta</a></li>
+            <li><a href="comfyui.html" data-en="ComfyUI" data-zh="ComfyUI 工作流">ComfyUI</a></li>
             <li><a href="focusos.html">FocusOS</a></li>
           </ul>
         </div>
@@ -371,6 +456,7 @@
           <ul>
             <li><button class="foot-mail" type="button" data-mail>Email</button></li>
             <li><a href="https://github.com/xxx490202/focusos" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+            <li><a href="data.html" data-en="Research data" data-zh="研究数据">Research data</a></li>
           </ul>
         </div>
       </div>
@@ -382,6 +468,6 @@
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js?v=20261123X"></script>
 </body>
 </html>
