@@ -73,7 +73,36 @@ export default {
     const url = new URL(request.url);
     const cache = typeof caches !== 'undefined' ? caches.default : null;
 
-    if (url.pathname === '/' || url.pathname === '/api/monitor') {
+    if (url.pathname === '/') {
+      const page = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>xyc-monitor proxy</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; min-height:100vh; display:grid; place-items:center; background:#141413; color:#faf9f5;
+         font:15px/1.65 ui-sans-serif,-apple-system,"PingFang SC",sans-serif; }
+  main { max-width:560px; padding:48px 32px; }
+  .dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:#e05252; margin-right:8px; }
+  h1 { font-size:26px; font-weight:500; letter-spacing:-.01em; margin:0 0 14px; }
+  p { color:#b0aea5; margin:0 0 10px; }
+  code { font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace; color:#faf9f5;
+         background:#262624; border:1px solid #3d3d3a; border-radius:6px; padding:2px 6px; }
+  a { color:#e05252; }
+</style></head>
+<body><main>
+  <p><span class="dot"></span><span style="color:#87867f;font-size:12px;letter-spacing:.14em;text-transform:uppercase">Cloudflare Worker</span></p>
+  <h1>xyc-monitor proxy is running.</h1>
+  <p>This URL is a data endpoint, not a page. The live board JSON lives at:</p>
+  <p><code>/api/monitor</code> &nbsp;·&nbsp; one board at <code>/api/s?id=weibo</code></p>
+  <p>Paste <code>https://xyc-monitor.xycdesign.workers.dev/api/monitor</code> into
+     <a href="https://xyc-design.pages.dev/monitor">Monitor → Sentiment settings → Live proxy</a>.</p>
+</main></body></html>`;
+      return new Response(page, {
+        headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=300' },
+      });
+    }
+
+    if (url.pathname === '/api/monitor') {
       const cacheKey = new Request(url.toString(), { method: 'GET' });
       if (cache) {
         const hit = await cache.match(cacheKey);
